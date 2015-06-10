@@ -60,8 +60,7 @@ namespace DBTilerElement
             this.Complete = false;
             this.DeletedCount = 1;
             this.CompletedCount = 1;
-            //this.EventRepetition = new DB_Repetition(true, this.RangeTimeLine, "Daily", AllCalendarEvent.ToArray());
-            this.EventRepetition = new Repetition(true, this.RangeTimeLine, "Daily", AllCalendarEvent.ToArray());
+            this.EventRepetition = new DB_Repetition(true, this.RangeTimeLine, "Daily", AllCalendarEvent.ToArray());
             this.EventName = "GOOGLE MOTHER EVENT";
             this.ProfileOfNow = new NowProfile();
         }

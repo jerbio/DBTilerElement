@@ -32,7 +32,7 @@ namespace DBTilerElement
         public string ThirdPartyUserID { get; set; }
         public string ThirdPartyType { get; set; }
 
-        ///*
+        /*
         public static CalendarEvent FromGoogleToRepatCalendarEvent(IEnumerable<SubCalendarEvent> AllSubCalEvents, TimeLine LimitsOfCalculation = null)
         {
             CalendarEvent RetValue = null;

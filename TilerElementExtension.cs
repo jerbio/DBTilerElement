@@ -74,7 +74,7 @@ namespace DBTilerElement
             retValue.CalendarName = CalendarEventEntry.Name;
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
-            retValue.TotalDuration = CalendarEventEntry.ActiveDuration;
+            retValue.TotalDuration = CalendarEventEntry.Duration;
             retValue.Rigid = CalendarEventEntry.Rigid;
             retValue.AddressDescription = CalendarEventEntry.myLocation.Description;
             retValue.Address = CalendarEventEntry.myLocation.Address;
@@ -90,7 +90,7 @@ namespace DBTilerElement
             retValue.NumberOfDeletedEvents = CalendarEventEntry.DeletionCount;
             retValue.OtherPartyID = CalendarEventEntry.ThirdPartyID;
 
-            TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.ActiveDuration;
+            TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.Duration;
             long TickTier1 = (long)(FreeTimeLeft.Ticks * (.667));
             long TickTier2 = (long)(FreeTimeLeft.Ticks * (.865));
             long TickTier3 = (long)(FreeTimeLeft.Ticks * (1));
@@ -118,7 +118,7 @@ namespace DBTilerElement
             retValue.CalendarName = CalendarEventEntry.Name;
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
-            retValue.TotalDuration = CalendarEventEntry.ActiveDuration;
+            retValue.TotalDuration = CalendarEventEntry.Duration;
             retValue.Rigid = CalendarEventEntry.Rigid;
             retValue.AddressDescription = CalendarEventEntry.myLocation.Description;
             retValue.Address = CalendarEventEntry.myLocation.Address;
@@ -134,7 +134,7 @@ namespace DBTilerElement
             retValue.NumberOfDeletedEvents = CalendarEventEntry.DeletionCount;
             retValue.OtherPartyID = CalendarEventEntry.ThirdPartyID;
 
-            TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.ActiveDuration;
+            TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.Duration;
             long TickTier1 = (long)(FreeTimeLeft.Ticks * (.667));
             long TickTier2 = (long)(FreeTimeLeft.Ticks * (.865));
             long TickTier3 = (long)(FreeTimeLeft.Ticks * (1));
