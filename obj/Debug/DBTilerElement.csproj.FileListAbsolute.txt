@@ -1,0 +1,9 @@
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\bin\Debug\DBTilerElement.dll
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\bin\Debug\DBTilerElement.pdb
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\bin\Debug\TilerElements.dll
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\bin\Debug\TilerElements.pdb
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.csprojResolveAssemblyReference.cache
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.dll
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.pdb
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\bin\Debug\sdk.dll
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\bin\Debug\sdk.pdb
