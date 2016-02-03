@@ -1,4 +1,4 @@
-﻿
+﻿#define NewRigidImplementation
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +10,10 @@ namespace DBTilerElement
 {
     public class DB_Repetition:Repetition
     {
+        public DB_Repetition() : base()
+        {
+            
+        }
         public DB_Repetition(bool ReadFromFileEnableFlag, TimeLine ReadFromFileRepetitionRange_Entry, string ReadFromFileFrequency, CalendarEvent[] ReadFromFileRecurringListOfCalendarEvents, int DayOfWeek = 7, TimeLine initializingRangeData = null)
         {
             EnableRepeat = ReadFromFileEnableFlag;
@@ -97,8 +101,9 @@ namespace DBTilerElement
             {
                 foreach (KeyValuePair<int, Repetition> eachKeyValuePair in DictionaryOfWeekDayToRepetition)
                 {
-                    ((DB_Repetition)eachKeyValuePair.Value).PopulateRepetitionParameters(MyParentEvent, eachKeyValuePair.Key);
-                    ((DB_Repetition)eachKeyValuePair.Value).RootCalendarEvent = MyParentEvent;
+                    DB_Repetition repetition = (DB_Repetition)eachKeyValuePair.Value;
+                    repetition.PopulateRepetitionParameters(MyParentEvent, eachKeyValuePair.Key);
+                    repetition.RootCalendarEvent = MyParentEvent;
                 }
                 return;
             }
