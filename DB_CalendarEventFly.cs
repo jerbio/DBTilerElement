@@ -22,6 +22,15 @@ namespace DBTilerElement
 
         public DB_CalendarEventFly(string EventIDData, string Name, DateTimeOffset StartData, DateTimeOffset EndData, int PriorityData, Repetition RepetitionData, Location_Elements LocationData, TimeSpan TImePerSplitData, DateTimeOffset OriginalStartData, TimeSpan EventPrepTimeData, TimeSpan Event_PreDeadlineData, bool EventRigidFlagData, int SplitData, EventDisplay UiData, MiscData NoteData, bool CompletionFlagData, long RepeatIndexData, Procrastination ProcrastinationData, NowProfile NowProfileData, int CompleteCountData, int DeletionCountData,List<string> AllUserIDs)
         {
+            string message = "Halt JEROME !!!!!. This was a commit knowing this error will happen" +
+    " You did this because you want to figure out your next steps.\n"
+    + " You deleted all refereneces to the NowProfile in SubCalendarEVents and TilerEVents because they were inherited from TIler Events.\n"
+    + "You did this because you think it was not needed and could easily be stored in the calendar event object. Since the calendar object can explicitly store a deviating subcalendar event and update the calculated rigid event with the deviation.\n"
+    + "Beware Jerome of the case where a repeating rigid event gets created and then now is pressed. Tiler needs to know which rigid event was pressed to accomplish this now activity\n"
+    + " You deleted the now profile because it was making the xml file too big and was hampering read performnace\n"
+    + " You realized that non-rigid subevents still get persisted and are not calculated on the fly which is unlike their rigid counterparts(I havent tested the latter part because, but this branch is called newrigidimplementation aka on the fly rigid calculations).\n"
+    + " You might want to resdesign the calls for the creation of non-rigid subevents to be calculated on the fly";
+            throw new Exception(message);
             EventName = Name;
             StartDateTime = StartData;
             EndDateTime = EndData;
@@ -59,7 +68,7 @@ namespace DBTilerElement
                 for (int j=0; j < SubEventCount; i++,j++)
                 {
                     EventID SubEventID= EventID.GenerateSubCalendarEvent(UniqueID.ToString(),i+1);
-                    SubCalendarEvent newSubCalEvent = new DB_SubCalendarEventFly(SubEventID, Name, SubEventStartData, SubEventEndData, PriorityData, LocationInfo.CreateCopy(), OriginalStart, EventPrepTimeData, Event_PreDeadlineData, EventRigidFlagData, UiData.createCopy(), NoteData.createCopy(), Complete, ProcrastinationData, NowProfileData, this.RangeTimeLine, EventRepetition.Enable, false, true, AllUserIDs.ToList(),i);
+                    SubCalendarEvent newSubCalEvent = new DB_SubCalendarEventFly(SubEventID, Name, SubEventStartData, SubEventEndData, PriorityData, LocationInfo.CreateCopy(), OriginalStart, EventPrepTimeData, Event_PreDeadlineData, EventRigidFlagData, UiData.createCopy(), NoteData.createCopy(), Complete, ProcrastinationData, this.RangeTimeLine, EventRepetition.Enable, false, true, AllUserIDs.ToList(),i);
                     SubEvents.Add(newSubCalEvent.SubEvent_ID, newSubCalEvent);
                 }
 
@@ -126,7 +135,7 @@ namespace DBTilerElement
                 {
                     //(TimeSpan Event_Duration, DateTimeOffset EventStart, DateTimeOffset EventDeadline, TimeSpan EventPrepTime, string myParentID, bool Rigid, Location EventLocation =null, TimeLine RangeOfSubCalEvent = null)
                     EventID SubEventID = EventID.GenerateSubCalendarEvent(RetValue.UniqueID.ToString(), i + 1);
-                    SubCalendarEvent newSubCalEvent = new DB_SubCalendarEventFly(SubEventID, RetValue.EventName, (RetValue.EndDateTime - RetValue.TimePerSplit), RetValue.EndDateTime, RetValue.Priority, RetValue.myLocation, RetValue.OriginalStart, RetValue.Preparation, RetValue.PreDeadline, RetValue.Rigid, RetValue.UIParam.createCopy(), RetValue.Notes.createCopy(), false, RetValue.ProcrastinationInfo, RetValue.NowInfo, RetValue.RangeTimeLine, true, false, true, RetValue.UserIDs,i);
+                    SubCalendarEvent newSubCalEvent = new DB_SubCalendarEventFly(SubEventID, RetValue.EventName, (RetValue.EndDateTime - RetValue.TimePerSplit), RetValue.EndDateTime, RetValue.Priority, RetValue.myLocation, RetValue.OriginalStart, RetValue.Preparation, RetValue.PreDeadline, RetValue.Rigid, RetValue.UIParam.createCopy(), RetValue.Notes.createCopy(), false, RetValue.ProcrastinationInfo, RetValue.RangeTimeLine, true, false, true, RetValue.UserIDs,i);
 
                     //SubCalendarEvent newSubCalEvent = new SubCalendarEvent(RetValue.TimePerSplit, (RetValue.EndDateTime - RetValue.TimePerSplit), RetValue.End, new TimeSpan(), OriginalStartData, RetValue.UniqueID.ToString(), RetValue.RigidSchedule, RetValue.isEnabled, RetValue.UiParams, RetValue.Notes, RetValue.Complete, i+1, EventLocation, RetValue.RangeTimeLine);
                     RetValue.SubEvents.Add(newSubCalEvent.SubEvent_ID, newSubCalEvent);
@@ -200,24 +209,6 @@ namespace DBTilerElement
                     }
                 }
 
-                if(eachSubCalendarEvent.NowInfo.isInitialized)
-                {
-                    SubCalendarEvent[] AllActives = RefCalEvent.ActiveSubEvents;
-                    if(AllActives.Length>0)
-                    {
-                        try
-                        {
-                            DB_SubCalendarEventFly myDB_SubCalendarEventFly = (DB_SubCalendarEventFly)AllActives.Last();
-                            myDB_SubCalendarEventFly.InitializeNowProfile(eachSubCalendarEvent);
-                            RefCalEvent.updateDeviationList(2,myDB_SubCalendarEventFly);
-                            continue;
-                        }
-                        catch(Exception e)
-                        {
-
-                        }
-                    }
-                }
             }
         }
 

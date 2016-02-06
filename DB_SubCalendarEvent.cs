@@ -8,7 +8,7 @@ namespace DBTilerElement
 {
     public class DB_SubCalendarEvent:SubCalendarEvent
     {
-        public DB_SubCalendarEvent(SubCalendarEvent mySubCalEvent, NowProfile NowProfileData, Procrastination ProcrastinationData)
+        public DB_SubCalendarEvent(SubCalendarEvent mySubCalEvent,  Procrastination ProcrastinationData)
         {
             this.BusyFrame = mySubCalEvent.ActiveSlot;
             this.CalendarEventRange = mySubCalEvent.getCalendarEventRange;
@@ -30,7 +30,7 @@ namespace DBTilerElement
             this.preferredDayIndex = mySubCalEvent.UniversalDayIndex;
             this.PrepTime = mySubCalEvent.Preparation;
             this.Priority = mySubCalEvent.EventPriority;
-            this.ProfileOfNow = NowProfileData;
+            //this.ProfileOfNow = NowProfileData;
             this.ProfileOfProcrastination = ProcrastinationData;
             this.FromRepeatEvent = mySubCalEvent.FromRepeat;
             this.RigidSchedule = mySubCalEvent.Rigid;
