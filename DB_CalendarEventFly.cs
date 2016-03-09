@@ -30,7 +30,7 @@ namespace DBTilerElement
     + " You deleted the now profile because it was making the xml file too big and was hampering read performnace\n"
     + " You realized that non-rigid subevents still get persisted and are not calculated on the fly which is unlike their rigid counterparts(I havent tested the latter part because, but this branch is called newrigidimplementation aka on the fly rigid calculations).\n"
     + " You might want to resdesign the calls for the creation of non-rigid subevents to be calculated on the fly";
-            throw new Exception(message);
+            //throw new Exception(message);
             EventName = Name;
             StartDateTime = StartData;
             EndDateTime = EndData;
@@ -177,7 +177,7 @@ namespace DBTilerElement
                         myDB_SubCalendarEventFly.InitializeCompleted(eachSubCalendarEvent);
                         try
                         {
-                            RefCalEvent.updateDeviationList(1, myDB_SubCalendarEventFly);
+                            RefCalEvent.updateDeviationList(CalendarEvent.DeviationType.completed, myDB_SubCalendarEventFly);
                             ++RefCalEvent.CompletedSofar;
                             RefCalEvent.CompletedCount = RefCalEvent.CompletedSofar;
                             continue;
