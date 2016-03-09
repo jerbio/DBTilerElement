@@ -20,7 +20,7 @@ namespace DBTilerElement
 + " You deleted the now profile because it was making the xml file too big and was hampering read performnace\n"
 + " You realized that non-rigid subevents still get persisted and are not calculated on the fly which is unlike their rigid counterparts(I havent tested the latter part because, but this branch is called newrigidimplementation aka on the fly rigid calculations).\n"
 + " You might want to resdesign the calls for the creation of non-rigid subevents to be calculated on the fly";
-            throw new Exception(message);
+            //throw new Exception(message);
             this.BusyFrame = new BusyTimeLine(EventIDData.ToString(), StartData, EndData);
             this.CalendarEventRange = CalendarEventRangeData;
             this.FromRepeatEvent = FromRepeatFlagData;
