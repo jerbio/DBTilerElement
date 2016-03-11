@@ -36,7 +36,7 @@ namespace DBTilerElement
                 retValue.SubCalCalEventStart = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
                 retValue.SubCalCalEventEnd = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
 
-                if(string.IsNullOrEmpty( retValue.ThirdPartyEventID))
+                if(string.IsNullOrEmpty(CalendarEventEntry.ThirdPartyID))
                 {
 
                 }

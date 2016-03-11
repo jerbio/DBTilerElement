@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalEvent.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="DBControl.cs" />
     <Compile Include="DBControlDirect.cs" />
     <Compile Include="DB_CalendarEvent.cs" />

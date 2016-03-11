@@ -62,15 +62,6 @@ namespace DBTilerElement
             {
                 return;
             }
-            /*Outlook.RecurrencePattern pattern =
-                item.GetRecurrencePattern();
-            Outlook.AppointmentItem itemDelete = pattern.
-                GetOccurrence(new DateTimeOffset(2006, 6, 28, 8, 0, 0));
-
-            if (itemDelete != null)
-            {
-                itemDelete.Delete();
-            }*/
 #endif
 
         }
