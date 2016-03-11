@@ -60,6 +60,7 @@
     <Compile Include="DB_SubCalendarEvent.cs" />
     <Compile Include="DB_SubCalendarEventFly.cs" />
     <Compile Include="DB_SubCalendarEventRestricted.cs" />
+    <Compile Include="DB_UserActivity.cs" />
     <Compile Include="GoogleCalendarEvent.cs" />
     <Compile Include="GoogleSubCalendarEvent.cs" />
     <Compile Include="GoogleThirdPartyControl.cs" />
