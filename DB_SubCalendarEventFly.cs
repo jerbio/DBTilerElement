@@ -89,6 +89,7 @@ namespace DBTilerElement
         }
 
         #region properties
+        /*
         protected ConflictProfile ConflictingEvents;
         protected double EventScore;
         protected BusyTimeLine HumaneTimeLine;
@@ -98,7 +99,7 @@ namespace DBTilerElement
         protected ulong OldPreferredIndex;
         protected ulong preferredDayIndex;
         protected ulong UnUsableIndex;
-        protected bool Vestige;
+        protected bool Vestige;*/
         
 
         public new DateTimeOffset Start

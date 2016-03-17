@@ -82,6 +82,10 @@
     <Compile Include="Migrations\201603171747208_initLocationRename.Designer.cs">
       <DependentUpon>201603171747208_initLocationRename.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603172158049_extraTimeLineInfo.cs" />
+    <Compile Include="Migrations\201603172158049_extraTimeLineInfo.Designer.cs">
+      <DependentUpon>201603172158049_extraTimeLineInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OutlookThirdPartyControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603171747208_initLocationRename.resx">
       <DependentUpon>201603171747208_initLocationRename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603172158049_extraTimeLineInfo.resx">
+      <DependentUpon>201603172158049_extraTimeLineInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
