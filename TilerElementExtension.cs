@@ -16,7 +16,7 @@ namespace DBTilerElement
         public static SubCalEvent ToSubCalEvent(this TilerElements.SubCalendarEvent SubCalendarEventEntry, TilerElements.CalendarEvent CalendarEventEntry = null)
         {
             SubCalEvent retValue = new SubCalEvent();
-            retValue.ThirdPartyUserID = SubCalendarEventEntry.CreatorID;
+            retValue.ThirdPartyUserID = SubCalendarEventEntry.UserId;
             retValue.ThirdPartyType = ProviderNames[(int)SubCalendarEventEntry.ThirdpartyType];
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
             retValue.ID = SubCalendarEventEntry.ID;
@@ -26,8 +26,8 @@ namespace DBTilerElement
             retValue.SubCalEndDate = (long)(SubCalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.SubCalTotalDuration = SubCalendarEventEntry.ActiveDuration;
             retValue.SubCalRigid = SubCalendarEventEntry.Rigid;
-            retValue.SubCalAddressDescription = SubCalendarEventEntry.myLocation.Description;
-            retValue.SubCalAddress = SubCalendarEventEntry.myLocation.Address;
+            retValue.SubCalAddressDescription = SubCalendarEventEntry.Location.Description;
+            retValue.SubCalAddress = SubCalendarEventEntry.Location.Address;
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
             if (CalendarEventEntry != null)
             {
@@ -46,8 +46,8 @@ namespace DBTilerElement
                 }
             }
 
-            retValue.SubCalEventLong = SubCalendarEventEntry.myLocation.YCoordinate;
-            retValue.SubCalEventLat = SubCalendarEventEntry.myLocation.XCoordinate;
+            retValue.SubCalEventLong = SubCalendarEventEntry.Location.YCoordinate;
+            retValue.SubCalEventLat = SubCalendarEventEntry.Location.XCoordinate;
             retValue.RColor = SubCalendarEventEntry.UIParam.UIColor.R;
             retValue.GColor = SubCalendarEventEntry.UIParam.UIColor.G;
             retValue.BColor = SubCalendarEventEntry.UIParam.UIColor.B;
@@ -67,7 +67,7 @@ namespace DBTilerElement
         public static CalEvent ToCalEvent(this TilerElements.CalendarEvent CalendarEventEntry, TilerElements.TimeLine Range = null)
         {
             CalEvent retValue = new CalEvent();
-            retValue.ThirdPartyUserID = CalendarEventEntry.CreatorID;
+            retValue.ThirdPartyUserID = CalendarEventEntry.UserId;
             
             retValue.ID = CalendarEventEntry.ID;
             retValue.ThirdPartyType = ProviderNames[(int)CalendarEventEntry.ThirdpartyType];
@@ -76,10 +76,10 @@ namespace DBTilerElement
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.TotalDuration = CalendarEventEntry.Duration;
             retValue.Rigid = CalendarEventEntry.Rigid;
-            retValue.AddressDescription = CalendarEventEntry.myLocation.Description;
-            retValue.Address = CalendarEventEntry.myLocation.Address;
-            retValue.Longitude = CalendarEventEntry.myLocation.YCoordinate;
-            retValue.Latitude = CalendarEventEntry.myLocation.XCoordinate;
+            retValue.AddressDescription = CalendarEventEntry.Location.Description;
+            retValue.Address = CalendarEventEntry.Location.Address;
+            retValue.Longitude = CalendarEventEntry.Location.YCoordinate;
+            retValue.Latitude = CalendarEventEntry.Location.XCoordinate;
             retValue.NumberOfSubEvents = CalendarEventEntry.AllSubEvents.Count();// CalendarEventEntry.NumberOfSplit;// AllSubEvents.Count();
             retValue.RColor = CalendarEventEntry.UIParam.UIColor.R;
             retValue.GColor = CalendarEventEntry.UIParam.UIColor.G;
@@ -111,7 +111,7 @@ namespace DBTilerElement
         public static CalEvent ToDeletedCalEvent(this TilerElements.CalendarEvent CalendarEventEntry, TilerElements.TimeLine Range = null)
         {
             CalEvent retValue = new CalEvent();
-            retValue.ThirdPartyUserID = CalendarEventEntry.CreatorID;
+            retValue.ThirdPartyUserID = CalendarEventEntry.UserId;
 
             retValue.ID = CalendarEventEntry.ID;
             retValue.ThirdPartyType = ProviderNames[(int)CalendarEventEntry.ThirdpartyType];
@@ -120,10 +120,10 @@ namespace DBTilerElement
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.TotalDuration = CalendarEventEntry.Duration;
             retValue.Rigid = CalendarEventEntry.Rigid;
-            retValue.AddressDescription = CalendarEventEntry.myLocation.Description;
-            retValue.Address = CalendarEventEntry.myLocation.Address;
-            retValue.Longitude = CalendarEventEntry.myLocation.YCoordinate;
-            retValue.Latitude = CalendarEventEntry.myLocation.XCoordinate;
+            retValue.AddressDescription = CalendarEventEntry.Location.Description;
+            retValue.Address = CalendarEventEntry.Location.Address;
+            retValue.Longitude = CalendarEventEntry.Location.YCoordinate;
+            retValue.Latitude = CalendarEventEntry.Location.XCoordinate;
             retValue.NumberOfSubEvents = CalendarEventEntry.AllSubEvents.Count();// CalendarEventEntry.NumberOfSplit;// AllSubEvents.Count();
             retValue.RColor = CalendarEventEntry.UIParam.UIColor.R;
             retValue.GColor = CalendarEventEntry.UIParam.UIColor.G;

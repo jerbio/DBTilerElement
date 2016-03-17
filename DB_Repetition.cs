@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TilerElements;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #if NewRigidImplementation
 namespace DBTilerElement
 {
+    [Table("Repetition")]
     public class DB_Repetition:Repetition
     {
         public DB_Repetition() : base()
@@ -41,7 +43,7 @@ namespace DBTilerElement
             RepetitionRange = ReadFromFileRepetitionRange_Entry;
             if (ReadFromFileRecurringListOfCalendarEvents.Length > 0)
             {
-                RepeatLocation = ReadFromFileRecurringListOfCalendarEvents[0].myLocation;
+                RepeatLocation = ReadFromFileRecurringListOfCalendarEvents[0].Location;
             }
         }
 
@@ -74,7 +76,7 @@ namespace DBTilerElement
             RepetitionRange = ReadFromFileRepetitionRange_Entry;
             if (repetition_Weekday.Length > 0)
             {
-                RepeatLocation = repetition_Weekday[0].myLocation;
+                RepeatLocation = repetition_Weekday[0].Location;
             }
 
             if (initializingRangeData != null)
@@ -118,7 +120,7 @@ namespace DBTilerElement
             EventID MyEventCalendarID = EventID.GenerateRepeatCalendarEvent(MyParentEvent.ID, StartingIndex);
             DateTimeOffset EachRepeatCalendarEnd = initializingRange.End > MyParentEvent.End ? MyParentEvent.End : initializingRange.End;//End DateTimeOffset Object for each recurring Calendar Event
 
-            CalendarEvent MyRepeatCalendarEvent = DB_CalendarEventFly.InstantiateRepeatedCandidate(MyEventCalendarID, MyParentEvent.Name, MyParentEvent.Duration, EachRepeatCalendarStart, EachRepeatCalendarEnd, EachRepeatCalendarStart, MyParentEvent.Preparation, MyParentEvent.PreDeadline, MyParentEvent.Rigid, new Repetition(), MyParentEvent.Rigid ? 1 : MyParentEvent.NumberOfSplit, MyParentEvent.myLocation, MyParentEvent.isEnabled, MyParentEvent.UIParam, MyParentEvent.Notes, MyParentEvent.isComplete, StartingIndex, DictionaryOfStartToCalEvent, MyParentEvent);
+            CalendarEvent MyRepeatCalendarEvent = DB_CalendarEventFly.InstantiateRepeatedCandidate(MyEventCalendarID, MyParentEvent.Name, MyParentEvent.Duration, EachRepeatCalendarStart, EachRepeatCalendarEnd, EachRepeatCalendarStart, MyParentEvent.Preparation, MyParentEvent.PreDeadline, MyParentEvent.Rigid, new Repetition(), MyParentEvent.Rigid ? 1 : MyParentEvent.NumberOfSplit, MyParentEvent.Location, MyParentEvent.isEnabled, MyParentEvent.UIParam, MyParentEvent.Notes, MyParentEvent.isComplete, StartingIndex, DictionaryOfStartToCalEvent, MyParentEvent);
 
             List<CalendarEvent> MyArrayOfRepeatingCalendarEvents = new List<CalendarEvent>();
 
@@ -131,9 +133,9 @@ namespace DBTilerElement
                 EachRepeatCalendarEnd = IncreaseByFrequency(EachRepeatCalendarEnd, Frequency);
                 ++StartingIndex;
                 MyEventCalendarID = EventID.GenerateRepeatCalendarEvent(MyParentEvent.ID, StartingIndex);
-                MyRepeatCalendarEvent = DB_CalendarEventFly.InstantiateRepeatedCandidate(MyEventCalendarID, MyRepeatCalendarEvent.Name, MyRepeatCalendarEvent.Duration, EachRepeatCalendarStart, EachRepeatCalendarEnd, EachRepeatCalendarStart, MyRepeatCalendarEvent.Preparation, MyRepeatCalendarEvent.PreDeadline, MyRepeatCalendarEvent.Rigid, MyRepeatCalendarEvent.Repeat, MyRepeatCalendarEvent.NumberOfSplit, MyParentEvent.myLocation, MyParentEvent.isEnabled, MyParentEvent.UIParam, MyParentEvent.Notes, MyParentEvent.isComplete, StartingIndex, DictionaryOfStartToCalEvent, MyParentEvent);
+                MyRepeatCalendarEvent = DB_CalendarEventFly.InstantiateRepeatedCandidate(MyEventCalendarID, MyRepeatCalendarEvent.Name, MyRepeatCalendarEvent.Duration, EachRepeatCalendarStart, EachRepeatCalendarEnd, EachRepeatCalendarStart, MyRepeatCalendarEvent.Preparation, MyRepeatCalendarEvent.PreDeadline, MyRepeatCalendarEvent.Rigid, MyRepeatCalendarEvent.Repeat, MyRepeatCalendarEvent.NumberOfSplit, MyParentEvent.Location, MyParentEvent.isEnabled, MyParentEvent.UIParam, MyParentEvent.Notes, MyParentEvent.isComplete, StartingIndex, DictionaryOfStartToCalEvent, MyParentEvent);
 
-                MyRepeatCalendarEvent.myLocation = MyParentEvent.myLocation;
+                MyRepeatCalendarEvent.Location = MyParentEvent.Location;
             }
             RepeatingEvents = DictionaryOfIDAndCalendarEvents.Values.ToArray();
         }
@@ -159,13 +161,30 @@ namespace DBTilerElement
             this.initializingRange = ActiveTimeline;
             this.RepetitionRange = repetitionTimeline;
             EventID MyEventCalendarID = EventID.GenerateRepeatDayCalendarEvent(MyParentEvent.ID, WeekDay, 0);//using the 0 sequence because MyRepeatCalendarEvent is only needed to generate the parameters for repetition
-            //CalendarEvent MyRepeatCalendarEvent = CalendarEvent.InstantiateRepeatedCandidate(MyEventCalendarID, MyParentEvent.Name, MyParentEvent.ActiveDuration, EachRepeatCalendarStart, EachRepeatCalendarEnd, StartTimeLineForActity, MyParentEvent.Preparation, MyParentEvent.PreDeadline, MyParentEvent.Rigid, repetitionData, MyParentEvent.Rigid ? 1 : MyParentEvent.NumberOfSplit, MyParentEvent.myLocation, MyParentEvent.isEnabled, MyParentEvent.UIParam, MyParentEvent.Notes, MyParentEvent.isComplete, 0, DictionaryOfStartToCalEvent);
-            //CalendarEvent MyRepeatCalendarEvent = new DB_CalendarEventFly(MyEventCalendarID, MyParentEvent.Name, MyParentEvent.Duration, EachRepeatCalendarStart, EachRepeatCalendarEnd, StartTimeLineForActity, MyParentEvent.Preparation, MyParentEvent.PreDeadline, MyParentEvent.Rigid, repetitionData, MyParentEvent.NumberOfSplit, MyParentEvent.myLocation, MyParentEvent.isEnabled, MyParentEvent.UIParam, MyParentEvent.Notes, MyParentEvent.isComplete, 0);
-            CalendarEvent MyRepeatCalendarEvent = new DB_CalendarEventFly(MyEventCalendarID.ToString(), MyParentEvent.Name, EachRepeatCalendarStart, EachRepeatCalendarEnd, MyParentEvent.EventPriority, repetitionData, MyParentEvent.myLocation, MyParentEvent.EachSplitTimeSpan, EachRepeatCalendarStart, MyParentEvent.Preparation, MyParentEvent.PreDeadline, MyParentEvent.Rigid, MyParentEvent.NumberOfSplit, MyParentEvent.UIParam, MyParentEvent.Notes, MyParentEvent.isComplete, 0, MyParentEvent.ProcrastinationInfo, MyParentEvent.NowInfo, 0, 0, MyParentEvent.getAllUserIDs());
+            //CalendarEvent MyRepeatCalendarEvent = CalendarEvent.InstantiateRepeatedCandidate(MyEventCalendarID, MyParentEvent.Name, MyParentEvent.ActiveDuration, EachRepeatCalendarStart, EachRepeatCalendarEnd, StartTimeLineForActity, MyParentEvent.Preparation, MyParentEvent.PreDeadline, MyParentEvent.Rigid, repetitionData, MyParentEvent.Rigid ? 1 : MyParentEvent.NumberOfSplit, MyParentEvent.Location, MyParentEvent.isEnabled, MyParentEvent.UIParam, MyParentEvent.Notes, MyParentEvent.isComplete, 0, DictionaryOfStartToCalEvent);
+            //CalendarEvent MyRepeatCalendarEvent = new DB_CalendarEventFly(MyEventCalendarID, MyParentEvent.Name, MyParentEvent.Duration, EachRepeatCalendarStart, EachRepeatCalendarEnd, StartTimeLineForActity, MyParentEvent.Preparation, MyParentEvent.PreDeadline, MyParentEvent.Rigid, repetitionData, MyParentEvent.NumberOfSplit, MyParentEvent.Location, MyParentEvent.isEnabled, MyParentEvent.UIParam, MyParentEvent.Notes, MyParentEvent.isComplete, 0);
+            CalendarEvent MyRepeatCalendarEvent = new DB_CalendarEventFly(MyEventCalendarID.ToString(), MyParentEvent.Name, EachRepeatCalendarStart, EachRepeatCalendarEnd, MyParentEvent.EventPriority, repetitionData, MyParentEvent.Location, MyParentEvent.EachSplitTimeSpan, EachRepeatCalendarStart, MyParentEvent.Preparation, MyParentEvent.PreDeadline, MyParentEvent.Rigid, MyParentEvent.NumberOfSplit, MyParentEvent.UIParam, MyParentEvent.Notes, MyParentEvent.isComplete, 0, MyParentEvent.ProcrastinationInfo, MyParentEvent.NowInfo, 0, 0, MyParentEvent.getAllUserIDs());
             this.PopulateRepetitionParameters(MyRepeatCalendarEvent);
         }
 
-        
+
+        #region properties
+        override public string Id
+        {
+            get
+            {
+                return RootCalendarEvent.Id.ToString();
+            }
+            protected set
+            {
+                if (!(RootCalendarEvent.Id.Equals(value)))
+                {
+                    throw new Exception("id of repeition does not match id of root calendarevent of reppetition");
+                }
+            }
+        }
+        #endregion
+
     }
 }
 

@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TilerElements;
+using System.ComponentModel.DataAnnotations.Schema;
 #if NewRigidImplementation
 namespace DBTilerElement
 {
+    [Table("SubCalendarEvents")]
     public class DB_SubCalendarEventFly:SubCalendarEvent
     {
         DB_SubCalendarEventFly()
-        { }
+        {
+            CalendarEventRange = new TimeLine();
+            BusyFrame = new BusyTimeLine();
+            HumaneTimeLine = new BusyTimeLine();
+        }
         internal DB_SubCalendarEventFly(EventID EventIDData, string Name, DateTimeOffset StartData, DateTimeOffset EndData, int PriorityData, Location_Elements LocationData, DateTimeOffset OriginalStartData, TimeSpan EventPrepTimeData, TimeSpan Event_PreDeadlineData, bool EventRigidFlagData, EventDisplay UiData, MiscData NoteData, bool CompletionFlagData, Procrastination ProcrastinationData, TimeLine CalendarEventRangeData, bool FromRepeatFlagData, bool ElapsedFlagData, bool EnabledFlagData, List<string> UserIDData,long Sequence)
         {
             string message = "Halt JEROME !!!!!. This was a commit knowing this error will happen" +
@@ -81,6 +87,158 @@ namespace DBTilerElement
             }
             throw new Exception("Trying to set uncomplete event as completed, check DB_SubCalendarEventFly");
         }
+
+        #region properties
+        protected ConflictProfile ConflictingEvents;
+        protected double EventScore;
+        protected BusyTimeLine HumaneTimeLine;
+        protected int MiscIntData;
+        protected bool MuddledEvent;
+        protected BusyTimeLine NonHumaneTimeLine;
+        protected ulong OldPreferredIndex;
+        protected ulong preferredDayIndex;
+        protected ulong UnUsableIndex;
+        protected bool Vestige;
+        
+
+        public new DateTimeOffset Start
+        {
+            get
+            {
+                return BusyFrame.Start;
+            }
+            set
+            {
+                BusyFrame = new BusyTimeLine(Id, value, BusyFrame.End);
+                /*
+                if (BusyFrame==null)
+                {
+                    BusyFrame = new BusyTimeLine(Id, value, BusyFrame.End);
+                }
+                else
+                {
+                    BusyFrame = new BusyTimeLine(Id, value, BusyFrame.End);
+                }*/
+            }
+        }
+
+        public new DateTimeOffset End
+        {
+            get
+            {
+                return BusyFrame.End;
+            }
+            set
+            {
+                BusyFrame = new BusyTimeLine(Id, BusyFrame.Start, value);
+                //if (BusyFrame == null)
+                //{
+                //    BusyFrame = new BusyTimeLine(Id, BusyFrame.Start, value);
+                //}
+                //else
+                //{
+                //    BusyFrame = new BusyTimeLine(Id, BusyFrame.Start, value);
+                //}
+            }
+        }
+
+        public DateTimeOffset CalendarEnd
+        {
+            get
+            {
+                return CalendarEventRange.End;
+            }
+            set
+            {
+                if (CalendarEventRange == null)
+                {
+                    CalendarEventRange = new TimeLine(BusyFrame.Start, value);
+                }
+                else
+                {
+                    CalendarEventRange = new TimeLine(BusyFrame.Start, value);
+                }
+            }
+        }
+
+        public DateTimeOffset CalendarStart
+        {
+            get
+            {
+                return CalendarEventRange.Start;
+            }
+            set
+            {
+                if (BusyFrame == null)
+                {
+                    CalendarEventRange = new TimeLine(value, CalendarEventRange.End);
+                }
+                else
+                {
+                    CalendarEventRange = new TimeLine(value, CalendarEventRange.End);
+                }
+            }
+        }
+
+        /// <summary>
+        /// returns the humane end time i.e ideal start time for a subevent to start
+        /// </summary>
+        public DateTimeOffset HumaneStart
+        {
+            get
+            {
+                return HumaneTimeLine.Start;
+            }
+            set
+            {
+                HumaneTimeLine = new BusyTimeLine(Id, value, HumaneTimeLine.End);
+            }
+        }
+        /// <summary>
+        /// returns the humane end time i.e ideal end time for a subevent to end
+        /// </summary>
+        public DateTimeOffset HumaneEnd
+        {
+            get
+            {
+                return HumaneTimeLine.End;
+            }
+            set
+            {
+                HumaneTimeLine = new BusyTimeLine(Id, HumaneTimeLine.Start, value);
+            }
+        }
+
+        /// <summary>
+        /// returns the NonHumane end time i.e ideal start time for a subevent to start
+        /// </summary>
+        public DateTimeOffset NonHumaneStart
+        {
+            get
+            {
+                return NonHumaneTimeLine.Start;
+            }
+            set
+            {
+                NonHumaneTimeLine = new BusyTimeLine(Id, value, NonHumaneTimeLine.End);
+            }
+        }
+        /// <summary>
+        /// returns the NonHumane end time i.e ideal end time for a subevent to end
+        /// </summary>
+        public DateTimeOffset NonHumaneEnd
+        {
+            get
+            {
+                return NonHumaneTimeLine.End;
+            }
+            set
+            {
+                NonHumaneTimeLine = new BusyTimeLine(Id, NonHumaneTimeLine.Start, value);
+            }
+        }
+
+        #endregion
     }
 }
 #endif

@@ -6,9 +6,15 @@ using TilerElements;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 #if NewRigidImplementation
 namespace DBTilerElement
 {
+
+    [Table("CalendarEvents")]
     public class DB_CalendarEventFly:CalendarEvent
     {
         int DeletedSofar =0;
@@ -71,24 +77,8 @@ namespace DBTilerElement
                     SubCalendarEvent newSubCalEvent = new DB_SubCalendarEventFly(SubEventID, Name, SubEventStartData, SubEventEndData, PriorityData, LocationInfo.CreateCopy(), OriginalStart, EventPrepTimeData, Event_PreDeadlineData, EventRigidFlagData, UiData.createCopy(), NoteData.createCopy(), Complete, ProcrastinationData, this.RangeTimeLine, EventRepetition.Enable, false, true, AllUserIDs.ToList(),i);
                     SubEvents.Add(newSubCalEvent.SubEvent_ID, newSubCalEvent);
                 }
-
-                /*
-                for (int j = 0; j < CompletedCount; i++, j++)
-                {
-                    EventID SubEventID = EventID.GenerateSubCalendarEvent(UniqueID.ToString(), i + 1);
-                    SubCalendarEvent newSubCalEvent = new DB_SubCalendarEventFly(SubEventID, Name, SubEventStartData, SubEventEndData, PriorityData, LocationInfo.CreateCopy(), OriginalStart, EventPrepTimeData, Event_PreDeadlineData, EventRigidFlagData, UiData.createCopy(), NoteData.createCopy(), Complete, ProcrastinationData, NowProfileData, this.RangeTimeLine, EventRepetition.Enable, true, true, AllUserIDs.ToList(), 0);
-                    SubEvents.Add(newSubCalEvent.SubEvent_ID, newSubCalEvent);
-                }
-
-                for (int j = 0; j < DeletedCount; i++, j++)
-                {
-                    EventID SubEventID = EventID.GenerateSubCalendarEvent(UniqueID.ToString(), i + 1);
-                    SubCalendarEvent newSubCalEvent = new DB_SubCalendarEventFly(SubEventID, Name, SubEventStartData, SubEventEndData, PriorityData, LocationInfo.CreateCopy(), OriginalStart, EventPrepTimeData, Event_PreDeadlineData, EventRigidFlagData, UiData.createCopy(), NoteData.createCopy(), Complete, ProcrastinationData, NowProfileData, this.RangeTimeLine, EventRepetition.Enable, true, false, AllUserIDs.ToList(), 0);
-                    SubEvents.Add(newSubCalEvent.SubEvent_ID, newSubCalEvent);
-                }
-                */
             }
-            UpdateLocationMatrix(myLocation);
+            UpdateLocationMatrix(Location);
         }
 
 
@@ -135,7 +125,7 @@ namespace DBTilerElement
                 {
                     //(TimeSpan Event_Duration, DateTimeOffset EventStart, DateTimeOffset EventDeadline, TimeSpan EventPrepTime, string myParentID, bool Rigid, Location EventLocation =null, TimeLine RangeOfSubCalEvent = null)
                     EventID SubEventID = EventID.GenerateSubCalendarEvent(RetValue.UniqueID.ToString(), i + 1);
-                    SubCalendarEvent newSubCalEvent = new DB_SubCalendarEventFly(SubEventID, RetValue.EventName, (RetValue.EndDateTime - RetValue.TimePerSplit), RetValue.EndDateTime, RetValue.Priority, RetValue.myLocation, RetValue.OriginalStart, RetValue.Preparation, RetValue.PreDeadline, RetValue.Rigid, RetValue.UIParam.createCopy(), RetValue.Notes.createCopy(), false, RetValue.ProcrastinationInfo, RetValue.RangeTimeLine, true, false, true, RetValue.UserIDs,i);
+                    SubCalendarEvent newSubCalEvent = new DB_SubCalendarEventFly(SubEventID, RetValue.EventName, (RetValue.EndDateTime - RetValue.TimePerSplit), RetValue.EndDateTime, RetValue.Priority, RetValue.Location, RetValue.OriginalStart, RetValue.Preparation, RetValue.PreDeadline, RetValue.Rigid, RetValue.UIParam.createCopy(), RetValue.Notes.createCopy(), false, RetValue.ProcrastinationInfo, RetValue.RangeTimeLine, true, false, true, RetValue.UserIDs,i);
 
                     //SubCalendarEvent newSubCalEvent = new SubCalendarEvent(RetValue.TimePerSplit, (RetValue.EndDateTime - RetValue.TimePerSplit), RetValue.End, new TimeSpan(), OriginalStartData, RetValue.UniqueID.ToString(), RetValue.RigidSchedule, RetValue.isEnabled, RetValue.UiParams, RetValue.Notes, RetValue.Complete, i+1, EventLocation, RetValue.RangeTimeLine);
                     RetValue.SubEvents.Add(newSubCalEvent.SubEvent_ID, newSubCalEvent);
@@ -162,9 +152,6 @@ namespace DBTilerElement
         {
             foreach(SubCalendarEvent eachSubCalendarEvent in Modifiables)
             {
-                //SubCalendarEvent mySubCalEvent=getSubEvent(eachSubCalendarEvent.SubEvent_ID);
-                //mySubCalEvent.UpdateThis(eachSubCalendarEvent);
-                //DeviatingSubEvents.Add(eachSubCalendarEvent.ID, eachSubCalendarEvent);
                 DB_CalendarEventFly RefCalEvent = (DB_CalendarEventFly)getCalEventByOrginalStart(eachSubCalendarEvent.OrginalStartInfo);
                 
                 
