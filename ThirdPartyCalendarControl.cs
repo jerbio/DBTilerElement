@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TilerElements;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 
 namespace DBTilerElement
 {
+    [Table("ThirdPartyCalendar")]
     public abstract class ThirdPartyCalendarControl
     {
         protected ThirdPartyControl.CalendarTool SelectedCalendarTool;
