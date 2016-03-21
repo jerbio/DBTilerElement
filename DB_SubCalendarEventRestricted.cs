@@ -6,7 +6,7 @@ using TilerElements;
 
 namespace DBTilerElement
 {
-    public class DB_SubCalendarEventRestricted:SubCalendarEventRestricted
+    public class DB_SubCalendarEventRestricted:SubCalendarEventRestricted//, IDB_SubCalendarEvent, IRestrictedEvent
     {
         public DB_SubCalendarEventRestricted(SubCalendarEvent mySubCalEvent, DB_RestrictionProfile restrictionData)
         {
@@ -29,14 +29,11 @@ namespace DBTilerElement
             this.Enabled = mySubCalEvent.isEnabled;
             
             this.EventDuration = mySubCalEvent.ActiveDuration;
-            this.EventName = mySubCalEvent.Name;
+            
             this.EventPreDeadline = mySubCalEvent.PreDeadline;
-            //this.EventScore = mySubCalEvent.Score;
-            //this.EventSequence = mySubCalEvent.EventSequence.CreateCopy();
             this.FromRepeatEvent = mySubCalEvent.FromRepeat;
-            //this.HumaneTimeLine = mySubCalEvent.hum HumaneTimeLine.CreateCopy();
-            //this.InterferringEvents = mySubCalEvent.inter
-            this.isRestricted = true;
+            
+            
             this.Vestige = mySubCalEvent.isVestige;
             this.LocationInfo = mySubCalEvent.Location;
             this.MiscIntData = mySubCalEvent.IntData;
@@ -45,9 +42,11 @@ namespace DBTilerElement
             this.Priority = mySubCalEvent.EventPriority;
             this.FromRepeatEvent = mySubCalEvent.FromRepeat;
             this.RigidSchedule = mySubCalEvent.Rigid;
+            
 
             this.UiParams = mySubCalEvent.UIParam;
             this.UniqueID = mySubCalEvent.SubEvent_ID;
+            this.NameOfEvent = new EventName(this.UniqueID , mySubCalEvent.Name);
             this.UnUsableIndex = 0;
             this.UserDeleted = mySubCalEvent.isUserDeleted;
             this.UserIDs = mySubCalEvent.getAllUserIDs();

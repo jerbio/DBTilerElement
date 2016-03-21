@@ -14,5 +14,31 @@ namespace DBTilerElement
             BeginTIme = BeginTimeData;
             SectionOfDay = DisLikedSection;
         }
+
+        public string Id
+        {
+            get
+            {
+                return ID;
+            }
+
+            set
+            {
+                ID = value;
+            }
+        }
+
+        public int UnwanteDaySection
+        {
+            get
+            {
+                return SectionOfDay;
+            }
+
+            set
+            {
+                SectionOfDay = value;
+            }
+        }
     }
 }

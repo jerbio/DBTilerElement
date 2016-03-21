@@ -8,15 +8,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DBTilerElement
 {
     [Table("SubCalendarEvents")]
-    public class DB_SubCalendarEventFly:SubCalendarEvent
+    public class DB_SubCalendarEventFly : DB_SubCalendarEvent
     {
-        DB_SubCalendarEventFly()
+        protected DB_SubCalendarEventFly()
         {
             CalendarEventRange = new TimeLine();
             BusyFrame = new BusyTimeLine();
             HumaneTimeLine = new BusyTimeLine();
         }
-        internal DB_SubCalendarEventFly(EventID EventIDData, string Name, DateTimeOffset StartData, DateTimeOffset EndData, int PriorityData, Location_Elements LocationData, DateTimeOffset OriginalStartData, TimeSpan EventPrepTimeData, TimeSpan Event_PreDeadlineData, bool EventRigidFlagData, EventDisplay UiData, MiscData NoteData, bool CompletionFlagData, Procrastination ProcrastinationData, TimeLine CalendarEventRangeData, bool FromRepeatFlagData, bool ElapsedFlagData, bool EnabledFlagData, List<string> UserIDData,long Sequence)
+        internal DB_SubCalendarEventFly(EventID EventIDData, string Name, DateTimeOffset StartData, DateTimeOffset EndData, int PriorityData, Location_Elements LocationData, DateTimeOffset OriginalStartData, TimeSpan EventPrepTimeData, TimeSpan Event_PreDeadlineData, bool EventRigidFlagData, EventDisplay UiData, MiscData NoteData, bool CompletionFlagData, Procrastination ProcrastinationData, TimeLine CalendarEventRangeData, bool FromRepeatFlagData, bool ElapsedFlagData, bool EnabledFlagData, List<string> UserIDData, long Sequence)
         {
             string message = "Halt JEROME !!!!!. This was a commit knowing this error will happen" +
 " You did this because you want to figure out your next steps.\n"
@@ -30,7 +30,6 @@ namespace DBTilerElement
             this.BusyFrame = new BusyTimeLine(EventIDData.ToString(), StartData, EndData);
             this.CalendarEventRange = CalendarEventRangeData;
             this.FromRepeatEvent = FromRepeatFlagData;
-            this.EventName = Name;
             this.EventDuration = BusyFrame.BusyTimeSpan;
             this.Complete = CompletionFlagData;
             this.ConflictingEvents = new ConflictProfile();
@@ -54,7 +53,7 @@ namespace DBTilerElement
 
             this.UiParams = UiData;
             this.UniqueID = EventIDData;
-
+            this.NameOfEvent = new EventName(this.UniqueID, Name);
             this.UserIDs = UserIDData;
             this.OriginalStart = OriginalStartData;
         }
@@ -89,61 +88,10 @@ namespace DBTilerElement
         }
 
         #region properties
-        /*
-        protected ConflictProfile ConflictingEvents;
-        protected double EventScore;
-        protected BusyTimeLine HumaneTimeLine;
-        protected int MiscIntData;
-        protected bool MuddledEvent;
-        protected BusyTimeLine NonHumaneTimeLine;
-        protected ulong OldPreferredIndex;
-        protected ulong preferredDayIndex;
-        protected ulong UnUsableIndex;
-        protected bool Vestige;*/
-        
 
-        public new DateTimeOffset Start
-        {
-            get
-            {
-                return BusyFrame.Start;
-            }
-            set
-            {
-                BusyFrame = new BusyTimeLine(Id, value, BusyFrame.End);
-                /*
-                if (BusyFrame==null)
-                {
-                    BusyFrame = new BusyTimeLine(Id, value, BusyFrame.End);
-                }
-                else
-                {
-                    BusyFrame = new BusyTimeLine(Id, value, BusyFrame.End);
-                }*/
-            }
-        }
 
-        public new DateTimeOffset End
-        {
-            get
-            {
-                return BusyFrame.End;
-            }
-            set
-            {
-                BusyFrame = new BusyTimeLine(Id, BusyFrame.Start, value);
-                //if (BusyFrame == null)
-                //{
-                //    BusyFrame = new BusyTimeLine(Id, BusyFrame.Start, value);
-                //}
-                //else
-                //{
-                //    BusyFrame = new BusyTimeLine(Id, BusyFrame.Start, value);
-                //}
-            }
-        }
 
-        public DateTimeOffset CalendarEnd
+        override public DateTimeOffset CalendarEnd
         {
             get
             {
@@ -162,7 +110,7 @@ namespace DBTilerElement
             }
         }
 
-        public DateTimeOffset CalendarStart
+        override public DateTimeOffset CalendarStart
         {
             get
             {
@@ -184,7 +132,7 @@ namespace DBTilerElement
         /// <summary>
         /// returns the humane end time i.e ideal start time for a subevent to start
         /// </summary>
-        public DateTimeOffset HumaneStart
+        override public DateTimeOffset HumaneStart
         {
             get
             {
@@ -198,7 +146,7 @@ namespace DBTilerElement
         /// <summary>
         /// returns the humane end time i.e ideal end time for a subevent to end
         /// </summary>
-        public DateTimeOffset HumaneEnd
+        override public DateTimeOffset HumaneEnd
         {
             get
             {
@@ -213,7 +161,7 @@ namespace DBTilerElement
         /// <summary>
         /// returns the NonHumane end time i.e ideal start time for a subevent to start
         /// </summary>
-        public DateTimeOffset NonHumaneStart
+        override public DateTimeOffset NonHumaneStart
         {
             get
             {
@@ -227,7 +175,7 @@ namespace DBTilerElement
         /// <summary>
         /// returns the NonHumane end time i.e ideal end time for a subevent to end
         /// </summary>
-        public DateTimeOffset NonHumaneEnd
+        override public DateTimeOffset NonHumaneEnd
         {
             get
             {
@@ -236,6 +184,303 @@ namespace DBTilerElement
             set
             {
                 NonHumaneTimeLine = new BusyTimeLine(Id, NonHumaneTimeLine.Start, value);
+            }
+        }
+
+        override public ulong OldDayIndex
+        {
+            get
+            {
+                return OldPreferredIndex;
+            }
+            set
+            {
+                OldPreferredIndex = value;
+            }
+        }
+        override public ulong DesiredDayIndex
+        {
+            get
+            {
+                return PreferredDayIndex;
+            }
+            set
+            {
+                PreferredDayIndex = value;
+            }
+        }
+
+        override public ulong InvalidDayIndex
+        {
+            get
+            {
+                return UnUsableIndex;
+            }
+            set
+            {
+                UnUsableIndex = value;
+            }
+        }
+
+
+        override public DateTimeOffset InitializingStart
+        {
+            get
+            {
+                return OriginalStart;
+            }
+            set
+            {
+                OriginalStart = value;
+            }
+        }
+
+        override public bool isDeletedByUser
+        {
+            get
+            {
+                return UserDeleted;
+            }
+            set
+            {
+                UserDeleted = value;
+            }
+        }
+
+        override public bool isRepeat
+        {
+            get
+            {
+                return FromRepeatEvent;
+            }
+            set
+            {
+                FromRepeatEvent = value;
+            }
+        }
+
+
+        public new bool isComplete
+        {
+            get
+            {
+                return Complete;
+            }
+            set
+            {
+                Complete = value;
+            }
+        }
+
+        override public string CreatorId
+        {
+            get
+            {
+                return CreatorIDInfo;
+            }
+            set
+            {
+                CreatorIDInfo = value;
+            }
+        }
+
+        /// <summary>
+        /// Function gets and sets the priority of the current task.
+        /// </summary>
+        override public int Urgency
+        {
+            get
+            {
+                return Priority;
+            }
+            set
+            {
+                Priority = value;
+            }
+        }
+
+        /// <summary>
+        /// Function gets and sets the conflict setting for an event. It can be either averse, normal, Tolerant.
+        /// </summary>
+        override public Conflictability ConflictLevel
+        {
+            get
+            {
+                return ConflictSetting;
+            }
+            set
+            {
+                ConflictSetting = value;
+            }
+        }
+
+        /// <summary>
+        /// Holds the evaluated efficiency of the current subevent. Its based on a scale of 1
+        /// </summary>
+        public new double Score
+        {
+            get
+            {
+                return EventScore;
+            }
+            set
+            {
+                EventScore = value;
+            }
+        }
+
+        override public Procrastination ProcrastinationProfile
+        {
+            get
+            {
+                return ProfileOfProcrastination;
+            }
+            set
+            {
+                ProfileOfProcrastination = value;
+            }
+        }
+
+        override public ConflictProfile conflict
+        {
+            get
+            {
+                return ConflictingEvents;
+            }
+            set
+            {
+                ConflictingEvents = value;
+            }
+        }
+
+
+
+        public new DateTimeOffset Start
+        {
+            get
+            {
+                return StartDateTime;
+            }
+
+            set
+            {
+                StartDateTime = value;
+            }
+        }
+
+        public new DateTimeOffset End
+        {
+            get
+            {
+                return EndDateTime;
+            }
+
+            set
+            {
+                EndDateTime = value;
+            }
+        }
+
+        override public bool isRgiid
+        {
+            get
+            {
+                return RigidSchedule;
+            }
+
+            set
+            {
+                RigidSchedule = value;
+            }
+        }
+
+        override public bool isDeleted
+        {
+            get
+            {
+                return Enabled;
+            }
+
+            set
+            {
+                Enabled = value;
+            }
+        }
+
+
+
+        override public Classification Classification
+        {
+            get
+            {
+                return Semantics;
+            }
+
+            set
+            {
+                Semantics = value;
+            }
+        }
+
+
+        public new MiscData Notes
+        {
+            get
+            {
+                return DataBlob;
+            }
+
+            set
+            {
+                DataBlob = value;
+            }
+        }
+
+        override public List<string> Users
+        {
+            get
+            {
+                return UserIDs;
+            }
+
+            set
+            {
+                UserIDs = value;
+            }
+        }
+
+        public EventDisplay UIData
+        {
+            get
+            {
+                return UiParams;
+            }
+
+            set
+            {
+                UiParams = value;
+            }
+        }
+
+
+        public new EventName Name
+        {
+            get
+            {
+                return NameOfEvent;
+            }
+
+            set
+            {
+                NameOfEvent = value;
+            }
+        }
+
+        override public bool isDeviated
+        {
+            get
+            {
+                return false;
             }
         }
 
