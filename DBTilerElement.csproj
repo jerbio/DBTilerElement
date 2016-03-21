@@ -129,12 +129,6 @@
       <DependentUpon>201603191247075_subcalendarEventfly.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TilerFront\TilerFront.csproj">
-      <Project>{5e86e44f-7ce0-482d-b3c5-059ef7032398}</Project>
-      <Name>TilerFront</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

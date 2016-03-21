@@ -1,6 +1,40 @@
+<<<<<<< HEAD
+=======
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\bin\Debug\DBTilerElement.dll
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\bin\Debug\DBTilerElement.pdb
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\bin\Debug\TilerElements.dll
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\bin\Debug\TilerElements.pdb
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.csprojResolveAssemblyReference.cache
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.dll
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.pdb
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\bin\Debug\sdk.dll
+C:\Users\OluJerome\Documents\WagTap\WagTapWeb\DBTilerElement\bin\Debug\sdk.pdb
+C:\Users\jerom\Documents\Visual Studio 2013\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\DBTilerElement.dll
+C:\Users\jerom\Documents\Visual Studio 2013\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\DBTilerElement.pdb
+C:\Users\jerom\Documents\Visual Studio 2013\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\TilerElements.dll
+C:\Users\jerom\Documents\Visual Studio 2013\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\sdk.dll
+C:\Users\jerom\Documents\Visual Studio 2013\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\TilerElements.pdb
+C:\Users\jerom\Documents\Visual Studio 2013\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\sdk.pdb
+C:\Users\jerom\Documents\Visual Studio 2013\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.csprojResolveAssemblyReference.cache
+C:\Users\jerom\Documents\Visual Studio 2013\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.dll
+C:\Users\jerom\Documents\Visual Studio 2013\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.pdb
+>>>>>>> Made the classes more stable. It compiles but we need to add more classes to the DB. Also, you might need to remove some of the constructors to avoid code confusion down the road. You cannot update the database until you are done adding all the tables.
 C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.csprojResolveAssemblyReference.cache
 C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.Migrations.initScheduleContext.resources
 C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.Migrations.initLocationRename.resources
 C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.Migrations.extraTimeLineInfo.resources
 C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.Migrations.subcalendarEventfly.resources
 C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.csproj.GenerateResource.Cache
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\DBTilerElement.dll.config
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\DBTilerElement.dll
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\DBTilerElement.pdb
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\EntityFramework.dll
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\TilerElements.dll
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\sdk.dll
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\EntityFramework.xml
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\TilerElements.pdb
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\bin\Debug\sdk.pdb
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.dll
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.pdb
