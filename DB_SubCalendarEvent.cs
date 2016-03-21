@@ -1,45 +1,348 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 using TilerElements;
-
 namespace DBTilerElement
 {
-    public class DB_SubCalendarEvent:SubCalendarEvent
+    public abstract class DB_SubCalendarEvent : SubCalendarEvent, IDB_SubCalendarEvent
     {
-        public DB_SubCalendarEvent(SubCalendarEvent mySubCalEvent,  Procrastination ProcrastinationData)
+        virtual public DateTimeOffset CalendarEnd
         {
-            this.BusyFrame = mySubCalEvent.ActiveSlot;
-            this.CalendarEventRange = mySubCalEvent.getCalendarEventRange;
-            this.FromRepeatEvent = mySubCalEvent.FromRepeat;
-            this.EventName = mySubCalEvent.Name;
-            this.EventDuration = mySubCalEvent.ActiveDuration;
-            this.Complete = mySubCalEvent.isComplete;
-            this.ConflictingEvents = mySubCalEvent.Conflicts;
-            this.DataBlob = mySubCalEvent.Notes;
-            this.DeadlineElapsed = mySubCalEvent.isDeadlineElapsed;
-            this.Enabled = mySubCalEvent.isEnabled;
-            this.EndDateTime = mySubCalEvent.End;
-            this.EventPreDeadline = mySubCalEvent.PreDeadline;
-            this.EventScore = mySubCalEvent.Score;
-            this.isRestricted = mySubCalEvent.isEventRestricted;
-            this.LocationInfo = mySubCalEvent.Location;
-            this.OldPreferredIndex = mySubCalEvent.OldUniversalIndex;
-            this.otherPartyID = mySubCalEvent.ThirdPartyID;
-            this.preferredDayIndex = mySubCalEvent.UniversalDayIndex;
-            this.PrepTime = mySubCalEvent.Preparation;
-            this.Priority = mySubCalEvent.EventPriority;
-            //this.ProfileOfNow = NowProfileData;
-            this.ProfileOfProcrastination = ProcrastinationData;
-            this.FromRepeatEvent = mySubCalEvent.FromRepeat;
-            this.RigidSchedule = mySubCalEvent.Rigid;
-            this.StartDateTime = mySubCalEvent.Start;
-            this.UiParams = mySubCalEvent.UIParam;
-            this.UniqueID = mySubCalEvent.SubEvent_ID;
-            this.UserDeleted = mySubCalEvent.isUserDeleted;
-            this.UserIDs = mySubCalEvent.getAllUserIDs();
-            this.Vestige = mySubCalEvent.isVestige;
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public DateTimeOffset CalendarStart
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public ConflictProfile conflict
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public Conflictability ConflictLevel
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public string CreatorId
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public ulong DesiredDayIndex
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public DateTimeOffset HumaneEnd
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public DateTimeOffset HumaneStart
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public DateTimeOffset InitializingStart
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public ulong InvalidDayIndex
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public bool isDeleted
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public bool isDeletedByUser
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public bool isRepeat
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public bool isRgiid
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public DateTimeOffset NonHumaneEnd
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public DateTimeOffset NonHumaneStart
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public ulong OldDayIndex
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public Procrastination ProcrastinationProfile
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public EventDisplay UIData
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public int Urgency
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public List<string> Users
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+        /// <summary>
+        /// if this event has been marked as coplete
+        /// </summary>
+        public new bool isComplete
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+        /// <summary>
+        /// Name of the event
+        /// </summary>
+        public new EventName Name
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public MiscData Notes
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public double Score
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        virtual public bool isDeviated
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public TimeSpan UsedTime
@@ -66,4 +369,5 @@ namespace DBTilerElement
             }
         }
     }
+
 }

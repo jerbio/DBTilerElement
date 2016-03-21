@@ -13,12 +13,13 @@ namespace DBTilerElement
         {
             DateTimeOffset Start = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalStartDate);
             DateTimeOffset End = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalEndDate);
-            this.EventName = SubCalData.SubCalCalendarName!=null?SubCalData.SubCalCalendarName:"";
+            
             StartDateTime = Start;
             EndDateTime = End;
             Splits = 1;
             RigidSchedule = true;
             UniqueID = new EventID(new EventID(SubCalData.ID).getRepeatCalendarEventID());
+            this.NameOfEvent = new EventName(UniqueID, SubCalData.SubCalCalendarName != null ? SubCalData.SubCalCalendarName : "");
             RigidSchedule = true;
             EventPreDeadline = new TimeSpan();
             Priority = SubCalData.Priority;

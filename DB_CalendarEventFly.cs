@@ -37,7 +37,7 @@ namespace DBTilerElement
     + " You realized that non-rigid subevents still get persisted and are not calculated on the fly which is unlike their rigid counterparts(I havent tested the latter part because, but this branch is called newrigidimplementation aka on the fly rigid calculations).\n"
     + " You might want to resdesign the calls for the creation of non-rigid subevents to be calculated on the fly";
             //throw new Exception(message);
-            EventName = Name;
+            
             StartDateTime = StartData;
             EndDateTime = EndData;
             EventRepetition = RepetitionData;
@@ -54,13 +54,12 @@ namespace DBTilerElement
             ProfileOfProcrastination = ProcrastinationData;
             SubEvents = new Dictionary<EventID, SubCalendarEvent>();
             Priority = PriorityData;
-            isRestricted = false;
             RepetitionSequence = 0;
             Splits = SplitData;
             UniqueID = new EventID(EventIDData);
             UserIDs=AllUserIDs;
             
-            if(EventRepetition.Enable)
+            if (EventRepetition.Enable)
             {
                 EventRepetition.PopulateRepetitionParameters(this);
             }
@@ -78,6 +77,7 @@ namespace DBTilerElement
                     SubEvents.Add(newSubCalEvent.SubEvent_ID, newSubCalEvent);
                 }
             }
+            NameOfEvent = new EventName(UniqueID, Name);
             UpdateLocationMatrix(Location);
         }
 
@@ -87,7 +87,7 @@ namespace DBTilerElement
         {
 
             DB_CalendarEventFly RetValue = new DB_CalendarEventFly();
-            RetValue.EventName = EventName;
+            //RetValue.EventName = EventName;
             RetValue.StartDateTime = EventStart;
             RetValue.EndDateTime = EventDeadline;
             RetValue.EventDuration = Event_Duration;
@@ -106,6 +106,7 @@ namespace DBTilerElement
             RetValue.Splits = EventSplit;
             RetValue.TimePerSplit = TimeSpan.FromTicks(((RetValue.EventDuration.Ticks / RetValue.Splits)));
             RetValue.FromRepeatEvent = true;
+            RetValue.NameOfEvent = new EventName(RetValue.UniqueID, EventName);
             /*
             if (RetValue.EventRepetition.Enable)
             {
@@ -125,7 +126,7 @@ namespace DBTilerElement
                 {
                     //(TimeSpan Event_Duration, DateTimeOffset EventStart, DateTimeOffset EventDeadline, TimeSpan EventPrepTime, string myParentID, bool Rigid, Location EventLocation =null, TimeLine RangeOfSubCalEvent = null)
                     EventID SubEventID = EventID.GenerateSubCalendarEvent(RetValue.UniqueID.ToString(), i + 1);
-                    SubCalendarEvent newSubCalEvent = new DB_SubCalendarEventFly(SubEventID, RetValue.EventName, (RetValue.EndDateTime - RetValue.TimePerSplit), RetValue.EndDateTime, RetValue.Priority, RetValue.Location, RetValue.OriginalStart, RetValue.Preparation, RetValue.PreDeadline, RetValue.Rigid, RetValue.UIParam.createCopy(), RetValue.Notes.createCopy(), false, RetValue.ProcrastinationInfo, RetValue.RangeTimeLine, true, false, true, RetValue.UserIDs,i);
+                    SubCalendarEvent newSubCalEvent = new DB_SubCalendarEventFly(SubEventID, RetValue.NameOfEvent.Name, (RetValue.EndDateTime - RetValue.TimePerSplit), RetValue.EndDateTime, RetValue.Priority, RetValue.Location, RetValue.OriginalStart, RetValue.Preparation, RetValue.PreDeadline, RetValue.Rigid, RetValue.UIParam.createCopy(), RetValue.Notes.createCopy(), false, RetValue.ProcrastinationInfo, RetValue.RangeTimeLine, true, false, true, RetValue.UserIDs,i);
 
                     //SubCalendarEvent newSubCalEvent = new SubCalendarEvent(RetValue.TimePerSplit, (RetValue.EndDateTime - RetValue.TimePerSplit), RetValue.End, new TimeSpan(), OriginalStartData, RetValue.UniqueID.ToString(), RetValue.RigidSchedule, RetValue.isEnabled, RetValue.UiParams, RetValue.Notes, RetValue.Complete, i+1, EventLocation, RetValue.RangeTimeLine);
                     RetValue.SubEvents.Add(newSubCalEvent.SubEvent_ID, newSubCalEvent);

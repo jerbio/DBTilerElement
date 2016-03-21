@@ -6,13 +6,17 @@ using TilerElements;
 
 namespace DBTilerElement
 {
-    public class DB_CalendarEventRestricted : CalendarEventRestricted
+    public class DB_CalendarEventRestricted : CalendarEventRestricted//, IRestrictedEvent, IDB_CalendarEvent
     {
+        DB_CalendarEventRestricted()
+        {
+            
+        }
         public DB_CalendarEventRestricted(CalendarEvent CalendarEventData, RestrictionProfile restrictionData)
         {
             //CalendarEventRestricted MyCalendarEventCopy = CalendarEventData.new CalendarEventRestricted();
             this.EventDuration = CalendarEventData.Duration;
-            this.EventName = CalendarEventData.Name;
+            
             this.StartDateTime = CalendarEventData.Start;
             this.EndDateTime = CalendarEventData.End;
             this.EventPreDeadline = CalendarEventData.PreDeadline;
@@ -38,9 +42,8 @@ namespace DBTilerElement
             this.CompletedCount = CalendarEventData.CompletionCount;
             this.DeletedCount = CalendarEventData.DeletionCount;
             this.ProfileOfRestriction = restrictionData;
-            this.isRestricted = true;
             //this.SubEvents = ((DB_CalendarEventRestricted)CalendarEventData).getSubEvents();
-
+            this.NameOfEvent = new EventName(this.UniqueID, CalendarEventData.Name);
             if (!this.EventRepetition.Enable)
             {
                 foreach (SubCalendarEventRestricted eachSubCalendarEvent in CalendarEventData.AllSubEvents)

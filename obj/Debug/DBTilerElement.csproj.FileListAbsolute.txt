@@ -2,4 +2,5 @@ C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerEle
 C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.Migrations.initScheduleContext.resources
 C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.Migrations.initLocationRename.resources
 C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.Migrations.extraTimeLineInfo.resources
+C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.Migrations.subcalendarEventfly.resources
 C:\Users\jerom\Documents\Visual Studio 2015\Projects\WagTap\WagTapWeb\DBTilerElement\obj\Debug\DBTilerElement.csproj.GenerateResource.Cache
