@@ -80,10 +80,11 @@
     <Compile Include="GoogleCalendarEvent.cs" />
     <Compile Include="GoogleSubCalendarEvent.cs" />
     <Compile Include="GoogleThirdPartyControl.cs" />
+    <Compile Include="IDB_SubCalendarEventRestricted.cs" />
     <Compile Include="IModifieds.cs" />
     <Compile Include="IRestrictedEvent.cs" />
     <Compile Include="ITilerEvent.cs" />
-    <Compile Include="ITilerEventName.cs" />
+    <Compile Include="DB_TilerEventName.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Migrations\201603171740479_initScheduleContext.cs" />
     <Compile Include="Migrations\201603171740479_initScheduleContext.Designer.cs">

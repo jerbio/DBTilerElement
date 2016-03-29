@@ -6,7 +6,7 @@ using TilerElements;
 
 namespace DBTilerElement
 {
-    public class DB_SubCalendarEventRestricted:SubCalendarEventRestricted//, IDB_SubCalendarEvent, IRestrictedEvent
+    public class DB_SubCalendarEventRestricted:SubCalendarEventRestricted, IDB_SubCalendarEventRestricted
     {
         public DB_SubCalendarEventRestricted(SubCalendarEvent mySubCalEvent, DB_RestrictionProfile restrictionData)
         {
@@ -53,6 +53,7 @@ namespace DBTilerElement
             initializeCalendarEventRange(restrictionData, this.HardCalendarEventRange);
         }
 
+<<<<<<< HEAD
         public TimeSpan UsedTime
         {
             set
@@ -74,6 +75,356 @@ namespace DBTilerElement
             get
             {
                 return this._PauseTime;
+=======
+        protected DB_SubCalendarEventRestricted()
+        {
+            CalendarEventRange = new TimeLine();
+            BusyFrame = new BusyTimeLine();
+            HumaneTimeLine = new BusyTimeLine();
+        }
+
+        virtual public DateTimeOffset CalendarEnd
+        {
+            get
+            {
+                return CalendarEventRange.End;
+            }
+
+            set
+            {
+                if (CalendarEventRange == null)
+                {
+                    CalendarEventRange = new TimeLine(BusyFrame.Start, value);
+                }
+                else
+                {
+                    CalendarEventRange = new TimeLine(BusyFrame.Start, value);
+                }
+            }
+        }
+
+        virtual public DateTimeOffset CalendarStart
+        {
+            get
+            {
+                return CalendarEventRange.Start;
+            }
+            set
+            {
+                if (BusyFrame == null)
+                {
+                    CalendarEventRange = new TimeLine(value, CalendarEventRange.End);
+                }
+                else
+                {
+                    CalendarEventRange = new TimeLine(value, CalendarEventRange.End);
+                }
+            }
+        }
+
+        virtual public ConflictProfile conflict
+        {
+            get
+            {
+                return ConflictingEvents;
+            }
+            set
+            {
+                ConflictingEvents = value;
+            }
+        }
+
+        virtual public Conflictability ConflictLevel
+        {
+            get
+            {
+                return ConflictSetting;
+            }
+            set
+            {
+                ConflictSetting = value;
+            }
+        }
+
+        virtual public string CreatorId
+        {
+            get
+            {
+                return CreatorIDInfo;
+            }
+            set
+            {
+                CreatorIDInfo = value;
+            }
+        }
+
+        virtual public ulong DesiredDayIndex
+        {
+            get
+            {
+                return PreferredDayIndex;
+            }
+            set
+            {
+                PreferredDayIndex = value;
+            }
+        }
+
+        virtual public DateTimeOffset HumaneEnd
+        {
+            get
+            {
+                return HumaneTimeLine.End;
+            }
+            set
+            {
+                HumaneTimeLine = new BusyTimeLine(Id, HumaneTimeLine.Start, value);
+            }
+        }
+
+        virtual public DateTimeOffset HumaneStart
+        {
+            get
+            {
+                return HumaneTimeLine.Start;
+            }
+            set
+            {
+                HumaneTimeLine = new BusyTimeLine(Id, value, HumaneTimeLine.End);
+            }
+        }
+
+        virtual public DateTimeOffset InitializingStart
+        {
+            get
+            {
+                return OriginalStart;
+            }
+            set
+            {
+                OriginalStart = value;
+            }
+        }
+
+        virtual public ulong InvalidDayIndex
+        {
+            get
+            {
+                return UnUsableIndex;
+            }
+            set
+            {
+                UnUsableIndex = value;
+            }
+        }
+
+        virtual public bool isDeleted
+        {
+            get
+            {
+                return Enabled;
+            }
+
+            set
+            {
+                Enabled = value;
+            }
+        }
+
+        virtual public bool isDeletedByUser
+        {
+            get
+            {
+                return UserDeleted;
+            }
+            set
+            {
+                UserDeleted = value;
+            }
+        }
+
+        virtual public bool isDeviated
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        virtual public bool isRepeat
+        {
+            get
+            {
+                return FromRepeatEvent;
+            }
+
+            set
+            {
+                FromRepeatEvent = value;
+            }
+        }
+
+        virtual public bool isRigid
+        {
+            get
+            {
+                return RigidSchedule;
+            }
+
+            set
+            {
+                RigidSchedule = value;
+            }
+        }
+
+        virtual public DateTimeOffset NonHumaneEnd
+        {
+            get
+            {
+                return NonHumaneTimeLine.End;
+            }
+            set
+            {
+                NonHumaneTimeLine = new BusyTimeLine(Id, NonHumaneTimeLine.Start, value);
+            }
+        }
+
+        virtual public DateTimeOffset NonHumaneStart
+        {
+            get
+            {
+                return NonHumaneTimeLine.Start;
+            }
+            set
+            {
+                NonHumaneTimeLine = new BusyTimeLine(Id, value, NonHumaneTimeLine.End);
+            }
+        }
+
+        virtual public ulong OldDayIndex
+        {
+            get
+            {
+                return OldPreferredIndex;
+            }
+            set
+            {
+                OldPreferredIndex = value;
+            }
+        }
+
+        virtual public Procrastination ProcrastinationProfile
+        {
+            get
+            {
+                return ProfileOfProcrastination;
+            }
+            set
+            {
+                ProfileOfProcrastination = value;
+            }
+        }
+
+        virtual public DB_RestrictionProfile Restriction
+        {
+            get
+            {
+                DB_RestrictionProfile RetValue= new DB_RestrictionProfile(ProfileOfRestriction);
+                return RetValue;
+            }
+
+            set
+            {
+                ProfileOfRestriction = value;
+            }
+        }
+
+        virtual public EventDisplay UIData
+        {
+            get
+            {
+                return UiParams;
+            }
+
+            set
+            {
+                UiParams = value;
+            }
+        }
+
+        virtual public int Urgency
+        {
+            get
+            {
+                return Priority;
+            }
+            set
+            {
+                Priority = value;
+            }
+        }
+
+        virtual public List<string> Users
+        {
+            get
+            {
+                return UserIDs;
+            }
+
+            set
+            {
+                UserIDs = value;
+            }
+        }
+
+        public new bool isComplete
+        {
+            get
+            {
+                return Complete;
+            }
+            set
+            {
+                Complete = value;
+            }
+        }
+
+        public new EventName Name
+        {
+            get
+            {
+                return NameOfEvent;
+            }
+
+            set
+            {
+                NameOfEvent = value;
+            }
+        }
+
+        public new MiscData Notes
+        {
+            get
+            {
+                return DataBlob;
+            }
+
+            set
+            {
+                DataBlob = value;
+            }
+        }
+
+        public new double Score
+        {
+            get
+            {
+                return EventScore;
+            }
+            set
+            {
+                EventScore = value;
+>>>>>>> created subcalendarevrent restricted. We need to go on to create a
             }
         }
     }

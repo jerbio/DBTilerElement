@@ -381,7 +381,7 @@ namespace DBTilerElement
             }
         }
 
-        override public bool isRgiid
+        override public bool isRigid
         {
             get
             {

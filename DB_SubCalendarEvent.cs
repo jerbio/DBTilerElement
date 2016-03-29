@@ -177,7 +177,7 @@ namespace DBTilerElement
             }
         }
 
-        virtual public bool isRgiid
+        virtual public bool isRigid
         {
             get
             {
