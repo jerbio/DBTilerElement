@@ -43,7 +43,7 @@ namespace DBTilerElement.Migrations
                         isDeleted = c.Boolean(nullable: false),
                         isDeletedByUser = c.Boolean(nullable: false),
                         isRepeat = c.Boolean(nullable: false),
-                        isRgiid = c.Boolean(nullable: false),
+                        isRigid = c.Boolean(nullable: false),
                         NonHumaneEnd = c.DateTimeOffset(nullable: false, precision: 7),
                         NonHumaneStart = c.DateTimeOffset(nullable: false, precision: 7),
                         Urgency = c.Int(nullable: false),
@@ -141,17 +141,74 @@ namespace DBTilerElement.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        CalendarEnd = c.DateTimeOffset(nullable: false, precision: 7),
+                        CalendarStart = c.DateTimeOffset(nullable: false, precision: 7),
+                        ConflictLevel = c.Int(nullable: false),
+                        CreatorId = c.String(),
+                        HumaneEnd = c.DateTimeOffset(nullable: false, precision: 7),
+                        HumaneStart = c.DateTimeOffset(nullable: false, precision: 7),
+                        InitializingStart = c.DateTimeOffset(nullable: false, precision: 7),
+                        isDeleted = c.Boolean(nullable: false),
+                        isDeletedByUser = c.Boolean(nullable: false),
+                        isRepeat = c.Boolean(nullable: false),
+                        isRigid = c.Boolean(nullable: false),
+                        NonHumaneEnd = c.DateTimeOffset(nullable: false, precision: 7),
+                        NonHumaneStart = c.DateTimeOffset(nullable: false, precision: 7),
+                        Urgency = c.Int(nullable: false),
+                        isComplete = c.Boolean(nullable: false),
+                        Score = c.Double(nullable: false),
                         Start = c.DateTimeOffset(nullable: false, precision: 7),
                         End = c.DateTimeOffset(nullable: false, precision: 7),
                         ThirdPartyID = c.String(),
                         Classification_Id = c.String(maxLength: 128),
+                        conflict_Id = c.String(maxLength: 128),
                         Location_Id = c.String(maxLength: 128),
+                        Name_Id = c.String(maxLength: 128),
+                        Notes_Id = c.String(maxLength: 128),
+                        ProcrastinationProfile_Id = c.String(maxLength: 128),
+                        Restriction_Id = c.String(maxLength: 128),
+                        UIData_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Classifications", t => t.Classification_Id)
+                .ForeignKey("dbo.ConflictProfiles", t => t.conflict_Id)
                 .ForeignKey("dbo.Location_Elements", t => t.Location_Id)
+                .ForeignKey("dbo.EventNames", t => t.Name_Id)
+                .ForeignKey("dbo.MiscDatas", t => t.Notes_Id)
+                .ForeignKey("dbo.Procrastinations", t => t.ProcrastinationProfile_Id)
+                .ForeignKey("dbo.DB_RestrictionProfile", t => t.Restriction_Id)
+                .ForeignKey("dbo.EventDisplay", t => t.UIData_Id)
                 .Index(t => t.Classification_Id)
-                .Index(t => t.Location_Id);
+                .Index(t => t.conflict_Id)
+                .Index(t => t.Location_Id)
+                .Index(t => t.Name_Id)
+                .Index(t => t.Notes_Id)
+                .Index(t => t.ProcrastinationProfile_Id)
+                .Index(t => t.Restriction_Id)
+                .Index(t => t.UIData_Id);
+            
+            CreateTable(
+                "dbo.DB_RestrictionProfile",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.DB_RestrictionTimeLine",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        RestrictionProfileId = c.String(maxLength: 128),
+                        WeekDay = c.Int(nullable: false),
+                        Start = c.DateTimeOffset(nullable: false, precision: 7),
+                        End = c.DateTimeOffset(nullable: false, precision: 7),
+                        Span = c.Time(nullable: false, precision: 7),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DB_RestrictionProfile", t => t.RestrictionProfileId)
+                .Index(t => t.RestrictionProfileId);
             
             CreateTable(
                 "dbo.CalendarEventEventNames",
@@ -235,7 +292,14 @@ namespace DBTilerElement.Migrations
             DropForeignKey("dbo.DB_SubCalendarEvent", "Name_Id", "dbo.EventNames");
             DropForeignKey("dbo.DB_SubCalendarEvent", "conflict_Id", "dbo.ConflictProfiles");
             DropForeignKey("dbo.DB_SubCalendarEvent", "Classification_Id", "dbo.Classifications");
+            DropForeignKey("dbo.DB_SubCalendarEventRestricted", "UIData_Id", "dbo.EventDisplay");
+            DropForeignKey("dbo.DB_SubCalendarEventRestricted", "Restriction_Id", "dbo.DB_RestrictionProfile");
+            DropForeignKey("dbo.DB_RestrictionTimeLine", "RestrictionProfileId", "dbo.DB_RestrictionProfile");
+            DropForeignKey("dbo.DB_SubCalendarEventRestricted", "ProcrastinationProfile_Id", "dbo.Procrastinations");
+            DropForeignKey("dbo.DB_SubCalendarEventRestricted", "Notes_Id", "dbo.MiscDatas");
+            DropForeignKey("dbo.DB_SubCalendarEventRestricted", "Name_Id", "dbo.EventNames");
             DropForeignKey("dbo.DB_SubCalendarEventRestricted", "Location_Id", "dbo.Location_Elements");
+            DropForeignKey("dbo.DB_SubCalendarEventRestricted", "conflict_Id", "dbo.ConflictProfiles");
             DropForeignKey("dbo.DB_SubCalendarEventRestricted", "Classification_Id", "dbo.Classifications");
             DropForeignKey("dbo.EventDisplay", "UIColor_Id", "dbo.TilerColors1");
             DropForeignKey("dbo.CalendarEvents", "Classification_Id", "dbo.Classifications");
@@ -244,7 +308,14 @@ namespace DBTilerElement.Migrations
             DropIndex("dbo.SubCalendarEvents", new[] { "Id" });
             DropIndex("dbo.ModifiedCalendarEventEventNames", new[] { "Id" });
             DropIndex("dbo.CalendarEventEventNames", new[] { "Id" });
+            DropIndex("dbo.DB_RestrictionTimeLine", new[] { "RestrictionProfileId" });
+            DropIndex("dbo.DB_SubCalendarEventRestricted", new[] { "UIData_Id" });
+            DropIndex("dbo.DB_SubCalendarEventRestricted", new[] { "Restriction_Id" });
+            DropIndex("dbo.DB_SubCalendarEventRestricted", new[] { "ProcrastinationProfile_Id" });
+            DropIndex("dbo.DB_SubCalendarEventRestricted", new[] { "Notes_Id" });
+            DropIndex("dbo.DB_SubCalendarEventRestricted", new[] { "Name_Id" });
             DropIndex("dbo.DB_SubCalendarEventRestricted", new[] { "Location_Id" });
+            DropIndex("dbo.DB_SubCalendarEventRestricted", new[] { "conflict_Id" });
             DropIndex("dbo.DB_SubCalendarEventRestricted", new[] { "Classification_Id" });
             DropIndex("dbo.EventDisplay", new[] { "UIColor_Id" });
             DropIndex("dbo.DB_SubCalendarEvent", new[] { "UIData_Id" });
@@ -262,6 +333,8 @@ namespace DBTilerElement.Migrations
             DropTable("dbo.ModifiedSubCalendarEventEventNames");
             DropTable("dbo.ModifiedCalendarEventEventNames");
             DropTable("dbo.CalendarEventEventNames");
+            DropTable("dbo.DB_RestrictionTimeLine");
+            DropTable("dbo.DB_RestrictionProfile");
             DropTable("dbo.DB_SubCalendarEventRestricted");
             DropTable("dbo.TilerColors1");
             DropTable("dbo.EventDisplay");

@@ -24,7 +24,7 @@ namespace DBTilerElement
         /// <summary>
         /// Is this event rigid
         /// </summary>
-        bool isRgiid { get; set; }
+        bool isRigid { get; set; }
         /// <summary>
         /// Is the event deleted
         /// </summary>
