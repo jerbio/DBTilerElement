@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TilerElements;
+using TilerElements.Wpf;
 
 
 namespace DBTilerElement
@@ -14,10 +14,10 @@ namespace DBTilerElement
         public static DateTimeOffset JSStartTime = new DateTimeOffset(1970, 1, 1, 0, 0, 0, new TimeSpan());
         public static TimeSpan StartOfTimeTimeSpan = JSStartTime - new DateTimeOffset(0, new TimeSpan());
         public readonly static string[] ProviderNames = { "Tiler", "Outlook", "Google", "Facebook" };
-        public static SubCalEvent ToSubCalEvent(this TilerElements.SubCalendarEvent SubCalendarEventEntry, TilerElements.CalendarEvent CalendarEventEntry = null)
+        public static SubCalEvent ToSubCalEvent(this SubCalendarEvent SubCalendarEventEntry, CalendarEvent CalendarEventEntry = null)
         {
             SubCalEvent retValue = new SubCalEvent();
-            retValue.ThirdPartyUserID = SubCalendarEventEntry.UserId;
+            retValue.ThirdPartyUserID = SubCalendarEventEntry.ThirdPartyUserID;
             retValue.ThirdPartyType = ProviderNames[(int)SubCalendarEventEntry.ThirdpartyType];
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
             retValue.ID = SubCalendarEventEntry.ID;
@@ -68,7 +68,7 @@ namespace DBTilerElement
             return retValue;
         }
 
-        public static CalEvent ToCalEvent(this TilerElements.CalendarEvent CalendarEventEntry, TilerElements.TimeLine Range = null)
+        public static CalEvent ToCalEvent(this CalendarEvent CalendarEventEntry, TimeLine Range = null)
         {
             CalEvent retValue = new CalEvent();
             retValue.ThirdPartyUserID = CalendarEventEntry.CreatorID;
@@ -113,10 +113,10 @@ namespace DBTilerElement
         }
 
 
-        public static CalEvent ToDeletedCalEvent(this TilerElements.CalendarEvent CalendarEventEntry, TilerElements.TimeLine Range = null)
+        public static CalEvent ToDeletedCalEvent(this CalendarEvent CalendarEventEntry, TimeLine Range = null)
         {
             CalEvent retValue = new CalEvent();
-            retValue.ThirdPartyUserID = CalendarEventEntry.UserId;
+            retValue.ThirdPartyUserID = CalendarEventEntry.ThirdPartyUserID;
 
             retValue.ID = CalendarEventEntry.ID;
             retValue.ThirdPartyType = ProviderNames[(int)CalendarEventEntry.ThirdpartyType];
@@ -156,14 +156,14 @@ namespace DBTilerElement
             return retValue;
         }
 
-        public static Location ToLocationModel(this TilerElements.Location_Elements LocationEntry)
+        public static Location ToLocationModel(this Location_Elements LocationEntry)
         {
             Location retValue = new Location();
             retValue.Address = LocationEntry.Address;
             retValue.Tag = LocationEntry.Description;
             retValue.Long = LocationEntry.YCoordinate;
             retValue.Lat = LocationEntry.XCoordinate;
-            retValue.isNull = LocationEntry.isNull;
+            retValue.isNull = !LocationEntry.isVerified;
             return retValue;
         }
     }
