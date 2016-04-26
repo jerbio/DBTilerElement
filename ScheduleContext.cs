@@ -16,15 +16,8 @@ namespace DBTilerElement
     public class ScheduleContext : DbContext
     {
         public DbSet<CalendarEvent> CalendarEvents { get; set; }
-        //public DbSet<DB_SubCalendarEvent> SubCalendarevents { get; set; }
         public DbSet<SubCalendarEvent> SubCalendarevents { get; set; }
-        //public DbSet<DB_ModifiedSubCalendarEventFly> ModifiedSubCalendarevents { get; set; }
-        //public DbSet<DB_SubCalendarEventRestricted> RestrictedSubCalendarevents { get; set; }
         public DbSet<Repetition> Repetitions { get; set; }
-        //public DbSet<EventName> CalendarEventEventNames { get; set; }
-        //public DbSet<ModifiedTilerEventName> ModifiedEventNames { get; set; }
-
-        //public DbSet<Person> Peoplesss { get; set; }
 
         public ScheduleContext()
             : base("DefaultConnection")
