@@ -89,6 +89,7 @@
     <Compile Include="ScheduleContext.cs" />
     <Compile Include="SubCalEvent.cs" />
     <Compile Include="TilerElementExtension.cs" />
+    <Compile Include="UserAccountDirect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
