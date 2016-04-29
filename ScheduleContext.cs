@@ -13,15 +13,25 @@ namespace DBTilerElement
 {
 
 
-    public class ScheduleContext : DbContext
+    public class ScheduleContext : LocalDbContext
     {
-        public DbSet<CalendarEvent> CalendarEvents { get; set; }
-        public DbSet<SubCalendarEvent> SubCalendarevents { get; set; }
-        public DbSet<Repetition> Repetitions { get; set; }
+        public override DbSet<CalendarEvent> CalendarEvents { get; set; }
+        public override DbSet<SubCalendarEvent> SubCalendarevents { get; set; }
+        public override DbSet<Repetition> Repetitions { get; set; }
 
-        public ScheduleContext()
-            : base("DefaultConnection")
+
+        public ScheduleContext(): base("DefaultConnection", throwIfV1Schema: false)
         {
+
+        }
+        public ScheduleContext(string Connection = "DefaultConnection", bool throwIfV1Schema = false)
+            : base(Connection, throwIfV1Schema: false)
+        {
+        }
+
+        public static ScheduleContext Create()
+        {
+            return new ScheduleContext();
         }
 
 
