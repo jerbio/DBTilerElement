@@ -60,6 +60,10 @@
     <Reference Include="TilerElements">
       <HintPath>..\..\My24HourTimerWPF\TilerElements\bin\Debug\TilerElements.dll</HintPath>
     </Reference>
+    <Reference Include="TilerSearch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Searcher\TilerSearch\bin\Debug\TilerSearch.exe</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalEvent.cs" />
@@ -87,6 +91,7 @@
     <Compile Include="ModifiedSubCalendarEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScheduleContext.cs" />
+    <Compile Include="WebScheduleControl.cs" />
     <Compile Include="SubCalEvent.cs" />
     <Compile Include="TilerElementExtension.cs" />
     <Compile Include="UserAccountDirect.cs" />
