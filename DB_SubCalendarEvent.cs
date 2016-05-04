@@ -41,5 +41,29 @@ namespace DBTilerElement
             this.UserIDs = mySubCalEvent.getAllUserIDs();
             this.Vestige = mySubCalEvent.isVestige;
         }
+
+        public TimeSpan UsedTime
+        {
+            set
+            {
+                this._UsedTime = value;
+            }
+            get
+            {
+                return this._UsedTime;
+            }
+        }
+
+        public DateTimeOffset PauseTime
+        {
+            set
+            {
+                this._PauseTime = value;
+            }
+            get
+            {
+                return this._PauseTime;
+            }
+        }
     }
 }

@@ -60,6 +60,7 @@ namespace DBTilerElement
             retValue.Priority = SubCalendarEventEntry.EventPriority;
             retValue.Conflict = String.Join(",", SubCalendarEventEntry.Conflicts.getConflictingEventIDs());
             retValue.ColorSelection = SubCalendarEventEntry.UIParam.UIColor.User;
+            retValue.isPaused = SubCalendarEventEntry.isPaused;
             return retValue;
         }
 

@@ -27,6 +27,7 @@ namespace DBTilerElement
         public int BColor { get; set; }
         public double OColor { get; set; }
         public bool isComplete { get; set; }
+        public bool isPaused { get; set; }
         public bool isEnabled { get; set; }
         public long Duration { get; set; }
         public long EventPreDeadline { get; set; }
