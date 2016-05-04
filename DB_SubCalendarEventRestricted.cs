@@ -53,5 +53,29 @@ namespace DBTilerElement
             this.UserIDs = mySubCalEvent.getAllUserIDs();
             initializeCalendarEventRange(restrictionData, this.HardCalendarEventRange);
         }
+
+        public TimeSpan UsedTime
+        {
+            set
+            {
+                this._UsedTime = value;
+            }
+            get
+            {
+                return this._UsedTime;
+            }
+        }
+
+        public DateTimeOffset PauseTime
+        {
+            set
+            {
+                this._PauseTime = value;
+            }
+            get
+            {
+                return this._PauseTime;
+            }
+        }
     }
 }
