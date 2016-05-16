@@ -53,6 +53,7 @@
     <Compile Include="DB_CalendarEventRestricted.cs" />
     <Compile Include="DB_NowProfile.cs" />
     <Compile Include="DB_Procrastination.cs" />
+    <Compile Include="DB_Reasons.cs" />
     <Compile Include="DB_Repetition.cs" />
     <Compile Include="DB_RestrictionProfile.cs" />
     <Compile Include="DB_RestrictionTimeLine.cs" />
