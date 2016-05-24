@@ -10,6 +10,7 @@ namespace DBTilerElement
 {
     public static class TilerElementExtension
     {
+        public static DateTimeOffset CurrentTime = DateTimeOffset.UtcNow;
         public static DateTimeOffset JSStartTime = new DateTimeOffset(1970, 1, 1, 0, 0, 0, new TimeSpan());
         public static TimeSpan StartOfTimeTimeSpan = JSStartTime - new DateTimeOffset(0, new TimeSpan());
         public readonly static string[] ProviderNames = { "Tiler", "Outlook", "Google", "Facebook" };
@@ -61,6 +62,7 @@ namespace DBTilerElement
             retValue.Conflict = String.Join(",", SubCalendarEventEntry.Conflicts.getConflictingEventIDs());
             retValue.ColorSelection = SubCalendarEventEntry.UIParam.UIColor.User;
             retValue.isPaused = SubCalendarEventEntry.isPaused;
+            retValue.isPauseAble = SubCalendarEventEntry.RangeTimeLine.IsDateTimeWithin(CurrentTime) && !SubCalendarEventEntry.Rigid;
             return retValue;
         }
 
@@ -68,7 +70,7 @@ namespace DBTilerElement
         {
             CalEvent retValue = new CalEvent();
             retValue.ThirdPartyUserID = CalendarEventEntry.CreatorID;
-            
+            CurrentTime = DateTimeOffset.UtcNow;
             retValue.ID = CalendarEventEntry.ID;
             retValue.ThirdPartyType = ProviderNames[(int)CalendarEventEntry.ThirdpartyType];
             retValue.CalendarName = CalendarEventEntry.Name;
