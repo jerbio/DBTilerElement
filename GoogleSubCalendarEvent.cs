@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TilerElements.Wpf;
+using TilerElements.Connectors;
 
 namespace DBTilerElement
 {
