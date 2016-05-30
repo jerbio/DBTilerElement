@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TilerElements.Wpf;
+using TilerElements.Connectors;
 
 
 namespace DBTilerElement
@@ -13,12 +14,19 @@ namespace DBTilerElement
         public static DateTimeOffset CurrentTime = DateTimeOffset.UtcNow;
         public static DateTimeOffset JSStartTime = new DateTimeOffset(1970, 1, 1, 0, 0, 0, new TimeSpan());
         public static TimeSpan StartOfTimeTimeSpan = JSStartTime - new DateTimeOffset(0, new TimeSpan());
-        public readonly static string[] ProviderNames = { "Tiler", "Outlook", "Google", "Facebook" };
+        public readonly static Dictionary<ThirdPartyControl.CalendarTool, string> ProviderNames = new Dictionary<ThirdPartyControl.CalendarTool, string>()
+        {
+            { ThirdPartyControl.CalendarTool.Tiler, "Tiler" },
+            { ThirdPartyControl.CalendarTool.Outlook, "Outlook" },
+            { ThirdPartyControl.CalendarTool.Google, "Google"},
+            { ThirdPartyControl.CalendarTool.Facebook, "Facebook" }
+        };
+            
         public static SubCalEvent ToSubCalEvent(this SubCalendarEvent SubCalendarEventEntry, CalendarEvent CalendarEventEntry = null)
         {
             SubCalEvent retValue = new SubCalEvent();
             retValue.ThirdPartyUserID = SubCalendarEventEntry.ThirdPartyUserID;
-            retValue.ThirdPartyType = ProviderNames[(int)SubCalendarEventEntry.ThirdpartyType];
+            retValue.ThirdPartyType = ProviderNames[SubCalendarEventEntry.ThirdpartyType];
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
             retValue.ID = SubCalendarEventEntry.ID;
             retValue.CalendarID = SubCalendarEventEntry.SubEvent_ID.getRepeatCalendarEventID();
@@ -75,7 +83,7 @@ namespace DBTilerElement
             CurrentTime = DateTimeOffset.UtcNow;
             
             retValue.ID = CalendarEventEntry.ID;
-            retValue.ThirdPartyType = ProviderNames[(int)CalendarEventEntry.ThirdpartyType];
+            retValue.ThirdPartyType = ProviderNames[CalendarEventEntry.ThirdpartyType];
             retValue.CalendarName = CalendarEventEntry.Name;
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
@@ -119,7 +127,7 @@ namespace DBTilerElement
             retValue.ThirdPartyUserID = CalendarEventEntry.ThirdPartyUserID;
 
             retValue.ID = CalendarEventEntry.ID;
-            retValue.ThirdPartyType = ProviderNames[(int)CalendarEventEntry.ThirdpartyType];
+            retValue.ThirdPartyType = ProviderNames[CalendarEventEntry.ThirdpartyType];
             retValue.CalendarName = CalendarEventEntry.Name;
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
@@ -163,7 +171,7 @@ namespace DBTilerElement
             retValue.Tag = LocationEntry.Description;
             retValue.Long = LocationEntry.YCoordinate;
             retValue.Lat = LocationEntry.XCoordinate;
-            retValue.isNull = !LocationEntry.isVerified;
+            retValue.isNull = !LocationEntry.isNull;
             return retValue;
         }
     }
