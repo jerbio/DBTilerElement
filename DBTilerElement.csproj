@@ -71,23 +71,6 @@
     <Compile Include="GoogleSubCalendarEvent.cs" />
     <Compile Include="GoogleThirdPartyControl.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="Migrations\201603171740479_initScheduleContext.cs" />
-    <Compile Include="Migrations\201603171740479_initScheduleContext.Designer.cs">
-      <DependentUpon>201603171740479_initScheduleContext.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603171747208_initLocationRename.cs" />
-    <Compile Include="Migrations\201603171747208_initLocationRename.Designer.cs">
-      <DependentUpon>201603171747208_initLocationRename.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603172158049_extraTimeLineInfo.cs" />
-    <Compile Include="Migrations\201603172158049_extraTimeLineInfo.Designer.cs">
-      <DependentUpon>201603172158049_extraTimeLineInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603191247075_subcalendarEventfly.cs" />
-    <Compile Include="Migrations\201603191247075_subcalendarEventfly.Designer.cs">
-      <DependentUpon>201603191247075_subcalendarEventfly.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModifiedSubCalendarEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScheduleContext.cs" />
@@ -99,20 +82,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603171740479_initScheduleContext.resx">
-      <DependentUpon>201603171740479_initScheduleContext.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603171747208_initLocationRename.resx">
-      <DependentUpon>201603171747208_initLocationRename.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603172158049_extraTimeLineInfo.resx">
-      <DependentUpon>201603172158049_extraTimeLineInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603191247075_subcalendarEventfly.resx">
-      <DependentUpon>201603191247075_subcalendarEventfly.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

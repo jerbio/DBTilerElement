@@ -15,11 +15,6 @@ namespace DBTilerElement
 
     public class ScheduleContext : LocalDbContext
     {
-        public override DbSet<CalendarEvent> CalendarEvents { get; set; }
-        public override DbSet<SubCalendarEvent> SubCalendarevents { get; set; }
-        public override DbSet<Repetition> Repetitions { get; set; }
-
-
         public ScheduleContext(): base("DefaultConnection", throwIfV1Schema: false)
         {
 
@@ -32,15 +27,6 @@ namespace DBTilerElement
         public static ScheduleContext Create()
         {
             return new ScheduleContext();
-        }
-
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
-            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
-            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
         }
     }
 
