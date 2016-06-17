@@ -18,7 +18,7 @@ namespace DBTilerElement
         public GoogleThirdPartyControl(IEnumerable< CalendarEvent> CalendarData)
         {
             SelectedCalendarTool = ThirdPartyControl.CalendarTool.Google;
-            IDToCalendarEvent = CalendarData.ToDictionary(obj => obj.ID, obj => obj); 
+            IDToCalendarEvent = CalendarData.ToDictionary(obj => obj.Id, obj => obj); 
         }
 
         public override string AddAppointment(SubCalendarEvent ActiveSection, string NameOfParentCalendarEvent = "")

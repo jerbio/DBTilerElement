@@ -50,7 +50,7 @@ namespace DBTilerElement
                     LimitsOfCalculation = new TimeLine(CalEventStart, CalEventEnd);
                 }
 
-                RetValue = new CalendarEvent(ParentCalId, AllSubCalEvents.First().Name, LimitsOfCalculation.TimelineSpan, LimitsOfCalculation.Start, LimitsOfCalculation.End, LimitsOfCalculation.Start, new TimeSpan(), new TimeSpan(), true, new Repetition(), AllSubcals.Length, new Location_Elements(), true, new EventDisplay(), new MiscData(), false,0);
+                RetValue = new CalendarEvent(ParentCalId, AllSubCalEvents.First().NameString, LimitsOfCalculation.TimelineSpan, LimitsOfCalculation.Start, LimitsOfCalculation.End, LimitsOfCalculation.Start, new TimeSpan(), new TimeSpan(), true, new Repetition(), AllSubcals.Length, new Location_Elements(), true, new EventDisplay(), new MiscData(), false,0);
                 RetValue = new CalendarEvent(RetValue, AllSubcals);
             }
             return RetValue;

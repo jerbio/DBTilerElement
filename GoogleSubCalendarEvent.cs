@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TilerElements.Wpf;
+using TilerElements.DB;
 using TilerElements.Connectors;
 
 namespace DBTilerElement
 {
-    public class GoogleSubCalendarEvent : SubCalendarEvent
+    public class GoogleSubCalendarEvent : DB_SubCalendarEventFly
     {
         public GoogleSubCalendarEvent(SubCalEvent SubCalData)
         {
@@ -32,7 +33,7 @@ namespace DBTilerElement
             ThirdPartyFlag = true;
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.Google;
             ThirdPartyUserIDInfo = SubCalData.ThirdPartyUserID;
-            CreatorIDInfo = SubCalData.ThirdPartyUserID;
+            this.CreatorId = SubCalData.ThirdPartyUserID;
             otherPartyID = SubCalData.ThirdPartyEventID;
         }
 
