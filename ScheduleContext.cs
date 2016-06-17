@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using TilerElements.Wpf;
+using TilerElements.DB;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using TilerElements;
@@ -13,11 +13,12 @@ namespace DBTilerElement
 {
 
 
-    public class ScheduleContext : LocalDbContext
+    public class ScheduleContext : TilerDbContext
     {
+        
         public ScheduleContext(): base("DefaultConnection", throwIfV1Schema: false)
         {
-
+            
         }
         public ScheduleContext(string Connection = "DefaultConnection", bool throwIfV1Schema = false)
             : base(Connection, throwIfV1Schema: false)

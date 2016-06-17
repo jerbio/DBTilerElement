@@ -40,7 +40,7 @@ namespace DBTilerElement
             if (CalendarEventEntry != null)
             {
                 retValue.CalRigid = CalendarEventEntry.Rigid;
-                retValue.SubCalCalendarName = CalendarEventEntry.Name;
+                retValue.SubCalCalendarName = CalendarEventEntry.NameString;
                 retValue.SubCalCalEventStart = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
                 retValue.SubCalCalEventEnd = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
 
@@ -77,9 +77,9 @@ namespace DBTilerElement
             CalEvent retValue = new CalEvent();
             retValue.ThirdPartyUserID = CalendarEventEntry.ThirdPartyUserID;
             
-            retValue.ID = CalendarEventEntry.ID;
+            retValue.ID = CalendarEventEntry.Id;
             retValue.ThirdPartyType = ProviderNames[CalendarEventEntry.ThirdpartyType];
-            retValue.CalendarName = CalendarEventEntry.Name;
+            retValue.CalendarName = CalendarEventEntry.NameString;
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.TotalDuration = CalendarEventEntry.Duration;
@@ -121,9 +121,9 @@ namespace DBTilerElement
             CalEvent retValue = new CalEvent();
             retValue.ThirdPartyUserID = CalendarEventEntry.ThirdPartyUserID;
 
-            retValue.ID = CalendarEventEntry.ID;
+            retValue.ID = CalendarEventEntry.Id;
             retValue.ThirdPartyType = ProviderNames[CalendarEventEntry.ThirdpartyType];
-            retValue.CalendarName = CalendarEventEntry.Name;
+            retValue.CalendarName = CalendarEventEntry.NameString;
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.TotalDuration = CalendarEventEntry.Duration;

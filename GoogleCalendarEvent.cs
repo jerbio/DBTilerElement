@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TilerElements.Wpf;
+using TilerElements.DB;
 using TilerElements.Connectors;
 namespace DBTilerElement
 {
-    public class GoogleCalendarEvent : CalendarEvent
+    public class GoogleCalendarEvent : DB_CalendarEventFly
     {
+        
         public GoogleCalendarEvent(SubCalEvent SubCalData)
         {
             DateTimeOffset Start = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalStartDate);
@@ -30,7 +32,7 @@ namespace DBTilerElement
             ThirdPartyFlag = true;
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.Google;
             otherPartyID = SubCalData.ThirdPartyEventID;
-            CreatorIDInfo = SubCalData.ThirdPartyUserID;
+            this.CreatorId = SubCalData.ThirdPartyUserID;
             SubCalendarEvent mySubCal = GoogleSubCalendarEvent.convertFromGoogleToSubCalendarEvent( SubCalData);//.convertFromGoogleToSubCalendarEvent();
             SubEvents = new Dictionary<EventID, SubCalendarEvent>() { { mySubCal.SubEvent_ID, mySubCal } };
         }
