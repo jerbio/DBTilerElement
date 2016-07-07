@@ -68,7 +68,7 @@ namespace DBTilerElement
             retValue.EventPreDeadline = (long)SubCalendarEventEntry.PreDeadline.TotalMilliseconds;
             retValue.Priority = SubCalendarEventEntry.EventPriority;
             retValue.Conflict = String.Join(",", SubCalendarEventEntry.Conflicts.getConflictingEventIDs());
-            retValue.ColorSelection = SubCalendarEventEntry.UIParam.UIColor.User;
+            retValue.ColorSelection = SubCalendarEventEntry.UIParam.UIColor.UserColorSelection;
             retValue.isPaused = SubCalendarEventEntry.isPaused;
             retValue.isPauseAble = SubCalendarEventEntry.RangeTimeLine.IsDateTimeWithin(CurrentTime) && !SubCalendarEventEntry.Rigid;
             retValue.PauseStart = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
@@ -79,7 +79,7 @@ namespace DBTilerElement
         public static CalEvent ToCalEvent(this CalendarEvent CalendarEventEntry, TimeLine Range = null)
         {
             CalEvent retValue = new CalEvent();
-            retValue.ThirdPartyUserID = CalendarEventEntry.CreatorID;
+            retValue.ThirdPartyUserID = CalendarEventEntry.CreatorId;
             CurrentTime = DateTimeOffset.UtcNow;
             
             retValue.ID = CalendarEventEntry.Id;
@@ -98,7 +98,7 @@ namespace DBTilerElement
             retValue.GColor = CalendarEventEntry.UIParam.UIColor.G;
             retValue.BColor = CalendarEventEntry.UIParam.UIColor.B;
             retValue.OColor = CalendarEventEntry.UIParam.UIColor.O;
-            retValue.ColorSelection = CalendarEventEntry.UIParam.UIColor.User;
+            retValue.ColorSelection = CalendarEventEntry.UIParam.UIColor.UserColorSelection;
             retValue.NumberOfCompletedTasks = CalendarEventEntry.CompletionCount;
             retValue.NumberOfDeletedEvents = CalendarEventEntry.DeletionCount;
             retValue.OtherPartyID = CalendarEventEntry.ThirdPartyID;
@@ -142,7 +142,7 @@ namespace DBTilerElement
             retValue.GColor = CalendarEventEntry.UIParam.UIColor.G;
             retValue.BColor = CalendarEventEntry.UIParam.UIColor.B;
             retValue.OColor = CalendarEventEntry.UIParam.UIColor.O;
-            retValue.ColorSelection = CalendarEventEntry.UIParam.UIColor.User;
+            retValue.ColorSelection = CalendarEventEntry.UIParam.UIColor.UserColorSelection;
             retValue.NumberOfCompletedTasks = CalendarEventEntry.CompletionCount;
             retValue.NumberOfDeletedEvents = CalendarEventEntry.DeletionCount;
             retValue.OtherPartyID = CalendarEventEntry.ThirdPartyID;
