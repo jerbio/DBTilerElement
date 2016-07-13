@@ -22,6 +22,9 @@ namespace DBTilerElement
         public long SubCalCalEventEnd { get; set; }
         public double SubCalEventLong { get; set; }
         public double SubCalEventLat { get; set; }
+
+        public double PauseStart { get; set; }
+        public double PauseEnd { get; set; }
         public int RColor { get; set; }
         public int GColor { get; set; }
         public int BColor { get; set; }

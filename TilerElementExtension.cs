@@ -63,6 +63,8 @@ namespace DBTilerElement
             retValue.ColorSelection = SubCalendarEventEntry.UIParam.UIColor.User;
             retValue.isPaused = SubCalendarEventEntry.isPaused;
             retValue.isPauseAble = SubCalendarEventEntry.RangeTimeLine.IsDateTimeWithin(CurrentTime) && !SubCalendarEventEntry.Rigid;
+            retValue.PauseStart = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
+            retValue.PauseEnd = (long)(SubCalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             return retValue;
         }
 
