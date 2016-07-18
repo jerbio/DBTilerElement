@@ -51,6 +51,7 @@
     <Compile Include="DB_CalendarEvent.cs" />
     <Compile Include="DB_CalendarEventFly.cs" />
     <Compile Include="DB_CalendarEventRestricted.cs" />
+    <Compile Include="DB_Classification.cs" />
     <Compile Include="DB_NowProfile.cs" />
     <Compile Include="DB_Procrastination.cs" />
     <Compile Include="DB_Repetition.cs" />
