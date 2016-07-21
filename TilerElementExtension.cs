@@ -28,7 +28,7 @@ namespace DBTilerElement
             retValue.ThirdPartyUserID = SubCalendarEventEntry.ThirdPartyUserID;
             retValue.ThirdPartyType = ProviderNames[SubCalendarEventEntry.ThirdpartyType];
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
-            retValue.ID = SubCalendarEventEntry.ID;
+            retValue.ID = SubCalendarEventEntry.Id;
             retValue.CalendarID = SubCalendarEventEntry.SubEvent_ID.getRepeatCalendarEventID();
 
             retValue.SubCalStartDate = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
