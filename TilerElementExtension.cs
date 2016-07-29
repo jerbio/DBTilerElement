@@ -35,8 +35,7 @@ namespace DBTilerElement
             retValue.SubCalEndDate = (long)(SubCalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.SubCalTotalDuration = SubCalendarEventEntry.ActiveDuration;
             retValue.SubCalRigid = SubCalendarEventEntry.Rigid;
-            retValue.SubCalAddressDescription = SubCalendarEventEntry.Location.Description;
-            retValue.SubCalAddress = SubCalendarEventEntry.Location.Address;
+            
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
             if (CalendarEventEntry != null)
             {
@@ -55,12 +54,24 @@ namespace DBTilerElement
                 }
             }
 
-            retValue.SubCalEventLong = SubCalendarEventEntry.Location.YCoordinate;
-            retValue.SubCalEventLat = SubCalendarEventEntry.Location.XCoordinate;
-            retValue.RColor = SubCalendarEventEntry.UIParam.UIColor.R;
-            retValue.GColor = SubCalendarEventEntry.UIParam.UIColor.G;
-            retValue.BColor = SubCalendarEventEntry.UIParam.UIColor.B;
-            retValue.OColor = SubCalendarEventEntry.UIParam.UIColor.O;
+            if (SubCalendarEventEntry.Location != null)
+            {
+                retValue.SubCalEventLong = SubCalendarEventEntry.Location.YCoordinate;
+                retValue.SubCalEventLat = SubCalendarEventEntry.Location.XCoordinate;
+                retValue.SubCalAddressDescription = SubCalendarEventEntry.Location.Description;
+                retValue.SubCalAddress = SubCalendarEventEntry.Location.Address;
+            }
+
+            if (SubCalendarEventEntry.Location != null)
+            {
+                retValue.RColor = SubCalendarEventEntry.UIParam.UIColor.R;
+                retValue.GColor = SubCalendarEventEntry.UIParam.UIColor.G;
+                retValue.BColor = SubCalendarEventEntry.UIParam.UIColor.B;
+                retValue.OColor = SubCalendarEventEntry.UIParam.UIColor.O;
+                retValue.ColorSelection = SubCalendarEventEntry.UIParam.UIColor.UserColorSelection;
+            }
+
+
             retValue.isComplete = SubCalendarEventEntry.isComplete;
             retValue.isEnabled = SubCalendarEventEntry.isEnabled;
             retValue.Duration = (long)SubCalendarEventEntry.ActiveDuration.TotalMilliseconds;
@@ -68,7 +79,6 @@ namespace DBTilerElement
             retValue.EventPreDeadline = (long)SubCalendarEventEntry.PreDeadline.TotalMilliseconds;
             retValue.Priority = SubCalendarEventEntry.EventPriority;
             retValue.Conflict = String.Join(",", SubCalendarEventEntry.Conflicts.getConflictingEventIDs());
-            retValue.ColorSelection = SubCalendarEventEntry.UIParam.UIColor.UserColorSelection;
             retValue.isPaused = SubCalendarEventEntry.isPaused;
             retValue.isPauseAble = SubCalendarEventEntry.RangeTimeLine.IsDateTimeWithin(CurrentTime) && !SubCalendarEventEntry.Rigid;
             retValue.PauseStart = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
@@ -89,16 +99,23 @@ namespace DBTilerElement
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.TotalDuration = CalendarEventEntry.Duration;
             retValue.Rigid = CalendarEventEntry.Rigid;
-            retValue.AddressDescription = CalendarEventEntry.Location.Description;
-            retValue.Address = CalendarEventEntry.Location.Address;
-            retValue.Longitude = CalendarEventEntry.Location.YCoordinate;
-            retValue.Latitude = CalendarEventEntry.Location.XCoordinate;
+            if (CalendarEventEntry.Location != null)
+            {
+                retValue.AddressDescription = CalendarEventEntry.Location.Description;
+                retValue.Address = CalendarEventEntry.Location.Address;
+                retValue.Longitude = CalendarEventEntry.Location.YCoordinate;
+                retValue.Latitude = CalendarEventEntry.Location.XCoordinate;
+            }
             retValue.NumberOfSubEvents = CalendarEventEntry.AllSubEvents.Count();// CalendarEventEntry.NumberOfSplit;// AllSubEvents.Count();
-            retValue.RColor = CalendarEventEntry.UIParam.UIColor.R;
-            retValue.GColor = CalendarEventEntry.UIParam.UIColor.G;
-            retValue.BColor = CalendarEventEntry.UIParam.UIColor.B;
-            retValue.OColor = CalendarEventEntry.UIParam.UIColor.O;
-            retValue.ColorSelection = CalendarEventEntry.UIParam.UIColor.UserColorSelection;
+            if (CalendarEventEntry.UIParam != null)
+            {
+                retValue.RColor = CalendarEventEntry.UIParam.UIColor.R;
+                retValue.GColor = CalendarEventEntry.UIParam.UIColor.G;
+                retValue.BColor = CalendarEventEntry.UIParam.UIColor.B;
+                retValue.OColor = CalendarEventEntry.UIParam.UIColor.O;
+                retValue.ColorSelection = CalendarEventEntry.UIParam.UIColor.UserColorSelection;
+            }
+            
             retValue.NumberOfCompletedTasks = CalendarEventEntry.CompletionCount;
             retValue.NumberOfDeletedEvents = CalendarEventEntry.DeletionCount;
             retValue.OtherPartyID = CalendarEventEntry.ThirdPartyID;
