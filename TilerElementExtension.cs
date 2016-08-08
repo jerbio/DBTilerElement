@@ -20,7 +20,7 @@ namespace DBTilerElement
             retValue.ThirdPartyUserID = SubCalendarEventEntry.CreatorID;
             retValue.ThirdPartyType = ProviderNames[(int)SubCalendarEventEntry.ThirdpartyType];
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
-            retValue.ID = SubCalendarEventEntry.ID;
+            retValue.ID = SubCalendarEventEntry.Id;
             retValue.CalendarID = SubCalendarEventEntry.SubEvent_ID.getRepeatCalendarEventID();
 
             retValue.SubCalStartDate = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
@@ -73,7 +73,7 @@ namespace DBTilerElement
             CalEvent retValue = new CalEvent();
             retValue.ThirdPartyUserID = CalendarEventEntry.CreatorID;
             CurrentTime = DateTimeOffset.UtcNow;
-            retValue.ID = CalendarEventEntry.ID;
+            retValue.ID = CalendarEventEntry.Id;
             retValue.ThirdPartyType = ProviderNames[(int)CalendarEventEntry.ThirdpartyType];
             retValue.CalendarName = CalendarEventEntry.Name;
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
@@ -117,7 +117,7 @@ namespace DBTilerElement
             CalEvent retValue = new CalEvent();
             retValue.ThirdPartyUserID = CalendarEventEntry.CreatorID;
 
-            retValue.ID = CalendarEventEntry.ID;
+            retValue.ID = CalendarEventEntry.Id;
             retValue.ThirdPartyType = ProviderNames[(int)CalendarEventEntry.ThirdpartyType];
             retValue.CalendarName = CalendarEventEntry.Name;
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
