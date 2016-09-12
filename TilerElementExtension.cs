@@ -62,7 +62,7 @@ namespace DBTilerElement
                 retValue.SubCalAddress = SubCalendarEventEntry.Location.Address;
             }
 
-            if (SubCalendarEventEntry.Location != null)
+            if (SubCalendarEventEntry.UIParam != null)
             {
                 retValue.RColor = SubCalendarEventEntry.UIParam.UIColor.R;
                 retValue.GColor = SubCalendarEventEntry.UIParam.UIColor.G;
