@@ -12,7 +12,7 @@ namespace DBTilerElement
         {
             this.BusyFrame = mySubCalEvent.ActiveSlot;
             this.CalendarEventRange = mySubCalEvent.getCalendarEventRange;
-            this.FromRepeatEvent = mySubCalEvent.FromRepeat;
+            this.RepetitionFlag = mySubCalEvent.FromRepeat;
             this.EventName = mySubCalEvent.Name;
             this.EventDuration = mySubCalEvent.ActiveDuration;
             this.Complete = mySubCalEvent.isComplete;
@@ -32,7 +32,6 @@ namespace DBTilerElement
             this.Priority = mySubCalEvent.EventPriority;
             this.ProfileOfNow = NowProfileData;
             this.ProfileOfProcrastination = ProcrastinationData;
-            this.FromRepeatEvent = mySubCalEvent.FromRepeat;
             this.RigidSchedule = mySubCalEvent.Rigid;
             this.StartDateTime = mySubCalEvent.Start;
             this.UiParams = mySubCalEvent.UIParam;

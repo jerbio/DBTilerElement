@@ -8,6 +8,10 @@ namespace TilerFront
 {
     public class DB_CalendarEventExtra : CalendarEvent
     {
+        public DB_CalendarEventExtra() : base()
+        {
+
+        }
         public DB_CalendarEventExtra(CalendarEvent CalendarEventData, Procrastination procrastinationData, NowProfile NowProfileData)
         {
             this.EventDuration = CalendarEventData.ActiveDuration;

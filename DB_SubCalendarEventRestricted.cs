@@ -33,7 +33,7 @@ namespace DBTilerElement
             this.EventPreDeadline = mySubCalEvent.PreDeadline;
             //this.EventScore = mySubCalEvent.Score;
             //this.EventSequence = mySubCalEvent.EventSequence.CreateCopy();
-            this.FromRepeatEvent = mySubCalEvent.FromRepeat;
+            this.RepetitionFlag= mySubCalEvent.FromRepeat;
             //this.HumaneTimeLine = mySubCalEvent.hum HumaneTimeLine.CreateCopy();
             //this.InterferringEvents = mySubCalEvent.inter
             this.isRestricted = true;
@@ -43,7 +43,7 @@ namespace DBTilerElement
             //this.NonHumaneTimeLine = mySubCalEvent.NonHumaneTimeLine.CreateCopy();
             this.PrepTime = mySubCalEvent.Preparation;
             this.Priority = mySubCalEvent.EventPriority;
-            this.FromRepeatEvent = mySubCalEvent.FromRepeat;
+            this.RepetitionFlag = mySubCalEvent.FromRepeat;
             this.RigidSchedule = mySubCalEvent.Rigid;
 
             this.UiParams = mySubCalEvent.UIParam;
