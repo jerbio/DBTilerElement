@@ -58,7 +58,7 @@ namespace DBTilerElement
                 Outlook.AppointmentItem item = calendarItems[SubJectString] as Outlook.AppointmentItem;
                 item.Delete();
             }
-            catch
+            catch(Exception e)
             {
                 return;
             }
