@@ -8,7 +8,6 @@ namespace DBTilerElement
 {
     public class DB_SubCalendarEventRestricted:SubCalendarEventRestricted
     {
-        IEnumerable<Reason> Reasons = new List<Reason>();
         public DB_SubCalendarEventRestricted(SubCalendarEvent mySubCalEvent, DB_RestrictionProfile restrictionData)
         {
             this.BusyFrame = mySubCalEvent.ActiveSlot;
@@ -80,7 +79,8 @@ namespace DBTilerElement
         }
         public void updateReasons(IEnumerable<Reason> Reasons)
         {
-            this.Reasons = Reasons.ToList();
+            this.HistoricalReasonsCurrentPosition = new Dictionary<TimeSpan, List<Reason>>();
+            HistoricalReasonsCurrentPosition.Add(new TimeSpan(), Reasons.ToList());
         }
     }
 }
