@@ -50,7 +50,7 @@ namespace DBTilerElement
             Outlook.Items calendarItems = calendar.Items;
             try
             {
-                string SubJectString = ActiveSection.ID + "**" + NameOfParentCalendarEvent;
+                string SubJectString = ActiveSection.Id + "**" + NameOfParentCalendarEvent;
                 if (ActiveSection.isComplete)
                 {
                     //SubJectString = ActiveSection.ID + "*\u221A*" + NameOfParentCalendarEvent;
@@ -83,7 +83,7 @@ namespace DBTilerElement
                 newAppointment.Location = "TBD";
                 newAppointment.Body = "JustTesting";
                 newAppointment.AllDayEvent = false;
-                string SubJectString = ActiveSection.ID + "**" + NameOfParentCalendarEvent;
+                string SubJectString = ActiveSection.Id + "**" + NameOfParentCalendarEvent;
                 if (ActiveSection.isComplete)
                 {
                     //SubJectString = ActiveSection.ID + "*\u221A*" + NameOfParentCalendarEvent;
