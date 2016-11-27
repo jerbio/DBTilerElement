@@ -27,7 +27,7 @@ namespace DBTilerElement
             this.DataBlob = mySubCalEvent.Notes;
             this.DeadlineElapsed = mySubCalEvent.isDeadlineElapsed;
             this.Enabled = mySubCalEvent.isEnabled;
-            
+            this.ProfileOfProcrastination = mySubCalEvent.ProcrastinationInfo;
             this.EventDuration = mySubCalEvent.ActiveDuration;
             this.EventName = mySubCalEvent.Name;
             this.EventPreDeadline = mySubCalEvent.PreDeadline;
