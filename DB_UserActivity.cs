@@ -26,9 +26,9 @@ namespace DBTilerElement
         {
 
         }
-        public DB_UserActivity(DateTimeOffset triggerTime, ActivityType type) : base(triggerTime, type) { }
+        public DB_UserActivity(DateTimeOffset triggerTime, ActivityType type) : base(triggerTime, type) {  }
 
-        public DB_UserActivity(UserActivity activity) : base(activity.ActivityTriggerTime, activity.TriggerType, activity.eventIds) { }
+        public DB_UserActivity(UserActivity activity) : base(activity.ActivityTriggerTime, activity.TriggerType, activity.eventIds) { this.MiscelaneousExtraInfo = activity.getMiscdata(); }
 
         public DB_UserActivity():base(null, ActivityType.None) { }
 
