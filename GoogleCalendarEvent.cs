@@ -13,7 +13,7 @@ namespace DBTilerElement
         {
             DateTimeOffset Start = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalStartDate);
             DateTimeOffset End = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalEndDate);
-            this.EventName = SubCalData.SubCalCalendarName!=null?SubCalData.SubCalCalendarName:"";
+            this._Name = new EventName( SubCalData.SubCalCalendarName!=null?SubCalData.SubCalCalendarName:"");
             StartDateTime = Start;
             EndDateTime = End;
             Splits = 1;

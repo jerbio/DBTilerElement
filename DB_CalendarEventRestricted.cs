@@ -12,7 +12,7 @@ namespace DBTilerElement
         {
             //CalendarEventRestricted MyCalendarEventCopy = CalendarEventData.new CalendarEventRestricted();
             this.EventDuration = CalendarEventData.ActiveDuration;
-            this.EventName = CalendarEventData.Name;
+            this._Name = CalendarEventData.Name;
             this.StartDateTime = CalendarEventData.Start;
             this.EndDateTime = CalendarEventData.End;
             this.EventPreDeadline = CalendarEventData.PreDeadline;

@@ -29,7 +29,7 @@ namespace DBTilerElement
             this.Enabled = mySubCalEvent.isEnabled;
             this.ProfileOfProcrastination = mySubCalEvent.ProcrastinationInfo;
             this.EventDuration = mySubCalEvent.ActiveDuration;
-            this.EventName = mySubCalEvent.Name;
+            this._Name = mySubCalEvent.Name;
             this.EventPreDeadline = mySubCalEvent.PreDeadline;
             //this.EventScore = mySubCalEvent.Score;
             //this.EventSequence = mySubCalEvent.EventSequence.CreateCopy();
@@ -51,6 +51,7 @@ namespace DBTilerElement
             this.UnUsableIndex = 0;
             this.UserDeleted = mySubCalEvent.isUserDeleted;
             this.UserIDs = mySubCalEvent.getAllUserIDs();
+            this._Name = mySubCalEvent.Name;
             initializeCalendarEventRange(restrictionData, this.HardCalendarEventRange);
         }
 

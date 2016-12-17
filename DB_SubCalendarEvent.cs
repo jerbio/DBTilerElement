@@ -13,7 +13,7 @@ namespace DBTilerElement
             this.BusyFrame = mySubCalEvent.ActiveSlot;
             this.CalendarEventRange = mySubCalEvent.getCalendarEventRange;
             this.RepetitionFlag = mySubCalEvent.FromRepeat;
-            this.EventName = mySubCalEvent.Name;
+            this._Name = mySubCalEvent.Name;
             this.EventDuration = mySubCalEvent.ActiveDuration;
             this.Complete = mySubCalEvent.isComplete;
             this.ConflictingEvents = mySubCalEvent.Conflicts;
@@ -39,6 +39,7 @@ namespace DBTilerElement
             this.UserDeleted = mySubCalEvent.isUserDeleted;
             this.UserIDs = mySubCalEvent.getAllUserIDs();
             this.Vestige = mySubCalEvent.isVestige;
+            this._Name = mySubCalEvent.Name;
         }
 
         public TimeSpan UsedTime
