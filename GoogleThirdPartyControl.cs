@@ -8,16 +8,18 @@ namespace DBTilerElement
 {
     public class GoogleThirdPartyControl:ThirdPartyCalendarControl
     {
-        public GoogleThirdPartyControl(Dictionary<string, CalendarEvent> CalendarData)
+        TilerUser _User;
+        public GoogleThirdPartyControl(Dictionary<string, CalendarEvent> CalendarData, TilerUser user)
         {
-            SelectedCalendarTool = ThirdPartyControl.CalendarTool.Google;
+            SelectedCalendarTool = ThirdPartyControl.CalendarTool.google;
             IDToCalendarEvent = CalendarData;
+            _User = user;
         }
 
         public GoogleThirdPartyControl(IEnumerable< CalendarEvent> CalendarData)
         {
-            SelectedCalendarTool = ThirdPartyControl.CalendarTool.Google;
-            IDToCalendarEvent = CalendarData.ToDictionary(obj => obj.Id, obj => obj); 
+            SelectedCalendarTool = ThirdPartyControl.CalendarTool.google;
+            IDToCalendarEvent = CalendarData.ToDictionary(obj => obj.getId, obj => obj); 
         }
 
         public override string AddAppointment(SubCalendarEvent ActiveSection, string NameOfParentCalendarEvent = "")
@@ -28,6 +30,11 @@ namespace DBTilerElement
         public override void DeleteAppointment(SubCalendarEvent ActiveSection, string NameOfParentCalendarEvent = "", string entryID = "")
         {
             throw new NotImplementedException();
+        }
+
+        public override TilerUser getUser()
+        {
+            return _User;
         }
     }
 }

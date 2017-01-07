@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -42,7 +43,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TilerElements">
+    <Reference Include="TilerElements, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\My24HourTimerWPF\TilerElements\bin\Debug\TilerElements.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -55,6 +57,8 @@
     <Compile Include="DB_CalendarEventRestricted.cs" />
     <Compile Include="DB_EventName.cs" />
     <Compile Include="DB_NowProfile.cs" />
+    <Compile Include="DB_ProcrastinateSubCalendarEvent.cs" />
+    <Compile Include="DB_ProcrastinateCalendarEvent.cs" />
     <Compile Include="DB_Procrastination.cs" />
     <Compile Include="DB_Reasons.cs" />
     <Compile Include="DB_Repetition.cs" />
@@ -63,6 +67,7 @@
     <Compile Include="DB_SubCalendarEvent.cs" />
     <Compile Include="DB_SubCalendarEventFly.cs" />
     <Compile Include="DB_SubCalendarEventRestricted.cs" />
+    <Compile Include="DB_TilerUserGroup.cs" />
     <Compile Include="DB_UserActivity.cs" />
     <Compile Include="GoogleCalendarEvent.cs" />
     <Compile Include="GoogleSubCalendarEvent.cs" />
@@ -73,6 +78,7 @@
     <Compile Include="SubCalEvent.cs" />
     <Compile Include="ThirdPartyCalendarControl.cs" />
     <Compile Include="TilerElementExtension.cs" />
+    <Compile Include="DB_TilerUser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

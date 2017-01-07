@@ -10,17 +10,17 @@ namespace DBTilerElement
 {
     public static class TilerElementExtension
     {
-        public static DateTimeOffset CurrentTime = DateTimeOffset.UtcNow;
         public static DateTimeOffset JSStartTime = new DateTimeOffset(1970, 1, 1, 0, 0, 0, new TimeSpan());
         public static TimeSpan StartOfTimeTimeSpan = JSStartTime - new DateTimeOffset(0, new TimeSpan());
-        public readonly static string[] ProviderNames = { "Tiler", "Outlook", "Google", "Facebook" };
+        //public readonly static string[] ProviderNames = { "Tiler", "Outlook", "Google", "Facebook" };
         public static SubCalEvent ToSubCalEvent(this TilerElements.SubCalendarEvent SubCalendarEventEntry, TilerElements.CalendarEvent CalendarEventEntry = null)
         {
+            DateTimeOffset CurrentTime = DateTimeOffset.UtcNow;
             SubCalEvent retValue = new SubCalEvent();
-            retValue.ThirdPartyUserID = SubCalendarEventEntry.CreatorID;
-            retValue.ThirdPartyType = ProviderNames[(int)SubCalendarEventEntry.ThirdpartyType];
+            retValue.ThirdPartyUserID = SubCalendarEventEntry.Creator.Id;
+            retValue.ThirdPartyType = SubCalendarEventEntry.ThirdpartyType.ToString();
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
-            retValue.ID = SubCalendarEventEntry.Id;
+            retValue.ID = SubCalendarEventEntry.getId;
             retValue.CalendarID = SubCalendarEventEntry.SubEvent_ID.getRepeatCalendarEventID();
 
             retValue.SubCalStartDate = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
@@ -70,11 +70,11 @@ namespace DBTilerElement
 
         public static CalEvent ToCalEvent(this TilerElements.CalendarEvent CalendarEventEntry, TilerElements.TimeLine Range = null)
         {
+            DateTimeOffset CurrentTime = DateTimeOffset.UtcNow;
             CalEvent retValue = new CalEvent();
-            retValue.ThirdPartyUserID = CalendarEventEntry.CreatorID;
-            CurrentTime = DateTimeOffset.UtcNow;
-            retValue.ID = CalendarEventEntry.Id;
-            retValue.ThirdPartyType = ProviderNames[(int)CalendarEventEntry.ThirdpartyType];
+            retValue.ThirdPartyUserID = CalendarEventEntry.Creator.Id;
+            retValue.ID = CalendarEventEntry.getId;
+            retValue.ThirdPartyType = CalendarEventEntry.ThirdpartyType.ToString();
             retValue.CalendarName = CalendarEventEntry.Name.NameValue;
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
@@ -115,10 +115,10 @@ namespace DBTilerElement
         public static CalEvent ToDeletedCalEvent(this TilerElements.CalendarEvent CalendarEventEntry, TilerElements.TimeLine Range = null)
         {
             CalEvent retValue = new CalEvent();
-            retValue.ThirdPartyUserID = CalendarEventEntry.CreatorID;
+            retValue.ThirdPartyUserID = CalendarEventEntry.Creator.Id;
 
-            retValue.ID = CalendarEventEntry.Id;
-            retValue.ThirdPartyType = ProviderNames[(int)CalendarEventEntry.ThirdpartyType];
+            retValue.ID = CalendarEventEntry.getId;
+            retValue.ThirdPartyType = CalendarEventEntry.ThirdpartyType.ToString();
             retValue.CalendarName = CalendarEventEntry.Name.NameValue;
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;

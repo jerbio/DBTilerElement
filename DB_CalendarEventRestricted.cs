@@ -23,7 +23,7 @@ namespace DBTilerElement
             this.Complete = CalendarEventData.isComplete;
             this.RigidSchedule = CalendarEventData.Rigid;//hack
             this.Splits = CalendarEventData.NumberOfSplit;
-            this.TimePerSplit = CalendarEventData.EachSplitTimeSpan;
+            this._AverageTimePerSplit= CalendarEventData.AverageTimeSpanPerSubEvent;
             this.UniqueID = CalendarEventData.Calendar_EventID;//hack
             //this.EventSequence = CalendarEventData.EventSequence;
             this.SubEvents = new Dictionary<EventID, SubCalendarEvent>();
@@ -49,7 +49,9 @@ namespace DBTilerElement
                 }
             }
             this.otherPartyID = CalendarEventData.ThirdPartyID;// == CalendarEventData.null ? null : otherPartyID.ToString();
-            this.UserIDs = CalendarEventData.getAllUserIDs();//.ToList();
+            this._Users = CalendarEventData.getAllUsers();
+            this._Creator = CalendarEventData.Creator;
+            this._TimeZone = CalendarEventData.getTimeZone;
             //return MyCalendarEventCopy;
         }
     }

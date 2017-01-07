@@ -27,9 +27,11 @@ namespace DBTilerElement
             EventDuration = End - Start;
             LocationInfo= new Location_Elements();
             ThirdPartyFlag = true;
-            ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.Google;
+            ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
             otherPartyID = SubCalData.ThirdPartyEventID;
-            CreatorIDInfo = SubCalData.ThirdPartyUserID;
+            _Creator = new GoogleTilerUser(SubCalData.ThirdPartyUserID);
+            _Users = new TilerUserGroup();
+            
             SubCalendarEvent mySubCal = GoogleSubCalendarEvent.convertFromGoogleToSubCalendarEvent( SubCalData);//.convertFromGoogleToSubCalendarEvent();
             SubEvents = new Dictionary<EventID, SubCalendarEvent>() { { mySubCal.SubEvent_ID, mySubCal } };
         }

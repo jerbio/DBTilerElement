@@ -17,7 +17,7 @@ namespace DBTilerElement
         
         public OutlookThirdPartyControl()
         {
-            SelectedCalendarTool = ThirdPartyControl.CalendarTool.Outlook;
+            SelectedCalendarTool = ThirdPartyControl.CalendarTool.outlook;
         }
 
 
@@ -188,6 +188,9 @@ namespace DBTilerElement
             }
         }
 
-
+        public override TilerUser getUser()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -49,7 +49,8 @@ namespace DBTilerElement
                     LimitsOfCalculation = new TimeLine(CalEventStart, CalEventEnd);
                 }
 
-                RetValue = new CalendarEvent(ParentCalId, AllSubCalEvents.First().Name, LimitsOfCalculation.TimelineSpan, LimitsOfCalculation.Start, LimitsOfCalculation.End, new TimeSpan(), new TimeSpan(), true, new Repetition(), AllSubcals.Length, new Location_Elements(), true, new EventDisplay(), new MiscData(), false);
+                RetValue = new CalendarEvent(//ParentCalId, 
+                    AllSubCalEvents.First().Name, LimitsOfCalculation.Start, LimitsOfCalculation.End, LimitsOfCalculation.TimelineSpan, new TimeSpan(), new TimeSpan(), AllSubcals.Length, new Repetition(),  new Location_Elements(), new EventDisplay(), new MiscData(), null, new NowProfile(), true, false, TilerUser.googleUser, new TilerUserGroup(), "UTC", ParentCalId);
                 RetValue = new CalendarEvent(RetValue, AllSubcals);
             }
             return RetValue;

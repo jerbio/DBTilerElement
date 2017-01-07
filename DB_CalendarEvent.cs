@@ -26,7 +26,7 @@ namespace TilerFront
             this.Complete = CalendarEventData.isComplete;
             this.RigidSchedule = CalendarEventData.Rigid;//hack
             this.Splits = CalendarEventData.NumberOfSplit;
-            this.TimePerSplit = CalendarEventData.EachSplitTimeSpan;
+            this._AverageTimePerSplit = CalendarEventData.AverageTimeSpanPerSubEvent;
             this.UniqueID = CalendarEventData.Calendar_EventID;//hack
             //this.EventSequence = CalendarEventData.EventSequence;
             this.SubEvents = new Dictionary<EventID, SubCalendarEvent>();
@@ -43,7 +43,6 @@ namespace TilerFront
             this.ProfileOfProcrastination = procrastinationData;
             this.ProfileOfNow = NowProfileData;
             //this.SubEvents = ((DB_CalendarEventRestricted)CalendarEventData).getSubEvents();
-
             if (!this.EventRepetition.Enable)
             {
                 foreach (SubCalendarEvent eachSubCalendarEvent in CalendarEventData.AllSubEvents)
@@ -54,8 +53,9 @@ namespace TilerFront
 
             //this.SubEvents = CalendarEventData.SubEvents;
             this.otherPartyID = CalendarEventData.ThirdPartyID;// == CalendarEventData.null ? null : otherPartyID.ToString();
-            this.UserIDs = CalendarEventData.getAllUserIDs();//.ToList();
-            //return MyCalendarEventCopy;
+            this._Users = CalendarEventData.getAllUsers();//.ToList();
+            this._Creator = CalendarEventData.Creator;
+            this._TimeZone = CalendarEventData.getTimeZone;
         }
     }
 }

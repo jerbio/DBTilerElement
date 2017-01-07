@@ -248,7 +248,7 @@ namespace TilerFront
                 }
                 else
                 {
-                    retValue = new Tuple<string,CustomErrors>("", new CustomErrors(true, "User Already Exist", 10001000));
+                    retValue = new Tuple<string,CustomErrors>("", new CustomErrors("User Already Exist", 10001000));
                 }
 
             }
@@ -266,16 +266,16 @@ namespace TilerFront
             {
                 if (!latestChange)
                 {
-                    retValue = new Tuple<string, CustomErrors>("", new CustomErrors(true, "Issues registering new user, latestchange", 30001001));
+                    retValue = new Tuple<string, CustomErrors>("", new CustomErrors("Issues registering new user, latestchange", 30001001));
                 }
                 else
                 {
-                    retValue = new Tuple<string, CustomErrors>("", new CustomErrors(true, "Issues registering new user", 30001000));
+                    retValue = new Tuple<string, CustomErrors>("", new CustomErrors("Issues registering new user", 30001000));
                 }
             }
             else
             {
-                retValue = new Tuple<string, CustomErrors>(this.ID, new CustomErrors(false, "success"));
+                retValue = new Tuple<string, CustomErrors>(this.ID, null);
             }
 
             
@@ -505,7 +505,7 @@ namespace TilerFront
             Tuple<bool,string,string> LoginStatus=LogIn();
             if (!LoginStatus.Item1)
             {
-                retValue = new CustomErrors(true, "invalid user",1);
+                retValue = new CustomErrors("invalid user",1);
             }
 
             try
@@ -531,12 +531,12 @@ namespace TilerFront
                 myReader.Close();
                 deleteUserInfo.CommandText = "DELETE FROM DatabaseWaggy.dbo.UserLog where ID=" + ID + " AND UserName=\'" + UserName + "\'";
                 myReader = deleteUserInfo.ExecuteReader();
-                retValue = new CustomErrors(false, "success");
+                retValue = null;
                 myReader.Close();
             }
             catch (Exception e)
             {
-                retValue = new CustomErrors(true, e.ToString(), 30000000);
+                retValue = new CustomErrors(e.ToString(), 30000000);
             }
 
             Wagtap.Close();

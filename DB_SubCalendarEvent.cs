@@ -12,7 +12,6 @@ namespace DBTilerElement
         {
             this.BusyFrame = mySubCalEvent.ActiveSlot;
             this.CalendarEventRange = mySubCalEvent.getCalendarEventRange;
-            this.RepetitionFlag = mySubCalEvent.FromRepeat;
             this._Name = mySubCalEvent.Name;
             this.EventDuration = mySubCalEvent.ActiveDuration;
             this.Complete = mySubCalEvent.isComplete;
@@ -37,12 +36,15 @@ namespace DBTilerElement
             this.UiParams = mySubCalEvent.UIParam;
             this.UniqueID = mySubCalEvent.SubEvent_ID;
             this.UserDeleted = mySubCalEvent.isUserDeleted;
-            this.UserIDs = mySubCalEvent.getAllUserIDs();
+            this._Users = mySubCalEvent.getAllUsers();
             this.Vestige = mySubCalEvent.isVestige;
             this._Name = mySubCalEvent.Name;
+            this._Creator = mySubCalEvent.Creator;
+            this._Users = mySubCalEvent.getAllUsers();
+            this._TimeZone = mySubCalEvent.getTimeZone;
         }
 
-        public TimeSpan UsedTime
+        public TimeSpan UseTime
         {
             set
             {
