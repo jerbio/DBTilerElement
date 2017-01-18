@@ -50,8 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalEvent.cs" />
-    <None Include="DBControl.cs.old" />
-    <None Include="DBControlDirect.cs.old" />
     <Compile Include="DB_CalendarEvent.cs" />
     <Compile Include="DB_CalendarEventFly.cs" />
     <Compile Include="DB_CalendarEventRestricted.cs" />
