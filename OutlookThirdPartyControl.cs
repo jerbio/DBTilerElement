@@ -134,7 +134,7 @@ namespace DBTilerElement
                 for (i = 0; i < MyEvent.AllSubEvents.Length; i++)
                 {
                     SubCalendarEvent pertinentSubCalEvent = MyEvent.AllSubEvents[i];
-                    DeleteAppointment(pertinentSubCalEvent, MyEvent.Name.NameValue, pertinentSubCalEvent.ThirdPartyID);
+                    DeleteAppointment(pertinentSubCalEvent, MyEvent.getName.NameValue, pertinentSubCalEvent.ThirdPartyID);
                 }
             }
         }

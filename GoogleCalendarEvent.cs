@@ -25,7 +25,7 @@ namespace DBTilerElement
             Enabled = true;
             Complete = false;
             EventDuration = End - Start;
-            LocationInfo= new Location_Elements();
+            LocationInfo = new TilerElements.Location();
             ThirdPartyFlag = true;
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
             otherPartyID = SubCalData.ThirdPartyEventID;

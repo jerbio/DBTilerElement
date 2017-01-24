@@ -26,7 +26,7 @@ namespace DBTilerElement
             Enabled = true;
             Complete = false;
             EventDuration = BusyFrame.TimelineSpan;
-            LocationInfo= new Location_Elements();
+            LocationInfo = new TilerElements.Location();
             ThirdPartyFlag = true;
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
             ThirdPartyUserIDInfo = SubCalData.ThirdPartyUserID;

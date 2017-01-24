@@ -50,7 +50,7 @@ namespace DBTilerElement
                 }
 
                 RetValue = new CalendarEvent(//ParentCalId, 
-                    AllSubCalEvents.First().Name, LimitsOfCalculation.Start, LimitsOfCalculation.End, LimitsOfCalculation.TimelineSpan, new TimeSpan(), new TimeSpan(), AllSubcals.Length, new Repetition(),  new Location_Elements(), new EventDisplay(), new MiscData(), null, new NowProfile(), true, false, TilerUser.googleUser, new TilerUserGroup(), "UTC", ParentCalId);
+                    AllSubCalEvents.First().getName, LimitsOfCalculation.Start, LimitsOfCalculation.End, LimitsOfCalculation.TimelineSpan, new TimeSpan(), new TimeSpan(), AllSubcals.Length, new Repetition(),  new TilerElements.Location(), new EventDisplay(), new MiscData(), null, new NowProfile(), true, false, TilerUser.googleUser, new TilerUserGroup(), "UTC", ParentCalId);
                 RetValue = new CalendarEvent(RetValue, AllSubcals);
             }
             return RetValue;

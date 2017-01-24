@@ -22,34 +22,34 @@ namespace DBTilerElement
 
 
             //this.CalendarEventRange = CalendarEventRange.CreateCopy();
-            this.Complete = mySubCalEvent.isComplete;
+            this.Complete = mySubCalEvent.getIsComplete;
             this.ConflictingEvents = mySubCalEvent.Conflicts;
             this.DataBlob = mySubCalEvent.Notes;
-            this.DeadlineElapsed = mySubCalEvent.isDeadlineElapsed;
+            this.DeadlineElapsed = mySubCalEvent.getIsDeadlineElapsed;
             this.Enabled = mySubCalEvent.isEnabled;
-            this.ProfileOfProcrastination = mySubCalEvent.ProcrastinationInfo;
-            this.EventDuration = mySubCalEvent.ActiveDuration;
-            this._Name = mySubCalEvent.Name;
-            this.EventPreDeadline = mySubCalEvent.PreDeadline;
+            this.ProfileOfProcrastination = mySubCalEvent.getProcrastinationInfo;
+            this.EventDuration = mySubCalEvent.getActiveDuration;
+            this._Name = mySubCalEvent.getName;
+            this.EventPreDeadline = mySubCalEvent.getPreDeadline;
             //this.EventScore = mySubCalEvent.Score;
             //this.EventSequence = mySubCalEvent.EventSequence.CreateCopy();
             //this.HumaneTimeLine = mySubCalEvent.hum HumaneTimeLine.CreateCopy();
             //this.InterferringEvents = mySubCalEvent.inter
             this.isRestricted = true;
             this.Vestige = mySubCalEvent.isVestige;
-            this.LocationInfo = mySubCalEvent.myLocation;
+            this.LocationInfo = mySubCalEvent.Location;
             this.MiscIntData = mySubCalEvent.IntData;
             //this.NonHumaneTimeLine = mySubCalEvent.NonHumaneTimeLine.CreateCopy();
-            this.PrepTime = mySubCalEvent.Preparation;
-            this.Priority = mySubCalEvent.EventPriority;
-            this.RigidSchedule = mySubCalEvent.Rigid;
+            this.PrepTime = mySubCalEvent.getPreparation;
+            this.Priority = mySubCalEvent.getEventPriority;
+            this.RigidSchedule = mySubCalEvent.getRigid;
 
-            this.UiParams = mySubCalEvent.UIParam;
+            this.UiParams = mySubCalEvent.getUIParam;
             this.UniqueID = mySubCalEvent.SubEvent_ID;
             this.UnUsableIndex = 0;
-            this.UserDeleted = mySubCalEvent.isUserDeleted;
-            this._Name = mySubCalEvent.Name;
-            this._Creator = mySubCalEvent.Creator;
+            this.UserDeleted = mySubCalEvent.getIsUserDeleted;
+            this._Name = mySubCalEvent.getName;
+            this._Creator = mySubCalEvent.getCreator;
             this._Users = mySubCalEvent.getAllUsers();
             this._TimeZone = mySubCalEvent.getTimeZone;
             initializeCalendarEventRange(restrictionData, this.HardCalendarEventRange);

@@ -14,30 +14,30 @@ namespace TilerFront
         }
         public DB_CalendarEventExtra(CalendarEvent CalendarEventData, Procrastination procrastinationData, NowProfile NowProfileData)
         {
-            this.EventDuration = CalendarEventData.ActiveDuration;
-            this._Name = CalendarEventData.Name;
+            this.EventDuration = CalendarEventData.getActiveDuration;
+            this._Name = CalendarEventData.getName;
             this.StartDateTime = CalendarEventData.Start;
             this.EndDateTime = CalendarEventData.End;
-            this.EventPreDeadline = CalendarEventData.PreDeadline;
-            this.PrepTime = CalendarEventData.Preparation;
-            this.Priority = CalendarEventData.EventPriority;
+            this.EventPreDeadline = CalendarEventData.getPreDeadline;
+            this.PrepTime = CalendarEventData.getPreparation;
+            this.Priority = CalendarEventData.getEventPriority;
             //this.RepetitionFlag = CalendarEventData.RepetitionStatus;
             this.EventRepetition = (CalendarEventData).Repeat;// EventRepetition != CalendarEventData.null ? EventRepetition.CreateCopy() : EventRepetition;
-            this.Complete = CalendarEventData.isComplete;
-            this.RigidSchedule = CalendarEventData.Rigid;//hack
+            this.Complete = CalendarEventData.getIsComplete;
+            this.RigidSchedule = CalendarEventData.getRigid;//hack
             this.Splits = CalendarEventData.NumberOfSplit;
             this._AverageTimePerSplit = CalendarEventData.AverageTimeSpanPerSubEvent;
             this.UniqueID = CalendarEventData.Calendar_EventID;//hack
             //this.EventSequence = CalendarEventData.EventSequence;
             this.SubEvents = new Dictionary<EventID, SubCalendarEvent>();
-            this.UiParams = CalendarEventData.UIParam;
+            this.UiParams = CalendarEventData.getUIParam;
             this.DataBlob = CalendarEventData.Notes;
             this.Enabled = CalendarEventData.isEnabled;
-            this.isRestricted = CalendarEventData.isEventRestricted;
+            this.isRestricted = CalendarEventData.getIsEventRestricted;
             this.LocationInfo= CalendarEventData.myLocation;//hack you might need to make copy
-            this.ProfileOfProcrastination = CalendarEventData.ProcrastinationInfo;
-            this.DeadlineElapsed = CalendarEventData.isDeadlineElapsed;
-            this.UserDeleted = CalendarEventData.isUserDeleted;
+            this.ProfileOfProcrastination = CalendarEventData.getProcrastinationInfo;
+            this.DeadlineElapsed = CalendarEventData.getIsDeadlineElapsed;
+            this.UserDeleted = CalendarEventData.getIsUserDeleted;
             this.CompletedCount = CalendarEventData.CompletionCount;
             this.DeletedCount = CalendarEventData.DeletionCount;
             this.ProfileOfProcrastination = procrastinationData;
@@ -54,7 +54,7 @@ namespace TilerFront
             //this.SubEvents = CalendarEventData.SubEvents;
             this.otherPartyID = CalendarEventData.ThirdPartyID;// == CalendarEventData.null ? null : otherPartyID.ToString();
             this._Users = CalendarEventData.getAllUsers();//.ToList();
-            this._Creator = CalendarEventData.Creator;
+            this._Creator = CalendarEventData.getCreator;
             this._TimeZone = CalendarEventData.getTimeZone;
         }
     }
