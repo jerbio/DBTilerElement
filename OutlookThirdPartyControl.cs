@@ -51,7 +51,7 @@ namespace DBTilerElement
             try
             {
                 string SubJectString = ActiveSection.getId + "**" + NameOfParentCalendarEvent;
-                if (ActiveSection.isComplete)
+                if (ActiveSection.getIsComplete)
                 {
                     //SubJectString = ActiveSection.ID + "*\u221A*" + NameOfParentCalendarEvent;
                 }
@@ -84,7 +84,7 @@ namespace DBTilerElement
                 newAppointment.Body = "JustTesting";
                 newAppointment.AllDayEvent = false;
                 string SubJectString = ActiveSection.getId + "**" + NameOfParentCalendarEvent;
-                if (ActiveSection.isComplete)
+                if (ActiveSection.getIsComplete)
                 {
                     //SubJectString = ActiveSection.ID + "*\u221A*" + NameOfParentCalendarEvent;
                 }
@@ -158,7 +158,7 @@ namespace DBTilerElement
                 {
 
                     SubCalendarEvent pertinentSubCalEvent = enableSubCalEVents[i];
-                    pertinentSubCalEvent.ThirdPartyID = AddAppointment(pertinentSubCalEvent, MyEvent.Name.NameValue);/////////////
+                    pertinentSubCalEvent.ThirdPartyID = AddAppointment(pertinentSubCalEvent, MyEvent.getName.NameValue);/////////////
 
                 }
             }
