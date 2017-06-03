@@ -37,6 +37,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,7 +60,6 @@
     <Compile Include="DB_ProcrastinateCalendarEvent.cs" />
     <Compile Include="DB_Procrastination.cs" />
     <Compile Include="DB_Reasons.cs" />
-    <Compile Include="DB_Repetition.cs" />
     <Compile Include="DB_RestrictionProfile.cs" />
     <Compile Include="DB_RestrictionTimeLine.cs" />
     <Compile Include="DB_SubCalendarEvent.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using TilerElements;
@@ -72,5 +73,9 @@ namespace DBTilerElement
             this.HistoricalReasonsCurrentPosition = new Dictionary<TimeSpan, List<Reason>>();
             HistoricalReasonsCurrentPosition.Add(new TimeSpan(), Reasons.ToList());
         }
+
+        public string ParentCalendarEventId { get; set; }
+        [ForeignKey("ParentCalendarEventId")]
+        public CalendarEvent ParentCalendarEvent { get; set; }
     }
 }
