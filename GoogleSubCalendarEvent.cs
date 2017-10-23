@@ -20,14 +20,14 @@ namespace DBTilerElement
             CalendarEventRange = new TimeLine(Start, End);
             UniqueID = new EventID(SubCalData.ID);
             RigidSchedule = true;
-            EventPreDeadline = new TimeSpan();
-            Priority = SubCalData.Priority;
+            _EventPreDeadline = new TimeSpan();
+            _Priority = SubCalData.Priority;
             ConflictingEvents = new ConflictProfile();
-            Enabled = true;
-            Complete = false;
-            EventDuration = BusyFrame.TimelineSpan;
-            LocationInfo = new TilerElements.Location();
-            ThirdPartyFlag = true;
+            _Enabled = true;
+            _Complete = false;
+            _EventDuration = BusyFrame.TimelineSpan;
+            _LocationInfo = new TilerElements.Location();
+            _ThirdPartyFlag = true;
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
             ThirdPartyUserIDInfo = SubCalData.ThirdPartyUserID;
             _Creator = new GoogleTilerUser(SubCalData.ThirdPartyUserID);
@@ -35,7 +35,7 @@ namespace DBTilerElement
             {
 
             };
-            otherPartyID = SubCalData.ThirdPartyEventID;
+            _otherPartyID = SubCalData.ThirdPartyEventID;
         }
 
         static public SubCalendarEvent convertFromGoogleToSubCalendarEvent(SubCalEvent SubCalEventData)

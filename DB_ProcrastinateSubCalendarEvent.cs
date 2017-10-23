@@ -19,10 +19,10 @@ namespace DBTilerElement
             this.UniqueID = calendarEventId;
             this._Creator = user;
             this._Users = group;
-            this.Enabled = isEnabled;
-            this.Complete = isCompleted;
-            this.ProfileOfNow = new NowProfile();
-            this.ProfileOfProcrastination = new Procrastination(new DateTimeOffset(), new TimeSpan());
+            this._Enabled = isEnabled;
+            this._Complete = isCompleted;
+            this._ProfileOfNow = new NowProfile();
+            this._ProfileOfProcrastination = new Procrastination(new DateTimeOffset(), new TimeSpan());
             isProcrastinateEvent = true;
         }
 

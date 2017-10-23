@@ -49,25 +49,25 @@ namespace DBTilerElement
     {
         public ThirdPartyCalendarEvent(IEnumerable<CalendarEvent>AllCalendarEvent, TilerUser user)
         {
-            this.EventDuration = new TimeSpan(50);
-            this.Splits = 1;
-            this._AverageTimePerSplit= EventDuration;
-            this.UiParams = new EventDisplay();
+            this._EventDuration = new TimeSpan(50);
+            this._Splits = 1;
+            this._AverageTimePerSplit= _EventDuration;
+            this._UiParams = new EventDisplay();
             this.UnDesignables = new HashSet<SubCalendarEvent>();
             this.UniqueID = EventID.generateGoogleCalendarEventID((uint)AllCalendarEvent.Count());
-            this.UserDeleted = false;
+            this._UserDeleted = false;
             this._Users = new TilerUserGroup();
             this.StartDateTime = DateTimeOffset.Now.AddDays(-90);
             this.EndDateTime = this.StartDateTime.AddDays(180);
-            this.Enabled = true;
-            this.Complete = false;
-            this.DeletedCount = 1;
-            this.CompletedCount = 1;
+            this._Enabled = true;
+            this._Complete = false;
+            this._DeletedCount = 1;
+            this._CompletedCount = 1;
             this._Creator = user;
             this._Users = new TilerUserGroup();
-            this.EventRepetition = new Repetition(true, this.RangeTimeLine, "Daily", AllCalendarEvent.ToArray());
+            this._EventRepetition = new Repetition(true, this.RangeTimeLine, "Daily", AllCalendarEvent.ToArray());
             this._Name = new EventName( "GOOGLE MOTHER EVENT");
-            this.ProfileOfNow = new NowProfile();
+            this._ProfileOfNow = new NowProfile();
         }
     }
 }

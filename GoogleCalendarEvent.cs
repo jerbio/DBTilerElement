@@ -16,19 +16,19 @@ namespace DBTilerElement
             this._Name = new EventName( SubCalData.SubCalCalendarName!=null?SubCalData.SubCalCalendarName:"");
             StartDateTime = Start;
             EndDateTime = End;
-            Splits = 1;
+            _Splits = 1;
             RigidSchedule = true;
             UniqueID = new EventID(new EventID(SubCalData.ID).getRepeatCalendarEventID());
             RigidSchedule = true;
-            EventPreDeadline = new TimeSpan();
-            Priority = SubCalData.Priority;
-            Enabled = true;
-            Complete = false;
-            EventDuration = End - Start;
-            LocationInfo = new TilerElements.Location();
-            ThirdPartyFlag = true;
+            _EventPreDeadline = new TimeSpan();
+            _Priority = SubCalData.Priority;
+            _Enabled = true;
+            _Complete = false;
+            _EventDuration = End - Start;
+            _LocationInfo = new TilerElements.Location();
+            _ThirdPartyFlag = true;
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
-            otherPartyID = SubCalData.ThirdPartyEventID;
+            _otherPartyID = SubCalData.ThirdPartyEventID;
             _Creator = new GoogleTilerUser(SubCalData.ThirdPartyUserID);
             _Users = new TilerUserGroup();
             
