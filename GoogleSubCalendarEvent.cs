@@ -13,7 +13,8 @@ namespace DBTilerElement
         {
             DateTimeOffset Start = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalStartDate);
             DateTimeOffset End = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalEndDate);
-            this._Name = new EventName( SubCalData.SubCalCalendarName != null ? SubCalData.SubCalCalendarName : "");
+            _Creator = new GoogleTilerUser(SubCalData.ThirdPartyUserID);
+            this._Name = new EventName(_Creator, this.calendarEvent, SubCalData.SubCalCalendarName != null ? SubCalData.SubCalCalendarName : "");
             StartDateTime = Start;
             EndDateTime = End;
             BusyFrame = new BusyTimeLine(SubCalData.ID, Start, End);
@@ -30,7 +31,6 @@ namespace DBTilerElement
             _ThirdPartyFlag = true;
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
             ThirdPartyUserIDInfo = SubCalData.ThirdPartyUserID;
-            _Creator = new GoogleTilerUser(SubCalData.ThirdPartyUserID);
             _Users = new TilerUserGroup()
             {
 

@@ -9,10 +9,12 @@ namespace DBTilerElement
 {
     public class DB_EventName: EventName
     {
-        public DB_EventName(string name, string id)
+        public DB_EventName(TilerUser tilerUser, TilerEvent tilerEvent, string name, string id)
         {
             _Name = name;
             _Id = id;
+            this._Creator = tilerUser;
+            this._Event = tilerEvent;
         }
 
         public DB_EventName()
@@ -30,7 +32,7 @@ namespace DBTilerElement
             }
         }
 
-        virtual public string Name
+        override public string Name
         {
             get
             {

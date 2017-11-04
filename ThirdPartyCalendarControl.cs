@@ -64,9 +64,8 @@ namespace DBTilerElement
             this._DeletedCount = 1;
             this._CompletedCount = 1;
             this._Creator = user;
-            this._Users = new TilerUserGroup();
             this._EventRepetition = new Repetition(true, this.RangeTimeLine, "Daily", AllCalendarEvent.ToArray());
-            this._Name = new EventName( "GOOGLE MOTHER EVENT");
+            this._Name = new EventName(user, this, "GOOGLE MOTHER EVENT");
             this._ProfileOfNow = new NowProfile();
         }
     }

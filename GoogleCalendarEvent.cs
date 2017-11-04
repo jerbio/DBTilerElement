@@ -13,7 +13,8 @@ namespace DBTilerElement
         {
             DateTimeOffset Start = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalStartDate);
             DateTimeOffset End = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalEndDate);
-            this._Name = new EventName( SubCalData.SubCalCalendarName!=null?SubCalData.SubCalCalendarName:"");
+            _Creator = new GoogleTilerUser(SubCalData.ThirdPartyUserID);
+            this._Name = new EventName( this.Creator_EventDB, null, SubCalData.SubCalCalendarName!=null?SubCalData.SubCalCalendarName:"");
             StartDateTime = Start;
             EndDateTime = End;
             _Splits = 1;
@@ -29,7 +30,6 @@ namespace DBTilerElement
             _ThirdPartyFlag = true;
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
             _otherPartyID = SubCalData.ThirdPartyEventID;
-            _Creator = new GoogleTilerUser(SubCalData.ThirdPartyUserID);
             _Users = new TilerUserGroup();
             
             SubCalendarEvent mySubCal = GoogleSubCalendarEvent.convertFromGoogleToSubCalendarEvent( SubCalData);//.convertFromGoogleToSubCalendarEvent();

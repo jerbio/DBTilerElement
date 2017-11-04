@@ -9,7 +9,44 @@ namespace DBTilerElement
 {
     public class DB_SubCalendarEvent:SubCalendarEvent
     {
-        public DB_SubCalendarEvent(SubCalendarEvent mySubCalEvent, NowProfile NowProfileData, Procrastination ProcrastinationData)
+        public DB_SubCalendarEvent(CalendarEvent calendarEvent, TilerUser Creator, TilerUserGroup users, string timeZone, string MySubEventID, EventName name, BusyTimeLine MyBusylot, DateTimeOffset EventStart, DateTimeOffset EventDeadline, TimeSpan EventPrepTime, string myParentID, bool Rigid, bool Enabled, EventDisplay UiParam, MiscData Notes, bool completeFlag, TilerElements.Location EventLocation = null, TimeLine calendarEventRange = null, ConflictProfile conflicts = null)
+        {
+            if (EventDeadline < EventStart)
+            {
+                throw new Exception("SubCalendar Event cannot have an end time earlier than the start time");
+            }
+            _TimeZone = timeZone;
+            _Name = name;
+            _Creator = Creator;
+            _Users = users;
+            if (conflicts == null)
+            {
+                conflicts = new ConflictProfile();
+            }
+            ConflictingEvents = conflicts;
+            CalendarEventRange = calendarEventRange;
+            //string eventName, TimeSpan EventDuration, DateTimeOffset EventStart, DateTimeOffset EventDeadline, TimeSpan EventPrepTime, TimeSpan PreDeadline, bool EventRigidFlag, bool EventRepetition, int EventSplit
+            StartDateTime = EventStart;
+            EndDateTime = EventDeadline;
+            _EventDuration = MyBusylot.End - MyBusylot.Start;
+            BusyFrame = MyBusylot;
+            _PrepTime = EventPrepTime;
+            UniqueID = new EventID(MySubEventID);
+            this._LocationInfo = EventLocation;
+
+            _UiParams = UiParam;
+            _DataBlob = Notes;
+            _Complete = completeFlag;
+
+            this._Enabled = Enabled;
+            //EventSequence = new EventTimeLine(UniqueID.ToString(), StartDateTime, EndDateTime);
+            RigidSchedule = Rigid;
+            _LastReasonStartTimeChanged = this.Start;
+            _calendarEvent = calendarEvent;
+        }
+
+
+        public DB_SubCalendarEvent(SubCalendarEvent mySubCalEvent, NowProfile NowProfileData, Procrastination ProcrastinationData, CalendarEvent calendarEvent)
         {
             this.BusyFrame = mySubCalEvent.ActiveSlot;
             this.CalendarEventRange = mySubCalEvent.getCalendarEventRange;
@@ -42,6 +79,7 @@ namespace DBTilerElement
             this._Creator = mySubCalEvent.getCreator;
             this._Users = mySubCalEvent.getAllUsers();
             this._TimeZone = mySubCalEvent.getTimeZone;
+            this._calendarEvent = calendarEvent;
         }
 
         public TimeSpan UseTime
