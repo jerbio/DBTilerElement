@@ -6,13 +6,13 @@ using TilerElements;
 
 namespace TilerFront
 {
-    public class DB_CalendarEventExtra : CalendarEvent
+    public class DB_CalendarEvent : CalendarEvent
     {
-        public DB_CalendarEventExtra() : base()
+        public DB_CalendarEvent() : base()
         {
 
         }
-        public DB_CalendarEventExtra(CalendarEvent CalendarEventData, Procrastination procrastinationData, NowProfile NowProfileData)
+        public DB_CalendarEvent(CalendarEvent CalendarEventData, Procrastination procrastinationData, NowProfile NowProfileData)
         {
             this._EventDuration = CalendarEventData.getActiveDuration;
             this._Name = CalendarEventData.getName;

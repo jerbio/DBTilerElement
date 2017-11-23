@@ -47,8 +47,8 @@ namespace DBTilerElement
                 }
             }
 
-            retValue.SubCalEventLong = SubCalendarEventEntry.Location.YCoordinate;
-            retValue.SubCalEventLat = SubCalendarEventEntry.Location.XCoordinate;
+            retValue.SubCalEventLong = SubCalendarEventEntry.Location.Longitude;
+            retValue.SubCalEventLat = SubCalendarEventEntry.Location.Latitude;
             retValue.RColor = SubCalendarEventEntry.getUIParam.UIColor.R;
             retValue.GColor = SubCalendarEventEntry.getUIParam.UIColor.G;
             retValue.BColor = SubCalendarEventEntry.getUIParam.UIColor.B;
@@ -82,8 +82,8 @@ namespace DBTilerElement
             retValue.Rigid = CalendarEventEntry.getRigid;
             retValue.AddressDescription = CalendarEventEntry.Location.Description;
             retValue.Address = CalendarEventEntry.Location.Address;
-            retValue.Longitude = CalendarEventEntry.Location.YCoordinate;
-            retValue.Latitude = CalendarEventEntry.Location.XCoordinate;
+            retValue.Longitude = CalendarEventEntry.Location.Longitude;
+            retValue.Latitude = CalendarEventEntry.Location.Latitude;
             retValue.NumberOfSubEvents = CalendarEventEntry.AllSubEvents.Count();// CalendarEventEntry.NumberOfSplit;// AllSubEvents.Count();
             retValue.RColor = CalendarEventEntry.getUIParam.UIColor.R;
             retValue.GColor = CalendarEventEntry.getUIParam.UIColor.G;
@@ -126,8 +126,8 @@ namespace DBTilerElement
             retValue.Rigid = CalendarEventEntry.getRigid;
             retValue.AddressDescription = CalendarEventEntry.Location.Description;
             retValue.Address = CalendarEventEntry.Location.Address;
-            retValue.Longitude = CalendarEventEntry.Location.YCoordinate;
-            retValue.Latitude = CalendarEventEntry.Location.XCoordinate;
+            retValue.Longitude = CalendarEventEntry.Location.Longitude;
+            retValue.Latitude = CalendarEventEntry.Location.Latitude;
             retValue.NumberOfSubEvents = CalendarEventEntry.AllSubEvents.Count();// CalendarEventEntry.NumberOfSplit;// AllSubEvents.Count();
             retValue.RColor = CalendarEventEntry.getUIParam.UIColor.R;
             retValue.GColor = CalendarEventEntry.getUIParam.UIColor.G;
@@ -160,8 +160,8 @@ namespace DBTilerElement
             Location retValue = new Location();
             retValue.Address = LocationEntry.Address;
             retValue.Tag = LocationEntry.Description;
-            retValue.Long = LocationEntry.YCoordinate;
-            retValue.Lat = LocationEntry.XCoordinate;
+            retValue.Long = LocationEntry.Longitude;
+            retValue.Lat = LocationEntry.Latitude;
             retValue.isNull = LocationEntry.isNull;
             return retValue;
         }
