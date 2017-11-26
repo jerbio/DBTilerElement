@@ -84,7 +84,7 @@ namespace DBTilerElement
             retValue.Address = CalendarEventEntry.myLocation.Address;
             retValue.Longitude = CalendarEventEntry.myLocation.YCoordinate;
             retValue.Latitude = CalendarEventEntry.myLocation.XCoordinate;
-            retValue.NumberOfSubEvents = CalendarEventEntry.AllSubEvents.Count();// CalendarEventEntry.NumberOfSplit;// AllSubEvents.Count();
+            retValue.NumberOfSubEvents = CalendarEventEntry.NumberOfSplit;
             retValue.RColor = CalendarEventEntry.getUIParam.UIColor.R;
             retValue.GColor = CalendarEventEntry.getUIParam.UIColor.G;
             retValue.BColor = CalendarEventEntry.getUIParam.UIColor.B;
