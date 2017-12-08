@@ -25,14 +25,14 @@ namespace DBTilerElement
             Enabled = true;
             Complete = false;
             EventDuration = End - Start;
-            LocationInfo = new TilerElements.Location();
+            LocationInfo = String.IsNullOrEmpty(SubCalData.SubCalAddressDescription) ? new TilerElements.Location() : new TilerElements.Location(SubCalData.SubCalAddressDescription);
             ThirdPartyFlag = true;
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
             otherPartyID = SubCalData.ThirdPartyEventID;
             _Creator = new GoogleTilerUser(SubCalData.ThirdPartyUserID);
             _Users = new TilerUserGroup();
             
-            SubCalendarEvent mySubCal = GoogleSubCalendarEvent.convertFromGoogleToSubCalendarEvent( SubCalData);//.convertFromGoogleToSubCalendarEvent();
+            SubCalendarEvent mySubCal = GoogleSubCalendarEvent.convertFromGoogleToSubCalendarEvent( SubCalData, LocationInfo);//.convertFromGoogleToSubCalendarEvent();
             SubEvents = new Dictionary<EventID, SubCalendarEvent>() { { mySubCal.SubEvent_ID, mySubCal } };
         }
 

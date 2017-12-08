@@ -31,7 +31,7 @@ namespace DBTilerElement
             this.DataBlob = CalendarEventData.Notes;
             this.Enabled = CalendarEventData.isEnabled;
             //this.isRestricted = CalendarEventData.isEventRestricted;
-            this.LocationInfo= CalendarEventData.myLocation;//hack you might need to make copy
+            this.LocationInfo= CalendarEventData.Location;//hack you might need to make copy
             this.ProfileOfProcrastination = CalendarEventData.getProcrastinationInfo;
             this.DeadlineElapsed = CalendarEventData.getIsDeadlineElapsed;
             this.UserDeleted = CalendarEventData.getIsUserDeleted;
