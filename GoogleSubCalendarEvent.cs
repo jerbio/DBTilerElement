@@ -9,7 +9,7 @@ namespace DBTilerElement
 {
     public class GoogleSubCalendarEvent : SubCalendarEvent
     {
-        public GoogleSubCalendarEvent(SubCalEvent SubCalData)
+        public GoogleSubCalendarEvent(SubCalEvent SubCalData, TilerElements.Location location = null)
         {
             DateTimeOffset Start = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalStartDate);
             DateTimeOffset End = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalEndDate);
@@ -38,9 +38,13 @@ namespace DBTilerElement
             _otherPartyID = SubCalData.ThirdPartyEventID;
         }
 
-        static public SubCalendarEvent convertFromGoogleToSubCalendarEvent(SubCalEvent SubCalEventData)
+        static public SubCalendarEvent convertFromGoogleToSubCalendarEvent(SubCalEvent SubCalEventData, TilerElements.Location location = null)
         {
-            SubCalendarEvent RetValue = new GoogleSubCalendarEvent(SubCalEventData);
+            if (location == null && !String.IsNullOrEmpty(SubCalEventData.SubCalAddress))
+            {
+                location = new TilerElements.Location(SubCalEventData.SubCalAddress);
+            }
+            SubCalendarEvent RetValue = new GoogleSubCalendarEvent(SubCalEventData, location);
             return RetValue;
         }
     }

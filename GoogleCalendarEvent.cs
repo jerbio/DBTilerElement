@@ -21,18 +21,20 @@ namespace DBTilerElement
             RigidSchedule = true;
             UniqueID = new EventID(new EventID(SubCalData.ID).getRepeatCalendarEventID());
             RigidSchedule = true;
+
             _EventPreDeadline = new TimeSpan();
             _Priority = SubCalData.Priority;
             _Enabled = true;
             _Complete = false;
             _EventDuration = End - Start;
-            _LocationInfo = new TilerElements.Location();
+            _LocationInfo = String.IsNullOrEmpty(SubCalData.SubCalAddressDescription) ? new TilerElements.Location() : new TilerElements.Location(SubCalData.SubCalAddressDescription);
             _ThirdPartyFlag = true;
+
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
             _otherPartyID = SubCalData.ThirdPartyEventID;
             _Users = new TilerUserGroup();
             
-            SubCalendarEvent mySubCal = GoogleSubCalendarEvent.convertFromGoogleToSubCalendarEvent( SubCalData);//.convertFromGoogleToSubCalendarEvent();
+            SubCalendarEvent mySubCal = GoogleSubCalendarEvent.convertFromGoogleToSubCalendarEvent( SubCalData, _LocationInfo);//.convertFromGoogleToSubCalendarEvent();
             SubEvents = new Dictionary<EventID, SubCalendarEvent>() { { mySubCal.SubEvent_ID, mySubCal } };
         }
 
