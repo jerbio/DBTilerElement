@@ -31,7 +31,7 @@ namespace DBTilerElement
             this.Priority = mySubCalEvent.getEventPriority;
             this.ProfileOfNow = NowProfileData;
             this.ProfileOfProcrastination = ProcrastinationData;
-            this.RigidSchedule = mySubCalEvent.getRigid;
+            this.RigidSchedule = mySubCalEvent.isLocked;
             this.StartDateTime = mySubCalEvent.Start;
             this.UiParams = mySubCalEvent.getUIParam;
             this.UniqueID = mySubCalEvent.SubEvent_ID;

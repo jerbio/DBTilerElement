@@ -42,7 +42,7 @@ namespace DBTilerElement
             //this.NonHumaneTimeLine = mySubCalEvent.NonHumaneTimeLine.CreateCopy();
             this.PrepTime = mySubCalEvent.getPreparation;
             this.Priority = mySubCalEvent.getEventPriority;
-            this.RigidSchedule = mySubCalEvent.getRigid;
+            this.RigidSchedule = mySubCalEvent.isLocked;
 
             this.UiParams = mySubCalEvent.getUIParam;
             this.UniqueID = mySubCalEvent.SubEvent_ID;

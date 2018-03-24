@@ -26,14 +26,14 @@ namespace DBTilerElement
             retValue.SubCalStartDate = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.SubCalEndDate = (long)(SubCalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.SubCalTotalDuration = SubCalendarEventEntry.getActiveDuration;
-            retValue.SubCalRigid = SubCalendarEventEntry.getRigid;
+            retValue.SubCalRigid = SubCalendarEventEntry.isRigid;
             retValue.SubCalAddressDescription = SubCalendarEventEntry.Location.Description;
             retValue.SubCalAddress = SubCalendarEventEntry.Location.Address;
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
 
             if (CalendarEventEntry != null)
             {
-                retValue.CalRigid = CalendarEventEntry.getRigid;
+                retValue.CalRigid = CalendarEventEntry.isLocked;
                 retValue.SubCalCalendarName = CalendarEventEntry.getName.NameValue;
                 retValue.SubCalCalEventStart = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
                 retValue.SubCalCalEventEnd = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
@@ -66,9 +66,11 @@ namespace DBTilerElement
             retValue.Conflict = String.Join(",", SubCalendarEventEntry.Conflicts.getConflictingEventIDs());
             retValue.ColorSelection = SubCalendarEventEntry.getUIParam.UIColor.User;
             retValue.isPaused = SubCalendarEventEntry.isPaused;
-            retValue.isPauseAble = SubCalendarEventEntry.RangeTimeLine.IsDateTimeWithin(CurrentTime) && !SubCalendarEventEntry.getRigid;
+            retValue.isPauseAble = SubCalendarEventEntry.RangeTimeLine.IsDateTimeWithin(CurrentTime) && !SubCalendarEventEntry.isLocked;
             retValue.PauseStart = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.PauseEnd = (long)(SubCalendarEventEntry.End - JSStartTime).TotalMilliseconds;
+            retValue.IsLocked = SubCalendarEventEntry.isLocked;
+            retValue.UserLocked = SubCalendarEventEntry.userLocked;
             return retValue;
         }
 
@@ -83,7 +85,7 @@ namespace DBTilerElement
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.TotalDuration = CalendarEventEntry.getActiveDuration;
-            retValue.Rigid = CalendarEventEntry.getRigid;
+            retValue.Rigid = CalendarEventEntry.isRigid;
             retValue.AddressDescription = CalendarEventEntry.Location.Description;
             retValue.Address = CalendarEventEntry.Location.Address;
             retValue.Longitude = CalendarEventEntry.Location.YCoordinate;
@@ -112,7 +114,8 @@ namespace DBTilerElement
             {
                 retValue.AllSubCalEvents = CalendarEventEntry.ActiveSubEvents.Select(obj => obj.ToSubCalEvent(CalendarEventEntry)).ToList();
             }
-
+            retValue.IsLocked = CalendarEventEntry.isLocked;
+            retValue.UserLocked = CalendarEventEntry.userLocked;
             return retValue;
         }
 
@@ -128,7 +131,7 @@ namespace DBTilerElement
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.TotalDuration = CalendarEventEntry.getActiveDuration;
-            retValue.Rigid = CalendarEventEntry.getRigid;
+            retValue.Rigid = CalendarEventEntry.isLocked;
             retValue.AddressDescription = CalendarEventEntry.Location.Description;
             retValue.Address = CalendarEventEntry.Location.Address;
             retValue.Longitude = CalendarEventEntry.Location.YCoordinate;

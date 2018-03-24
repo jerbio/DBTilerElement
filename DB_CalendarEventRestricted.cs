@@ -21,7 +21,7 @@ namespace DBTilerElement
             //this.RepetitionFlag = CalendarEventData.RepetitionStatus;
             this.EventRepetition = (CalendarEventData).Repeat;// EventRepetition != CalendarEventData.null ? EventRepetition.CreateCopy() : EventRepetition;
             this.Complete = CalendarEventData.getIsComplete;
-            this.RigidSchedule = CalendarEventData.getRigid;//hack
+            this.RigidSchedule = CalendarEventData.isLocked;//hack
             this.Splits = CalendarEventData.NumberOfSplit;
             this._AverageTimePerSplit= CalendarEventData.AverageTimeSpanPerSubEvent;
             this.UniqueID = CalendarEventData.Calendar_EventID;//hack
