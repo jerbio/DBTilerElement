@@ -35,7 +35,8 @@ namespace DBTilerElement
             _Users = new TilerUserGroup();
             
             SubCalendarEvent mySubCal = GoogleSubCalendarEvent.convertFromGoogleToSubCalendarEvent( SubCalData, _LocationInfo);//.convertFromGoogleToSubCalendarEvent();
-            SubEvents = new Dictionary<EventID, SubCalendarEvent>() { { mySubCal.SubEvent_ID, mySubCal } };
+            SubEvents = new SubEventDictionary();
+            SubEvents.getData.Add(mySubCal.SubEvent_ID, mySubCal);
         }
 
 
