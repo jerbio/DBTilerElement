@@ -8,7 +8,7 @@ namespace TilerFront
 {
     public class DB_CalendarEvent : CalendarEvent
     {
-        public DB_CalendarEvent() : base()
+        protected DB_CalendarEvent() : base()
         {
 
         }
@@ -42,7 +42,7 @@ namespace TilerFront
             this._ProfileOfProcrastination = procrastinationData;
             this._ProfileOfNow = NowProfileData;
             //this.SubEvents = ((DB_CalendarEventRestricted)CalendarEventData).getSubEvents();
-            if (!this._EventRepetition.Enable)
+            if (!this._EventRepetition.EnableRepeat)
             {
                 foreach (SubCalendarEvent eachSubCalendarEvent in CalendarEventData.AllSubEvents)
                 {

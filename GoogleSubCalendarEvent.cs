@@ -14,11 +14,11 @@ namespace DBTilerElement
             DateTimeOffset Start = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalStartDate);
             DateTimeOffset End = (new DateTimeOffset()).Add(TilerElementExtension.StartOfTimeTimeSpan).AddMilliseconds(SubCalData.SubCalEndDate);
             _Creator = new GoogleTilerUser(SubCalData.ThirdPartyUserID);
-            this._Name = new EventName(_Creator, this.calendarEvent, SubCalData.SubCalCalendarName != null ? SubCalData.SubCalCalendarName : "");
+            this._Name = new EventName(_Creator, this.ParentCalendarEvent, SubCalData.SubCalCalendarName != null ? SubCalData.SubCalCalendarName : "");
             StartDateTime = Start;
             EndDateTime = End;
             BusyFrame = new BusyTimeLine(SubCalData.ID, Start, End);
-            CalendarEventRange = new TimeLine(Start, End);
+            _CalendarEventRange = new TimeLine(Start, End);
             UniqueID = new EventID(SubCalData.ID);
             RigidSchedule = true;
             _EventPreDeadline = new TimeSpan();

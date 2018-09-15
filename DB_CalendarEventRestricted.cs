@@ -40,7 +40,7 @@ namespace DBTilerElement
             this.isRestricted = true;
             //this.SubEvents = ((DB_CalendarEventRestricted)CalendarEventData).getSubEvents();
 
-            if (!this._EventRepetition.Enable)
+            if (!this._EventRepetition.EnableRepeat)
             {
                 foreach (SubCalendarEventRestricted eachSubCalendarEvent in CalendarEventData.AllSubEvents)
                 {

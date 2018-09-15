@@ -24,7 +24,7 @@ namespace DBTilerElement
                 conflicts = new ConflictProfile();
             }
             ConflictingEvents = conflicts;
-            CalendarEventRange = calendarEventRange;
+            _CalendarEventRange = calendarEventRange;
             //string eventName, TimeSpan EventDuration, DateTimeOffset EventStart, DateTimeOffset EventDeadline, TimeSpan EventPrepTime, TimeSpan PreDeadline, bool EventRigidFlag, bool EventRepetition, int EventSplit
             StartDateTime = EventStart;
             EndDateTime = EventDeadline;
@@ -49,7 +49,7 @@ namespace DBTilerElement
         public DB_SubCalendarEvent(SubCalendarEvent mySubCalEvent, NowProfile NowProfileData, Procrastination ProcrastinationData, CalendarEvent calendarEvent)
         {
             this.BusyFrame = mySubCalEvent.ActiveSlot;
-            this.CalendarEventRange = mySubCalEvent.getCalendarEventRange;
+            this._CalendarEventRange = mySubCalEvent.getCalendarEventRange;
             this._Name = mySubCalEvent.getName;
             this._EventDuration = mySubCalEvent.getActiveDuration;
             this._Complete = mySubCalEvent.getIsComplete;
