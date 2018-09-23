@@ -29,7 +29,7 @@ namespace TilerFront
             this._AverageTimePerSplit = CalendarEventData.AverageTimeSpanPerSubEvent;
             this.UniqueID = CalendarEventData.Calendar_EventID;//hack
             //this.EventSequence = CalendarEventData.EventSequence;
-            this.SubEvents = new SubEventDictionary();
+            this.SubEvents = new SubEventDictionary<string, SubCalendarEvent>();
             this._UiParams = CalendarEventData.getUIParam;
             this._DataBlob = CalendarEventData.Notes;
             this._Enabled = CalendarEventData.isEnabled;
@@ -46,7 +46,7 @@ namespace TilerFront
             {
                 foreach (SubCalendarEvent eachSubCalendarEvent in CalendarEventData.AllSubEvents)
                 {
-                    this.SubEvents.Add(eachSubCalendarEvent.SubEvent_ID, eachSubCalendarEvent);
+                    this.SubEvents.Add(eachSubCalendarEvent.Id, eachSubCalendarEvent);
                 }
             }
 
