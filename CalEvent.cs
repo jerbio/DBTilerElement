@@ -14,6 +14,8 @@ namespace DBTilerElement
         public long EndDate { get; set; }
         public TimeSpan TotalDuration { get; set; }
         public bool Rigid { get; set; }
+        public bool IsLocked { get; set; }
+        public bool UserLocked { get; set; }
         public string AddressDescription { get; set; }
         public string Address { get; set; }
         public double Latitude { get; set; }
@@ -32,7 +34,6 @@ namespace DBTilerElement
         public string ThirdPartyUserID { get; set; }
         public string ThirdPartyType { get; set; }
         public string Notes { get; set; }
-
         public static CalendarEvent FromGoogleToRepatCalendarEvent(IEnumerable<SubCalendarEvent> AllSubCalEvents, TimeLine LimitsOfCalculation = null)
         {
             CalendarEvent RetValue = null;

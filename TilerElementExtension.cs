@@ -68,6 +68,8 @@ namespace DBTilerElement
             retValue.isPauseAble = SubCalendarEventEntry.RangeTimeLine.IsDateTimeWithin(CurrentTime) && !SubCalendarEventEntry.isRigid;
             retValue.PauseStart = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.PauseEnd = (long)(SubCalendarEventEntry.End - JSStartTime).TotalMilliseconds;
+            retValue.IsLocked = SubCalendarEventEntry.isLocked;
+            retValue.UserLocked = SubCalendarEventEntry.userLocked;
             return retValue;
         }
 
@@ -111,7 +113,8 @@ namespace DBTilerElement
             {
                 retValue.AllSubCalEvents = CalendarEventEntry.ActiveSubEvents.Select(obj => obj.ToSubCalEvent(CalendarEventEntry)).ToList();
             }
-
+            retValue.IsLocked = CalendarEventEntry.isLocked;
+            retValue.UserLocked = CalendarEventEntry.userLocked;
             return retValue;
         }
 

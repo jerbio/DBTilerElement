@@ -16,6 +16,8 @@ namespace DBTilerElement
         public TimeSpan SubCalTotalDuration { get; set; }
         public bool CalRigid { get; set; }
         public bool SubCalRigid { get; set; }
+        public bool IsLocked { get; set; }
+        public bool UserLocked { get; set; }
         public string SubCalAddressDescription { get; set; }
         public string SubCalAddress { get; set; }
         public long SubCalCalEventStart { get; set; }
