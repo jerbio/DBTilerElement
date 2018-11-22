@@ -8,7 +8,7 @@ namespace DBTilerElement
 {
     public class DB_SubCalendarEventRestricted:SubCalendarEventRestricted
     {
-        public DB_SubCalendarEventRestricted(SubCalendarEvent mySubCalEvent, DB_RestrictionProfile restrictionData)
+        public DB_SubCalendarEventRestricted(SubCalendarEvent mySubCalEvent, DB_RestrictionProfile restrictionData, ReferenceNow now)
         {
             this.BusyFrame = mySubCalEvent.ActiveSlot;
             this.HardCalendarEventRange =mySubCalEvent.getCalendarEventRange;
@@ -51,6 +51,7 @@ namespace DBTilerElement
             this._Creator = mySubCalEvent.getCreator;
             this._Users = mySubCalEvent.getAllUsers();
             this._TimeZone = mySubCalEvent.getTimeZone;
+            this._Now = now;
             initializeCalendarEventRange(restrictionData, this.HardCalendarEventRange);
         }
 

@@ -8,7 +8,7 @@ namespace DBTilerElement
 {
     public class DB_CalendarEventRestricted : CalendarEventRestricted
     {
-        public DB_CalendarEventRestricted(CalendarEvent CalendarEventData, RestrictionProfile restrictionData)
+        public DB_CalendarEventRestricted(CalendarEvent CalendarEventData, RestrictionProfile restrictionData, ReferenceNow now)
         {
             //CalendarEventRestricted MyCalendarEventCopy = CalendarEventData.new CalendarEventRestricted();
             this._EventDuration = CalendarEventData.getActiveDuration;
@@ -39,6 +39,7 @@ namespace DBTilerElement
             this.ProfileOfRestriction = restrictionData;
             this.isRestricted = true;
             //this.SubEvents = ((DB_CalendarEventRestricted)CalendarEventData).getSubEvents();
+            this._Now = now;
 
             if (!this._EventRepetition.EnableRepeat)
             {
