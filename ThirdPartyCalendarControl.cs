@@ -67,6 +67,7 @@ namespace DBTilerElement
             this._EventRepetition = new Repetition(true, this.RangeTimeLine, "Daily", AllCalendarEvent.ToArray());
             this._Name = new EventName(user, this, "GOOGLE MOTHER EVENT");
             this._ProfileOfNow = new NowProfile();
+            SubEvents = new SubEventDictionary<string, SubCalendarEvent>();
         }
     }
 }

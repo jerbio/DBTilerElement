@@ -12,7 +12,7 @@ namespace DBTilerElement
         {
             this.BusyFrame = mySubCalEvent.ActiveSlot;
             this.HardCalendarEventRange =mySubCalEvent.getCalendarEventRange;
-            this.ProfileOfRestriction = restrictionData;
+            this._ProfileOfRestriction = restrictionData;
             this.OldPreferredIndex = mySubCalEvent.UniversalDayIndex;
             this._otherPartyID = mySubCalEvent.ThirdPartyID;
             this.StartDateTime = mySubCalEvent.Start;

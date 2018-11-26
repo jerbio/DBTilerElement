@@ -36,7 +36,7 @@ namespace DBTilerElement
             this._UserDeleted = CalendarEventData.getIsUserDeleted;
             this._CompletedCount = CalendarEventData.CompletionCount;
             this._DeletedCount = CalendarEventData.DeletionCount;
-            this.ProfileOfRestriction = restrictionData;
+            this._ProfileOfRestriction = restrictionData;
             this.isRestricted = true;
             //this.SubEvents = ((DB_CalendarEventRestricted)CalendarEventData).getSubEvents();
             this._Now = now;

@@ -13,13 +13,13 @@ namespace DBTilerElement
             this.DaySelection = new RestrictionDay[7];
             foreach (RestrictionDay eachTuple in RestrictionTimeLineData)
             {
-                DayOfWeek weekDay = TilerElements.Utility.ParseEnum<DayOfWeek>(eachTuple.DayOfWeek);
+                DayOfWeek weekDay = TilerElements.Utility.ParseEnum<DayOfWeek>(eachTuple.DayOfWeekString);
                 int index = (int)weekDay;
                 RestrictionDay[] recasted = (RestrictionDay[])DaySelection;
                 recasted[index] = eachTuple;
             }
 
-            this.NoNull_DaySelections = RestrictionTimeLineData.OrderBy(obj => obj.DayOfWeek).ToArray();
+            this.NoNull_DaySelections = RestrictionTimeLineData.OrderBy(obj => obj.DayOfWeekString).ToArray();
             InitializeOverLappingDictionary();
         }
     }

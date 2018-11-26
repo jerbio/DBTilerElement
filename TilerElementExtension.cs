@@ -52,10 +52,13 @@ namespace DBTilerElement
             retValue.SubCalEventLong = SubCalendarEventEntry.Location.Longitude;
             retValue.SubCalEventLat = SubCalendarEventEntry.Location.Latitude;
             retValue.SubCalCalendarName = SubCalendarEventEntry.getName.NameValue;
-            retValue.RColor = SubCalendarEventEntry.getUIParam.UIColor.R;
-            retValue.GColor = SubCalendarEventEntry.getUIParam.UIColor.G;
-            retValue.BColor = SubCalendarEventEntry.getUIParam.UIColor.B;
-            retValue.OColor = SubCalendarEventEntry.getUIParam.UIColor.O;
+            if(SubCalendarEventEntry.getUIParam!= null) { 
+                retValue.RColor = SubCalendarEventEntry.getUIParam.UIColor.R;
+                retValue.GColor = SubCalendarEventEntry.getUIParam.UIColor.G;
+                retValue.BColor = SubCalendarEventEntry.getUIParam.UIColor.B;
+                retValue.OColor = SubCalendarEventEntry.getUIParam.UIColor.O;
+                retValue.ColorSelection = SubCalendarEventEntry.getUIParam.UIColor.User;
+            }
             retValue.isComplete = SubCalendarEventEntry.getIsComplete;
             retValue.isEnabled = SubCalendarEventEntry.isEnabled;
             retValue.Duration = (long)SubCalendarEventEntry.getActiveDuration.TotalMilliseconds;
@@ -63,7 +66,6 @@ namespace DBTilerElement
             retValue.EventPreDeadline = (long)SubCalendarEventEntry.getPreDeadline.TotalMilliseconds;
             retValue.Priority = SubCalendarEventEntry.getEventPriority;
             retValue.Conflict = String.Join(",", SubCalendarEventEntry.Conflicts.getConflictingEventIDs());
-            retValue.ColorSelection = SubCalendarEventEntry.getUIParam.UIColor.User;
             retValue.isPaused = SubCalendarEventEntry.isPaused;
             retValue.isPauseAble = SubCalendarEventEntry.RangeTimeLine.IsDateTimeWithin(CurrentTime) && !SubCalendarEventEntry.isRigid;
             retValue.PauseStart = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
