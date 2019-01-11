@@ -23,7 +23,7 @@ namespace DBTilerElement
             this._Complete = isCompleted;
             this._ProfileOfNow = new NowProfile();
             this._ProfileOfProcrastination = new Procrastination(new DateTimeOffset(), new TimeSpan());
-            isProcrastinateEvent = true;
+            _isProcrastinateEvent = true;
         }
 
         public TimeSpan UseTime
