@@ -75,7 +75,7 @@ namespace DBTilerElement
             return retValue;
         }
 
-        public static CalEvent ToCalEvent(this TilerElements.CalendarEvent CalendarEventEntry, TilerElements.TimeLine Range = null)
+        public static CalEvent ToCalEvent(this TilerElements.CalendarEvent CalendarEventEntry, TilerElements.TimeLine Range = null, bool includeSubevents = true)
         {
             DateTimeOffset CurrentTime = DateTimeOffset.UtcNow;
             CalEvent retValue = new CalEvent();
@@ -91,7 +91,7 @@ namespace DBTilerElement
             retValue.Address = CalendarEventEntry.Location.Address;
             retValue.Longitude = CalendarEventEntry.Location.Longitude;
             retValue.Latitude = CalendarEventEntry.Location.Latitude;
-            retValue.NumberOfSubEvents = CalendarEventEntry.AllSubEvents.Count();
+            retValue.NumberOfSubEvents = CalendarEventEntry.NumberOfSplit;
             retValue.RColor = CalendarEventEntry.getUIParam.UIColor.R;
             retValue.GColor = CalendarEventEntry.getUIParam.UIColor.G;
             retValue.BColor = CalendarEventEntry.getUIParam.UIColor.B;
@@ -107,13 +107,16 @@ namespace DBTilerElement
             long TickTier2 = (long)(FreeTimeLeft.Ticks * (.865));
             long TickTier3 = (long)(FreeTimeLeft.Ticks * (1));
             retValue.Tiers = new long[] { TickTier1, TickTier2, TickTier3 };
-            if (Range != null)
+            if (includeSubevents)
             {
-                retValue.AllSubCalEvents = CalendarEventEntry.ActiveSubEvents.Where(obj => obj.RangeTimeLine.InterferringTimeLine(Range) != null).Select(obj => obj.ToSubCalEvent(CalendarEventEntry)).ToList();
-            }
-            else
-            {
-                retValue.AllSubCalEvents = CalendarEventEntry.ActiveSubEvents.Select(obj => obj.ToSubCalEvent(CalendarEventEntry)).ToList();
+                if (Range != null)
+                {
+                    retValue.AllSubCalEvents = CalendarEventEntry.ActiveSubEvents.Where(obj => obj.RangeTimeLine.InterferringTimeLine(Range) != null).Select(obj => obj.ToSubCalEvent(CalendarEventEntry)).ToList();
+                }
+                else
+                {
+                    retValue.AllSubCalEvents = CalendarEventEntry.ActiveSubEvents.Select(obj => obj.ToSubCalEvent(CalendarEventEntry)).ToList();
+                }
             }
             retValue.IsLocked = CalendarEventEntry.isLocked;
             retValue.UserLocked = CalendarEventEntry.userLocked;
