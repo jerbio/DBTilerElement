@@ -52,7 +52,7 @@ namespace DBTilerElement
             retValue.SubCalEventLong = SubCalendarEventEntry.Location.Longitude;
             retValue.SubCalEventLat = SubCalendarEventEntry.Location.Latitude;
             retValue.SubCalCalendarName = SubCalendarEventEntry.getName.NameValue;
-            if(SubCalendarEventEntry.getUIParam!= null) { 
+            if(SubCalendarEventEntry.getUIParam!= null && SubCalendarEventEntry.getUIParam.UIColor != null) { 
                 retValue.RColor = SubCalendarEventEntry.getUIParam.UIColor.R;
                 retValue.GColor = SubCalendarEventEntry.getUIParam.UIColor.G;
                 retValue.BColor = SubCalendarEventEntry.getUIParam.UIColor.B;
@@ -92,11 +92,15 @@ namespace DBTilerElement
             retValue.Longitude = CalendarEventEntry.Location.Longitude;
             retValue.Latitude = CalendarEventEntry.Location.Latitude;
             retValue.NumberOfSubEvents = CalendarEventEntry.NumberOfSplit;
-            retValue.RColor = CalendarEventEntry.getUIParam.UIColor.R;
-            retValue.GColor = CalendarEventEntry.getUIParam.UIColor.G;
-            retValue.BColor = CalendarEventEntry.getUIParam.UIColor.B;
-            retValue.OColor = CalendarEventEntry.getUIParam.UIColor.O;
-            retValue.ColorSelection = CalendarEventEntry.getUIParam.UIColor.User;
+            if(CalendarEventEntry.getUIParam!=null && CalendarEventEntry.getUIParam.UIColor!=null)
+            {
+                retValue.RColor = CalendarEventEntry.getUIParam.UIColor.R;
+                retValue.GColor = CalendarEventEntry.getUIParam.UIColor.G;
+                retValue.BColor = CalendarEventEntry.getUIParam.UIColor.B;
+                retValue.OColor = CalendarEventEntry.getUIParam.UIColor.O;
+                retValue.ColorSelection = CalendarEventEntry.getUIParam.UIColor.User;
+            }
+            
             retValue.NumberOfCompletedTasks = CalendarEventEntry.CompletionCount;
             retValue.NumberOfDeletedEvents = CalendarEventEntry.DeletionCount;
             retValue.OtherPartyID = CalendarEventEntry.ThirdPartyID;
