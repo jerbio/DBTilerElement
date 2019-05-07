@@ -24,6 +24,7 @@ namespace DBTilerElement
             this._ProfileOfNow = new NowProfile();
             this._ProfileOfProcrastination = new Procrastination(new DateTimeOffset(), new TimeSpan());
             _isProcrastinateEvent = true;
+            this._calendarEvent = calendarEvent;
         }
 
         public TimeSpan UseTime
