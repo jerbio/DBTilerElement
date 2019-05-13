@@ -46,6 +46,7 @@ namespace DBTilerElement
                 foreach (SubCalendarEventRestricted eachSubCalendarEvent in CalendarEventData.AllSubEvents)
                 {
                     this.SubEvents.Add(eachSubCalendarEvent.Id, eachSubCalendarEvent);
+                    eachSubCalendarEvent.ParentCalendarEvent = this;
                 }
             }
             this._otherPartyID = CalendarEventData.ThirdPartyID;// == CalendarEventData.null ? null : otherPartyID.ToString();
