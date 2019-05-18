@@ -53,6 +53,7 @@ namespace DBTilerElement
             this._Users = CalendarEventData.getAllUsers();
             this._Creator = CalendarEventData.getCreator;
             this._TimeZone = CalendarEventData.getTimeZone;
+            this._ProfileOfNow = CalendarEventData.getNowInfo;
             //return MyCalendarEventCopy;
         }
     }
