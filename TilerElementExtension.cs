@@ -37,7 +37,7 @@ namespace DBTilerElement
                 retValue.SubCalCalendarName = CalendarEventEntry.getName.NameValue;
                 retValue.SubCalCalEventStart = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
                 retValue.SubCalCalEventEnd = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
-                retValue.Notes = CalendarEventEntry.Notes.UserNote;
+                retValue.Notes = CalendarEventEntry?.Notes?.UserNote;
 
                 if (string.IsNullOrEmpty(CalendarEventEntry.ThirdPartyID))
                 {
@@ -104,7 +104,7 @@ namespace DBTilerElement
             retValue.NumberOfCompletedTasks = CalendarEventEntry.CompletionCount;
             retValue.NumberOfDeletedEvents = CalendarEventEntry.DeletionCount;
             retValue.OtherPartyID = CalendarEventEntry.ThirdPartyID;
-            retValue.Notes = CalendarEventEntry.Notes.UserNote;
+            retValue.Notes = CalendarEventEntry?.Notes?.UserNote;
 
             TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.getActiveDuration;
             long TickTier1 = (long)(FreeTimeLeft.Ticks * (.667));
