@@ -27,7 +27,7 @@ namespace DBTilerElement
             _Enabled = true;
             _Complete = false;
             _EventDuration = BusyFrame.TimelineSpan;
-            _LocationInfo = new TilerElements.Location();
+            _LocationInfo = location?? new TilerElements.Location();
             _ThirdPartyFlag = true;
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
             ThirdPartyUserIDInfo = SubCalData.ThirdPartyUserID;
@@ -40,7 +40,7 @@ namespace DBTilerElement
 
         static public SubCalendarEvent convertFromGoogleToSubCalendarEvent(SubCalEvent SubCalEventData, TilerElements.Location location = null)
         {
-            if (location == null && !String.IsNullOrEmpty(SubCalEventData.SubCalAddress))
+            if (location != null && !String.IsNullOrEmpty(SubCalEventData.SubCalAddress))
             {
                 location = new TilerElements.Location(SubCalEventData.SubCalAddress);
             }
