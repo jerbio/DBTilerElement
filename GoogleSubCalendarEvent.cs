@@ -31,6 +31,8 @@ namespace DBTilerElement
             _ThirdPartyFlag = true;
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
             ThirdPartyUserIDInfo = SubCalData.ThirdPartyUserID;
+            _DataBlob = new MiscData();
+            _ProfileOfNow = new NowProfile();
             _Users = new TilerUserGroup()
             {
 

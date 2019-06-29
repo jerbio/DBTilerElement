@@ -33,7 +33,8 @@ namespace DBTilerElement
             ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
             _otherPartyID = SubCalData.ThirdPartyEventID;
             _Users = new TilerUserGroup();
-            
+            _DataBlob = new MiscData();
+            _ProfileOfNow = new NowProfile();
             SubCalendarEvent mySubCal = GoogleSubCalendarEvent.convertFromGoogleToSubCalendarEvent( SubCalData, _LocationInfo);//.convertFromGoogleToSubCalendarEvent();
             SubEvents = new SubEventDictionary<string, SubCalendarEvent>();
             SubEvents.Collection.Add(mySubCal.Id, mySubCal);
