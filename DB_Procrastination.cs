@@ -12,6 +12,14 @@ namespace DBTilerElement
         {
             FromTime = FromTimeData;
             BeginTIme = BeginTimeData;
+            if (_FromTime == DateTime.MinValue)
+            {
+                _FromTime = Utility.JSStartTime;
+            }
+            if (BeginTIme == DateTime.MinValue)
+            {
+                BeginTIme = Utility.JSStartTime;
+            }
             SectionOfDay = DisLikedSection;
         }
     }
