@@ -55,5 +55,13 @@ namespace TilerFront
             this._Creator = CalendarEventData.getCreator;
             this._TimeZone = CalendarEventData.getTimeZone;
         }
+
+        public ThirdPartyControl.CalendarTool CalendarType
+        {
+            set
+            {
+                this.ThirdPartyTypeInfo = value;
+            }
+        }
     }
 }

@@ -32,6 +32,15 @@ namespace DBTilerElement
             throw new NotImplementedException();
         }
 
+        public override CalendarEvent getThirdpartyCalendarEvent()
+        {
+            if (ThirdpartyCalendarEventInfo==null)
+            {
+                ThirdpartyCalendarEventInfo = new GoogleCalendarEvent(IDToCalendarEvent.Values, _User);
+            }
+            return ThirdpartyCalendarEventInfo;
+        }
+
         public override TilerUser getUser()
         {
             return _User;
