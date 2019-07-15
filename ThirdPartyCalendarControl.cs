@@ -13,7 +13,7 @@ namespace DBTilerElement
     {
         protected ThirdPartyControl.CalendarTool SelectedCalendarTool;
         protected Dictionary<string, CalendarEvent> IDToCalendarEvent = new Dictionary<string, CalendarEvent>();
-        ThirdPartyCalendarEvent ThirdpartyCalendarEventInfo;
+        protected ThirdPartyCalendarEvent ThirdpartyCalendarEventInfo;
 
         protected ThirdPartyCalendarControl()
         {}
@@ -26,49 +26,9 @@ namespace DBTilerElement
             return IDToCalendarEvent.ToDictionary(obj => obj.Key, obj => obj.Value);
         }
 
-        void populateThirdpartyCalendarEventInfo (TilerUser user)
-        {
-            ThirdpartyCalendarEventInfo = new ThirdPartyCalendarEvent(IDToCalendarEvent.Values, user);
-
-        }
-
-        virtual public CalendarEvent getThirdpartyCalendarEvent()
-        {
-            if (ThirdpartyCalendarEventInfo==null)
-            {
-                populateThirdpartyCalendarEventInfo(getUser());
-            }
-            return ThirdpartyCalendarEventInfo;
-        }
+         public abstract CalendarEvent getThirdpartyCalendarEvent();
 
         public abstract TilerUser getUser();
 
-    }
-
-    class ThirdPartyCalendarEvent:CalendarEvent
-    {
-        public ThirdPartyCalendarEvent(IEnumerable<CalendarEvent>AllCalendarEvent, TilerUser user)
-        {
-            this._EventDuration = new TimeSpan(50);
-            this._Splits = 1;
-            this._AverageTimePerSplit= _EventDuration;
-            this._UiParams = new EventDisplay();
-            this.UnDesignables = new HashSet<SubCalendarEvent>();
-            this.UniqueID = EventID.generateGoogleCalendarEventID((uint)AllCalendarEvent.Count());
-            this._UserDeleted = false;
-            this._Users = new TilerUserGroup();
-            this.StartDateTime = DateTimeOffset.Now.AddDays(-90);
-            this.EndDateTime = this.StartDateTime.AddDays(180);
-            this._Enabled = true;
-            this._Complete = false;
-            this._DeletedCount = 1;
-            this._CompletedCount = 1;
-            this._Creator = user;
-            this._EventRepetition = new Repetition(true, this.RangeTimeLine, "Daily", AllCalendarEvent.ToArray());
-            this._Name = new EventName(user, this, "GOOGLE MOTHER EVENT");
-            this._ProfileOfNow = new NowProfile();
-            this.ThirdPartyTypeInfo = ThirdPartyControl.CalendarTool.google;
-            SubEvents = new SubEventDictionary<string, SubCalendarEvent>();
-        }
     }
 }

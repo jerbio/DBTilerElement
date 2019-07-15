@@ -37,6 +37,11 @@ namespace DBTilerElement
             }
         }
 
+        public override CalendarEvent getThirdpartyCalendarEvent()
+        {
+            throw new NotImplementedException();
+        }
+
         override public void DeleteAppointment(SubCalendarEvent ActiveSection, string NameOfParentCalendarEvent = "", string entryID = "")
         {
 #if EnableOutlook

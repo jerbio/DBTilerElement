@@ -105,6 +105,15 @@ namespace DBTilerElement
                 return this._PauseTime;
             }
         }
+
+        public ThirdPartyControl.CalendarTool CalendarType
+        {
+            set
+            {
+                this.ThirdPartyTypeInfo = value;
+            }
+        }
+
         public void updateReasons(IEnumerable<Reason>Reasons)
         {
             this.HistoricalReasonsCurrentPosition = new Dictionary<TimeSpan, List<Reason>>();

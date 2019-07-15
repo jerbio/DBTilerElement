@@ -11,7 +11,6 @@ namespace DBTilerElement
     public static class TilerElementExtension
     {
         public static DateTimeOffset JSStartTime = new DateTimeOffset(1970, 1, 1, 0, 0, 0, new TimeSpan());
-        public static TimeSpan StartOfTimeTimeSpan = JSStartTime - new DateTimeOffset(0, new TimeSpan());
         //public readonly static string[] ProviderNames = { "Tiler", "Outlook", "Google", "Facebook" };
         public static SubCalEvent ToSubCalEvent(this TilerElements.SubCalendarEvent SubCalendarEventEntry, TilerElements.CalendarEvent CalendarEventEntry = null)
         {
