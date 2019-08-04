@@ -12,7 +12,7 @@ namespace DBTilerElement
     {
         public static DateTimeOffset JSStartTime = new DateTimeOffset(1970, 1, 1, 0, 0, 0, new TimeSpan());
         //public readonly static string[] ProviderNames = { "Tiler", "Outlook", "Google", "Facebook" };
-        public static SubCalEvent ToSubCalEvent(this TilerElements.SubCalendarEvent SubCalendarEventEntry, TilerElements.CalendarEvent CalendarEventEntry = null)
+        public static SubCalEvent ToSubCalEvent(this TilerElements.SubCalendarEvent SubCalendarEventEntry, TilerElements.CalendarEvent CalendarEventEntry = null, bool includeCalendarEvent = true)
         {
             DateTimeOffset CurrentTime = DateTimeOffset.UtcNow;
             SubCalEvent retValue = new SubCalEvent();
@@ -29,14 +29,15 @@ namespace DBTilerElement
             retValue.SubCalAddressDescription = SubCalendarEventEntry.Location.Description;
             retValue.SubCalAddress = SubCalendarEventEntry.Location.Address;
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
+            retValue.SubCalCalendarName = SubCalendarEventEntry.Name.NameValue;
+            retValue.Notes = SubCalendarEventEntry?.Notes?.UserNote;
 
             if (CalendarEventEntry != null)
             {
                 retValue.CalRigid = CalendarEventEntry.isRigid;
-                retValue.SubCalCalendarName = CalendarEventEntry.getName.NameValue;
                 retValue.SubCalCalEventStart = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
                 retValue.SubCalCalEventEnd = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
-                retValue.Notes = CalendarEventEntry?.Notes?.UserNote;
+                
 
                 if (string.IsNullOrEmpty(CalendarEventEntry.ThirdPartyID))
                 {
@@ -51,12 +52,13 @@ namespace DBTilerElement
             retValue.SubCalEventLong = SubCalendarEventEntry.Location.Longitude;
             retValue.SubCalEventLat = SubCalendarEventEntry.Location.Latitude;
             retValue.SubCalCalendarName = SubCalendarEventEntry.getName.NameValue;
-            if(SubCalendarEventEntry.getUIParam!= null && SubCalendarEventEntry.getUIParam.UIColor != null) { 
-                retValue.RColor = SubCalendarEventEntry.getUIParam.UIColor.R;
-                retValue.GColor = SubCalendarEventEntry.getUIParam.UIColor.G;
-                retValue.BColor = SubCalendarEventEntry.getUIParam.UIColor.B;
-                retValue.OColor = SubCalendarEventEntry.getUIParam.UIColor.O;
-                retValue.ColorSelection = SubCalendarEventEntry.getUIParam.UIColor.User;
+            TilerColor uiColor = SubCalendarEventEntry?.getUIParam?.UIColor;
+            if (uiColor != null) { 
+                retValue.RColor = uiColor.R;
+                retValue.GColor = uiColor.G;
+                retValue.BColor = uiColor.B;
+                retValue.OColor = uiColor.O;
+                retValue.ColorSelection = uiColor.User;
             }
             retValue.isComplete = SubCalendarEventEntry.getIsComplete;
             retValue.isEnabled = SubCalendarEventEntry.isEnabled;
@@ -71,6 +73,11 @@ namespace DBTilerElement
             retValue.PauseEnd = (long)(SubCalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.IsLocked = SubCalendarEventEntry.isLocked;
             retValue.UserLocked = SubCalendarEventEntry.userLocked;
+            if(CalendarEventEntry!=null && includeCalendarEvent)
+            {
+                retValue.CalEvent = CalendarEventEntry.ToCalEvent(includeSubevents: false);
+            }
+            
             return retValue;
         }
 
