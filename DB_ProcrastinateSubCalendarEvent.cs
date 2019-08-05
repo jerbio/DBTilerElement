@@ -15,7 +15,7 @@ namespace DBTilerElement
             this._TimeZone = timeZone;
             this.StartDateTime = timeLine.Start;
             this.EndDateTime = timeLine.End;
-            this.RigidSchedule = true;
+            this._RigidSchedule = true;
             this.UniqueID = calendarEventId;
             this._Creator = user;
             this._Users = group;

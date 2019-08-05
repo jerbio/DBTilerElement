@@ -40,7 +40,7 @@ namespace DBTilerElement
 
             this._Enabled = Enabled;
             //EventSequence = new EventTimeLine(UniqueID.ToString(), StartDateTime, EndDateTime);
-            RigidSchedule = Rigid;
+            _RigidSchedule = Rigid;
             _LastReasonStartTimeChanged = this.Start;
             _calendarEvent = calendarEvent;
         }
@@ -68,7 +68,7 @@ namespace DBTilerElement
             this._Priority = mySubCalEvent.getEventPriority;
             this._ProfileOfNow = NowProfileData;
             this._ProfileOfProcrastination = ProcrastinationData;
-            this.RigidSchedule = mySubCalEvent.isRigid;
+            this._RigidSchedule = mySubCalEvent.isRigid;
             this.StartDateTime = mySubCalEvent.Start;
             this._UiParams = mySubCalEvent.getUIParam;
             this.UniqueID = mySubCalEvent.SubEvent_ID;
