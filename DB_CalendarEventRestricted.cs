@@ -26,7 +26,7 @@ namespace DBTilerElement
             this._AverageTimePerSplit= CalendarEventData.AverageTimeSpanPerSubEvent;
             this.UniqueID = CalendarEventData.Calendar_EventID;//hack
             //this.EventSequence = CalendarEventData.EventSequence;
-            this.SubEvents = new SubEventDictionary<string, SubCalendarEvent>();
+            this._SubEvents = new SubEventDictionary<string, SubCalendarEvent>();
             this._UiParams = CalendarEventData.getUIParam;
             this._DataBlob = CalendarEventData.Notes;
             this._Enabled = CalendarEventData.isEnabled;
@@ -45,7 +45,7 @@ namespace DBTilerElement
             {
                 foreach (SubCalendarEventRestricted eachSubCalendarEvent in CalendarEventData.AllSubEvents)
                 {
-                    this.SubEvents.Add(eachSubCalendarEvent.Id, eachSubCalendarEvent);
+                    this._SubEvents.Add(eachSubCalendarEvent.Id, eachSubCalendarEvent);
                     eachSubCalendarEvent.ParentCalendarEvent = this;
                 }
             }
