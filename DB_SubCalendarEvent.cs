@@ -23,7 +23,7 @@ namespace DBTilerElement
             {
                 conflicts = new ConflictProfile();
             }
-            ConflictingEvents = conflicts;
+            _ConflictingEvents = conflicts;
             _CalendarEventRange = calendarEventRange;
             //string eventName, TimeSpan EventDuration, DateTimeOffset EventStart, DateTimeOffset EventDeadline, TimeSpan EventPrepTime, TimeSpan PreDeadline, bool EventRigidFlag, bool EventRepetition, int EventSplit
             StartDateTime = EventStart;
@@ -53,7 +53,7 @@ namespace DBTilerElement
             this._Name = mySubCalEvent.getName;
             this._EventDuration = mySubCalEvent.getActiveDuration;
             this._Complete = mySubCalEvent.getIsComplete;
-            this.ConflictingEvents = mySubCalEvent.Conflicts;
+            this._ConflictingEvents = mySubCalEvent.Conflicts;
             this._DataBlob = mySubCalEvent.Notes;
             this._Enabled = mySubCalEvent.isEnabled;
             this.EndDateTime = mySubCalEvent.End;

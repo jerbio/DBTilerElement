@@ -23,7 +23,7 @@ namespace DBTilerElement
 
             //this.CalendarEventRange = CalendarEventRange.CreateCopy();
             this._Complete = mySubCalEvent.getIsComplete;
-            this.ConflictingEvents = mySubCalEvent.Conflicts;
+            this._ConflictingEvents = mySubCalEvent.Conflicts;
             this._DataBlob = mySubCalEvent.Notes;
             this._Enabled = mySubCalEvent.isEnabled;
             this._ProfileOfProcrastination = mySubCalEvent.getProcrastinationInfo;
