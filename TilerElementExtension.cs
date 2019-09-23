@@ -68,7 +68,7 @@ namespace DBTilerElement
             retValue.Priority = SubCalendarEventEntry.getEventPriority;
             retValue.Conflict = String.Join(",", SubCalendarEventEntry.Conflicts.getConflictingEventIDs());
             retValue.isPaused = SubCalendarEventEntry.isPaused;
-            retValue.isPauseAble = SubCalendarEventEntry.RangeTimeLine.IsDateTimeWithin(CurrentTime) && !SubCalendarEventEntry.isRigid;
+            retValue.isPauseAble = SubCalendarEventEntry.StartToEnd.IsDateTimeWithin(CurrentTime) && !SubCalendarEventEntry.isRigid;
             retValue.PauseStart = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.PauseEnd = (long)(SubCalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.IsLocked = SubCalendarEventEntry.isLocked;
@@ -121,7 +121,7 @@ namespace DBTilerElement
             {
                 if (Range != null)
                 {
-                    retValue.AllSubCalEvents = CalendarEventEntry.ActiveSubEvents.Where(obj => obj.RangeTimeLine.InterferringTimeLine(Range) != null).Select(obj => obj.ToSubCalEvent(CalendarEventEntry)).ToList();
+                    retValue.AllSubCalEvents = CalendarEventEntry.ActiveSubEvents.Where(obj => obj.StartToEnd.InterferringTimeLine(Range) != null).Select(obj => obj.ToSubCalEvent(CalendarEventEntry)).ToList();
                 }
                 else
                 {
@@ -168,7 +168,7 @@ namespace DBTilerElement
             retValue.Tiers = new long[] { TickTier1, TickTier2, TickTier3 };
             if (Range != null)
             {
-                retValue.AllSubCalEvents = CalendarEventEntry.AllSubEvents.Where(obj=>!obj.isActive).Where(obj => obj.RangeTimeLine.InterferringTimeLine(Range) != null).Select(obj => obj.ToSubCalEvent(CalendarEventEntry)).ToList();
+                retValue.AllSubCalEvents = CalendarEventEntry.AllSubEvents.Where(obj=>!obj.isActive).Where(obj => obj.StartToEnd.InterferringTimeLine(Range) != null).Select(obj => obj.ToSubCalEvent(CalendarEventEntry)).ToList();
             }
             else
             {
