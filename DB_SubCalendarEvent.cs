@@ -72,7 +72,7 @@ namespace DBTilerElement
             this.StartDateTime = mySubCalEvent.Start;
             this._UiParams = mySubCalEvent.getUIParam;
             this.UniqueID = mySubCalEvent.SubEvent_ID;
-            this._UserDeleted = mySubCalEvent.getIsUserDeleted;
+            this._AutoDeleted = mySubCalEvent.getIsUserDeleted;
             this._Users = mySubCalEvent.getAllUsers();
             this.Vestige = mySubCalEvent.isVestige;
             this._Name = mySubCalEvent.getName;
