@@ -186,6 +186,9 @@ namespace DBTilerElement
             retValue.Long = LocationEntry.Longitude;
             retValue.Lat = LocationEntry.Latitude;
             retValue.isNull = LocationEntry.isNull;
+            retValue.isVerified = LocationEntry.IsVerified;
+            retValue.isAmbiguous = LocationEntry.IsAmbiguous;
+            retValue.LocationId = LocationEntry.Id;
             return retValue;
         }
     }
