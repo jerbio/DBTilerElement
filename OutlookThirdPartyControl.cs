@@ -130,7 +130,7 @@ namespace DBTilerElement
         {
 
             int i = 0;
-            if (MyEvent.IsRepeat)
+            if (MyEvent.IsRecurring)
             {
                 LoopThroughRemoveRepeatEvents(MyEvent.Repeat);
             }
