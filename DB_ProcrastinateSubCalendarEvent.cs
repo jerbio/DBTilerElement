@@ -13,8 +13,8 @@ namespace DBTilerElement
         public DB_ProcrastinateAllSubCalendarEvent(TilerUser user, TilerUserGroup group, string timeZone, TimeLine timeLine, EventID calendarEventId, TilerElements.Location location, ProcrastinateCalendarEvent calendarEvent, bool isEnabled, bool isCompleted) : base(user, group, timeZone, timeLine, calendarEventId, location, calendarEvent)
         {
             this._TimeZone = timeZone;
-            this.StartDateTime = timeLine.Start;
-            this.EndDateTime = timeLine.End;
+            updateStartTime( timeLine.Start);
+            updateEndTime(timeLine.End);
             this._RigidSchedule = true;
             this.UniqueID = calendarEventId;
             this._Creator = user;

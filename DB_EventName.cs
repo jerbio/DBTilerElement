@@ -20,18 +20,6 @@ namespace DBTilerElement
         public DB_EventName()
         {}
 
-        virtual public string Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                _Id = value;
-            }
-        }
-
         override public string Name
         {
             get

@@ -13,8 +13,8 @@ namespace DBTilerElement
             //CalendarEventRestricted MyCalendarEventCopy = CalendarEventData.new CalendarEventRestricted();
             this._EventDuration = CalendarEventData.getActiveDuration;
             this._Name = CalendarEventData.getName;
-            this.StartDateTime = CalendarEventData.Start;
-            this.EndDateTime = CalendarEventData.End;
+            this.updateStartTime( CalendarEventData.Start);
+            this.updateEndTime( CalendarEventData.End);
             this._EventPreDeadline = CalendarEventData.getPreDeadline;
             this._PrepTime = CalendarEventData.getPreparation;
             this._Priority = CalendarEventData.getEventPriority;
