@@ -73,7 +73,9 @@ namespace DBTilerElement
             retValue.PauseEnd = (long)(SubCalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.IsLocked = SubCalendarEventEntry.isLocked;
             retValue.UserLocked = SubCalendarEventEntry.userLocked;
-            if(CalendarEventEntry!=null && includeCalendarEvent)
+            retValue.isThirdParty = SubCalendarEventEntry.isThirdParty;
+            retValue.isReadOnly = SubCalendarEventEntry.isReadOnly;
+            if (CalendarEventEntry!=null && includeCalendarEvent)
             {
                 retValue.CalEvent = CalendarEventEntry.ToCalEvent(includeSubevents: false);
             }
@@ -111,7 +113,8 @@ namespace DBTilerElement
             retValue.NumberOfDeletedEvents = CalendarEventEntry.DeletionCount;
             retValue.OtherPartyID = CalendarEventEntry.ThirdPartyID;
             retValue.Notes = CalendarEventEntry?.Notes?.UserNote;
-
+            retValue.isThirdParty = CalendarEventEntry.isThirdParty;
+            retValue.isReadOnly = CalendarEventEntry.isReadOnly;
             TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.getActiveDuration;
             long TickTier1 = (long)(FreeTimeLeft.Ticks * (.667));
             long TickTier2 = (long)(FreeTimeLeft.Ticks * (.865));
@@ -160,6 +163,7 @@ namespace DBTilerElement
             retValue.NumberOfDeletedEvents = CalendarEventEntry.DeletionCount;
             retValue.OtherPartyID = CalendarEventEntry.ThirdPartyID;
             retValue.Notes = CalendarEventEntry.Notes.UserNote;
+            retValue.isThirdParty = CalendarEventEntry.isThirdParty;
 
             TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.getActiveDuration;
             long TickTier1 = (long)(FreeTimeLeft.Ticks * (.667));
