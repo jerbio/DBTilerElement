@@ -88,41 +88,38 @@ namespace DBTilerElement
 
     public class DBBestFitReason : BestFitReason
     {
-        protected TimeSpan UsedUp { get; set; }
-        protected TimeSpan Available { get; set; }
-        protected TimeSpan CurrentUse { get; set; }
         public DBBestFitReason(TimeSpan usedUp, TimeSpan available, TimeSpan currentUse):base(usedUp, available, currentUse){}
         public DBBestFitReason() : base(new TimeSpan(), new TimeSpan(), new TimeSpan()) { }
 
         public TimeSpan UsedupTime {
             get
             {
-                return UsedUp;
+                return _UsedUp;
             }
             set {
-                this.UsedUp = value;
+                this._UsedUp = value;
             }
         }
         public TimeSpan AvailableTime
         {
             get
             {
-                return Available;
+                return _Available;
             }
             set
             {
-                this.Available = value;
+                this._Available = value;
             }
         }
         public TimeSpan CurrentUsedTime
         {
             get
             {
-                return CurrentUse;
+                return _CurrentUse;
             }
             set
             {
-                this.CurrentUse = value;
+                this._CurrentUse = value;
             }
         }
     }

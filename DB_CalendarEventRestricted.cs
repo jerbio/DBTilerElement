@@ -13,8 +13,6 @@ namespace DBTilerElement
             //CalendarEventRestricted MyCalendarEventCopy = CalendarEventData.new CalendarEventRestricted();
             this._EventDuration = CalendarEventData.getActiveDuration;
             this._Name = CalendarEventData.getName;
-            this.StartDateTime = CalendarEventData.Start;
-            this.EndDateTime = CalendarEventData.End;
             this._EventPreDeadline = CalendarEventData.getPreDeadline;
             this._PrepTime = CalendarEventData.getPreparation;
             this._Priority = CalendarEventData.getEventPriority;
@@ -25,12 +23,10 @@ namespace DBTilerElement
             this._Splits = CalendarEventData.NumberOfSplit;
             this._AverageTimePerSplit= CalendarEventData.AverageTimeSpanPerSubEvent;
             this.UniqueID = CalendarEventData.Calendar_EventID;//hack
-            //this.EventSequence = CalendarEventData.EventSequence;
             this._SubEvents = new SubEventDictionary<string, SubCalendarEvent>();
             this._UiParams = CalendarEventData.getUIParam;
             this._DataBlob = CalendarEventData.Notes;
             this._Enabled = CalendarEventData.isEnabled;
-            //this.isRestricted = CalendarEventData.isEventRestricted;
             this._LocationInfo= CalendarEventData.Location;//hack you might need to make copy
             this._ProfileOfProcrastination = CalendarEventData.getProcrastinationInfo;
             this._AutoDeleted = CalendarEventData.getIsUserDeleted;
@@ -38,9 +34,9 @@ namespace DBTilerElement
             this._DeletedCount = CalendarEventData.DeletionCount;
             this._ProfileOfRestriction = restrictionData;
             this.isRestricted = true;
-            //this.SubEvents = ((DB_CalendarEventRestricted)CalendarEventData).getSubEvents();
             this._Now = now;
-
+            this.updateStartTime(CalendarEventData.Start);
+            this.updateEndTime(CalendarEventData.End);
             if (!this._EventRepetition.EnableRepeat)
             {
                 foreach (SubCalendarEventRestricted eachSubCalendarEvent in CalendarEventData.AllSubEvents)

@@ -15,8 +15,8 @@ namespace DBTilerElement
             this._ProfileOfRestriction = restrictionData;
             this.OldPreferredIndex = mySubCalEvent.UniversalDayIndex;
             this._otherPartyID = mySubCalEvent.ThirdPartyID;
-            this.StartDateTime = mySubCalEvent.Start;
-            this.EndDateTime = mySubCalEvent.End;
+            this.updateStartTime( mySubCalEvent.Start);
+            this.updateEndTime( mySubCalEvent.End);
             
 
 
@@ -56,7 +56,7 @@ namespace DBTilerElement
             initializeCalendarEventRange(restrictionData, this.HardCalendarEventRange);
         }
 
-        public TimeSpan UsedTime
+        public override TimeSpan UsedTime
         {
             set
             {

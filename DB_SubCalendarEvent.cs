@@ -26,8 +26,8 @@ namespace DBTilerElement
             _ConflictingEvents = conflicts;
             _CalendarEventRange = calendarEventRange;
             //string eventName, TimeSpan EventDuration, DateTimeOffset EventStart, DateTimeOffset EventDeadline, TimeSpan EventPrepTime, TimeSpan PreDeadline, bool EventRigidFlag, bool EventRepetition, int EventSplit
-            StartDateTime = EventStart;
-            EndDateTime = EventDeadline;
+            updateStartTime(EventStart);
+            updateEndTime( EventDeadline);
             _EventDuration = MyBusylot.End - MyBusylot.Start;
             BusyFrame = MyBusylot;
             _PrepTime = EventPrepTime;
@@ -56,7 +56,7 @@ namespace DBTilerElement
             this._ConflictingEvents = mySubCalEvent.Conflicts;
             this._DataBlob = mySubCalEvent.Notes;
             this._Enabled = mySubCalEvent.isEnabled;
-            this.EndDateTime = mySubCalEvent.End;
+            updateEndTime( mySubCalEvent.End);
             this._EventPreDeadline = mySubCalEvent.getPreDeadline;
             this.EventScore = mySubCalEvent.Score;
             this.isRestricted = mySubCalEvent.getIsEventRestricted;
@@ -69,7 +69,7 @@ namespace DBTilerElement
             this._ProfileOfNow = NowProfileData;
             this._ProfileOfProcrastination = ProcrastinationData;
             this._RigidSchedule = mySubCalEvent.isRigid;
-            this.StartDateTime = mySubCalEvent.Start;
+            updateStartTime( mySubCalEvent.Start);
             this._UiParams = mySubCalEvent.getUIParam;
             this.UniqueID = mySubCalEvent.SubEvent_ID;
             this._AutoDeleted = mySubCalEvent.getIsUserDeleted;
@@ -122,6 +122,6 @@ namespace DBTilerElement
 
         public string ParentCalendarEventId { get; set; }
         [ForeignKey("ParentCalendarEventId")]
-        public CalendarEvent ParentCalendarEvent { get; set; }
+        public override CalendarEvent ParentCalendarEvent { get; set; }
     }
 }
