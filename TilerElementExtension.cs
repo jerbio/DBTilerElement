@@ -85,7 +85,6 @@ namespace DBTilerElement
 
         public static CalEvent ToCalEvent(this TilerElements.CalendarEvent CalendarEventEntry, TilerElements.TimeLine Range = null, bool includeSubevents = true)
         {
-            DateTimeOffset CurrentTime = DateTimeOffset.UtcNow;
             CalEvent retValue = new CalEvent();
             retValue.ThirdPartyUserID = CalendarEventEntry.getCreator.Id;
             retValue.ID = CalendarEventEntry.getId;
