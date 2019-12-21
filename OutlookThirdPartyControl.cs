@@ -26,7 +26,7 @@ namespace DBTilerElement
             IDToCalendarEvent = CalendarData;
 
         }
-        virtual public void removeAllEventsFromOutLook(ICollection<CalendarEvent> ArrayOfCalendarEvents)
+        virtual public void removeAllEventsFromOutLook(IEnumerable<CalendarEvent> ArrayOfCalendarEvents)
         {
             int i = 0;
             CalendarEvent[] ArrayOfCalendarevents = ArrayOfCalendarEvents.ToArray();
@@ -130,7 +130,7 @@ namespace DBTilerElement
         {
 
             int i = 0;
-            if (MyEvent.IsRecurring)
+            if (MyEvent.IsNotRecurringChildCalEVent)
             {
                 LoopThroughRemoveRepeatEvents(MyEvent.Repeat);
             }
