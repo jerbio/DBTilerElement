@@ -130,7 +130,7 @@ namespace DBTilerElement
         {
 
             int i = 0;
-            if (MyEvent.IsNotRecurringChildCalEVent)
+            if (MyEvent.IsFromRecurringAndNotChildRepeatCalEvent)
             {
                 LoopThroughRemoveRepeatEvents(MyEvent.Repeat);
             }
@@ -152,7 +152,7 @@ namespace DBTilerElement
             {
                 return;
             }
-            if (MyEvent.IsRepeat)
+            if (MyEvent.IsRecurring)
             {
                 LoopThroughAddRepeatEvents(MyEvent.Repeat);
             }
