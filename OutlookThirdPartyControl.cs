@@ -152,7 +152,7 @@ namespace DBTilerElement
             {
                 return;
             }
-            if (MyEvent.IsRepeat)
+            if (MyEvent.IsRecurring)
             {
                 LoopThroughAddRepeatEvents(MyEvent.Repeat);
             }
