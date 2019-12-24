@@ -1,4 +1,4 @@
-﻿//#define EnableOutlook
+﻿#define EnableOutlook
 
 using System;
 using System.Collections.Generic;
@@ -168,7 +168,17 @@ namespace DBTilerElement
                 }
             }
 #endif
+        }
 
+        virtual public void WriteToOutlook()
+        {
+            if(IDToCalendarEvent!=null)
+            {
+                foreach (CalendarEvent calEvent in IDToCalendarEvent.Values)
+                {
+                    WriteToOutlook(calEvent);
+                }
+            }
         }
 
         virtual public void LoopThroughAddRepeatEvents(Repetition MyRepetition)
