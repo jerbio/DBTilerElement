@@ -14,7 +14,8 @@ namespace DBTilerElement
 {
     public class OutlookThirdPartyControl : ThirdPartyCalendarControl
     {
-        
+        //Hold calendarevents that have already being added. helps address scenarios with recurrence
+        HashSet<CalendarEvent> allReadyAdded = new HashSet<CalendarEvent>();
         public OutlookThirdPartyControl()
         {
             SelectedCalendarTool = ThirdPartyControl.CalendarTool.outlook;
@@ -26,7 +27,7 @@ namespace DBTilerElement
             IDToCalendarEvent = CalendarData;
 
         }
-        virtual public void removeAllEventsFromOutLook(ICollection<CalendarEvent> ArrayOfCalendarEvents)
+        virtual public void removeAllEventsFromOutLook(IEnumerable<CalendarEvent> ArrayOfCalendarEvents)
         {
             int i = 0;
             CalendarEvent[] ArrayOfCalendarevents = ArrayOfCalendarEvents.ToArray();
@@ -128,9 +129,8 @@ namespace DBTilerElement
 
         virtual public void RemoveFromOutlook(CalendarEvent MyEvent)
         {
-
             int i = 0;
-            if (MyEvent.IsRecurring)
+            if (MyEvent.IsFromRecurringAndNotChildRepeatCalEvent)
             {
                 LoopThroughRemoveRepeatEvents(MyEvent.Repeat);
             }
@@ -142,6 +142,7 @@ namespace DBTilerElement
                     DeleteAppointment(pertinentSubCalEvent, MyEvent.getName.NameValue, pertinentSubCalEvent.ThirdPartyID);
                 }
             }
+            allReadyAdded.Remove(MyEvent);
         }
 
         virtual public void WriteToOutlook(CalendarEvent MyEvent)
@@ -158,14 +159,18 @@ namespace DBTilerElement
             }
             else
             {
-                SubCalendarEvent[] enableSubCalEVents = MyEvent.ActiveSubEvents;
-                for (; i < enableSubCalEVents.Length; i++)
+                if(!allReadyAdded.Contains(MyEvent))
                 {
+                    SubCalendarEvent[] enableSubCalEVents = MyEvent.ActiveSubEvents;
+                    for (; i < enableSubCalEVents.Length; i++)
+                    {
 
-                    SubCalendarEvent pertinentSubCalEvent = enableSubCalEVents[i];
-                    pertinentSubCalEvent.ThirdPartyID = AddAppointment(pertinentSubCalEvent, MyEvent.getName.NameValue);/////////////
-
+                        SubCalendarEvent pertinentSubCalEvent = enableSubCalEVents[i];
+                        pertinentSubCalEvent.ThirdPartyID = AddAppointment(pertinentSubCalEvent, MyEvent.getName.NameValue);/////////////
+                    }
+                    allReadyAdded.Add(MyEvent);
                 }
+                
             }
 #endif
         }
