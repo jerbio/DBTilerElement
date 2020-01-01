@@ -75,6 +75,7 @@ namespace DBTilerElement
             retValue.UserLocked = SubCalendarEventEntry.userLocked;
             retValue.isThirdParty = SubCalendarEventEntry.isThirdParty;
             retValue.isReadOnly = SubCalendarEventEntry.isReadOnly;
+            retValue.isTardy = SubCalendarEventEntry.isTardy;
             if (CalendarEventEntry!=null && includeCalendarEvent)
             {
                 retValue.CalEvent = CalendarEventEntry.ToCalEvent(includeSubevents: false);
