@@ -120,6 +120,16 @@ namespace DBTilerElement
             long TickTier2 = (long)(FreeTimeLeft.Ticks * (.865));
             long TickTier3 = (long)(FreeTimeLeft.Ticks * (1));
             retValue.Tiers = new long[] { TickTier1, TickTier2, TickTier3 };
+            bool canDoNow = false;
+            if(!CalendarEventEntry.IsFromRecurring)
+            {
+                canDoNow = (CalendarEventEntry.AutoDeletionCount + CalendarEventEntry.DeletionCount + CalendarEventEntry.CompletionCount) < CalendarEventEntry.NumberOfSplit;
+            } else
+            {
+                canDoNow = CalendarEventEntry.End > DateTimeOffset.UtcNow;
+            }
+
+            retValue.canDoNow = canDoNow;
             if (includeSubevents)
             {
                 if (Range != null)
