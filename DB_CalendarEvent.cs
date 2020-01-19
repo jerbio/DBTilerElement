@@ -41,12 +41,15 @@ namespace TilerFront
             this._ProfileOfProcrastination = procrastinationData;
             this._ProfileOfNow = NowProfileData;
             //this.SubEvents = ((DB_CalendarEventRestricted)CalendarEventData).getSubEvents();
-            if (!this._EventRepetition.EnableRepeat)
+            if (this._EventRepetition!=null && !this._EventRepetition.EnableRepeat)
             {
                 foreach (SubCalendarEvent eachSubCalendarEvent in CalendarEventData.AllSubEvents)
                 {
                     this._SubEvents.Add(eachSubCalendarEvent.Id, eachSubCalendarEvent);
                 }
+            } else if(this._EventRepetition == null)
+            {
+                isRepeatLoaded_DB = false;
             }
 
             //this.SubEvents = CalendarEventData.SubEvents;

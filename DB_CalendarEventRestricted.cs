@@ -37,13 +37,17 @@ namespace DBTilerElement
             this._Now = now;
             this.updateStartTime(CalendarEventData.Start);
             this.updateEndTime(CalendarEventData.End);
-            if (!this._EventRepetition.EnableRepeat)
+            if (this._EventRepetition != null && !this._EventRepetition.EnableRepeat)
             {
                 foreach (SubCalendarEventRestricted eachSubCalendarEvent in CalendarEventData.AllSubEvents)
                 {
                     this._SubEvents.Add(eachSubCalendarEvent.Id, eachSubCalendarEvent);
                     eachSubCalendarEvent.ParentCalendarEvent = this;
                 }
+            }
+            else if (this._EventRepetition == null)
+            {
+                isRepeatLoaded_DB = false;
             }
             this._otherPartyID = CalendarEventData.ThirdPartyID;// == CalendarEventData.null ? null : otherPartyID.ToString();
             this._Users = CalendarEventData.getAllUsers();
