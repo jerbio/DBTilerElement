@@ -58,7 +58,7 @@ namespace DBTilerElement
             this._Enabled = mySubCalEvent.isEnabled;
             updateEndTime( mySubCalEvent.End);
             this._EventPreDeadline = mySubCalEvent.getPreDeadline;
-            this.EventScore = mySubCalEvent.Score;
+            this._EventScore = mySubCalEvent.Score;
             this.isRestricted = mySubCalEvent.getIsEventRestricted;
             this._LocationInfo = mySubCalEvent.Location;
             this.OldPreferredIndex = mySubCalEvent.OldUniversalIndex;
