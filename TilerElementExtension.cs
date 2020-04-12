@@ -37,7 +37,7 @@ namespace DBTilerElement
                 retValue.CalRigid = CalendarEventEntry.isRigid;
                 retValue.SubCalCalEventStart = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
                 retValue.SubCalCalEventEnd = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
-                
+                retValue.SuggestedDeadline = CalendarEventEntry.DeadlineSuggestion.ToUnixTimeMilliseconds();
 
                 if (string.IsNullOrEmpty(CalendarEventEntry.ThirdPartyID))
                 {
@@ -76,6 +76,7 @@ namespace DBTilerElement
             retValue.isThirdParty = SubCalendarEventEntry.isThirdParty;
             retValue.isReadOnly = SubCalendarEventEntry.isReadOnly;
             retValue.isTardy = SubCalendarEventEntry.isTardy;
+            
             if (CalendarEventEntry!=null && includeCalendarEvent)
             {
                 retValue.CalEvent = CalendarEventEntry.ToCalEvent(includeSubevents: false);
@@ -115,6 +116,7 @@ namespace DBTilerElement
             retValue.Notes = CalendarEventEntry?.Notes?.UserNote;
             retValue.isThirdParty = CalendarEventEntry.isThirdParty;
             retValue.isReadOnly = CalendarEventEntry.isReadOnly;
+            retValue.SuggestedDeadline = CalendarEventEntry.DeadlineSuggestion.ToUnixTimeMilliseconds();
             TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.getActiveDuration;
             long TickTier1 = (long)(FreeTimeLeft.Ticks * (.667));
             long TickTier2 = (long)(FreeTimeLeft.Ticks * (.865));
