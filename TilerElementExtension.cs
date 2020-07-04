@@ -76,7 +76,9 @@ namespace DBTilerElement
             retValue.isThirdParty = SubCalendarEventEntry.isThirdParty;
             retValue.isReadOnly = SubCalendarEventEntry.isReadOnly;
             retValue.isTardy = SubCalendarEventEntry.isTardy;
-            
+            retValue.isProcrastinateAll = SubCalendarEventEntry.isProcrastinateEvent;
+            retValue.isAllDay = SubCalendarEventEntry.getActiveDuration >= Utility.LeastAllDaySubeventDuration;
+
             if (CalendarEventEntry!=null && includeCalendarEvent)
             {
                 retValue.CalEvent = CalendarEventEntry.ToCalEvent(includeSubevents: false);
@@ -117,6 +119,7 @@ namespace DBTilerElement
             retValue.isThirdParty = CalendarEventEntry.isThirdParty;
             retValue.isReadOnly = CalendarEventEntry.isReadOnly;
             retValue.SuggestedDeadline = CalendarEventEntry.DeadlineSuggestion.ToUnixTimeMilliseconds();
+            retValue.isProcrastinateAll = CalendarEventEntry.isProcrastinateEvent;
             TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.getActiveDuration;
             long TickTier1 = (long)(FreeTimeLeft.Ticks * (.667));
             long TickTier2 = (long)(FreeTimeLeft.Ticks * (.865));
