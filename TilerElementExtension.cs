@@ -117,6 +117,7 @@ namespace DBTilerElement
             retValue.isThirdParty = CalendarEventEntry.isThirdParty;
             retValue.isReadOnly = CalendarEventEntry.isReadOnly;
             retValue.SuggestedDeadline = CalendarEventEntry.DeadlineSuggestion.ToUnixTimeMilliseconds();
+            retValue.LastSuggestedDeadline = CalendarEventEntry.LastDeadlineSuggestion.ToUnixTimeMilliseconds();
             TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.getActiveDuration;
             long TickTier1 = (long)(FreeTimeLeft.Ticks * (.667));
             long TickTier2 = (long)(FreeTimeLeft.Ticks * (.865));
