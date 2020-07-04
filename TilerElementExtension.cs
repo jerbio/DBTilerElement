@@ -29,7 +29,7 @@ namespace DBTilerElement
             retValue.SubCalAddressDescription = SubCalendarEventEntry.Location.Description;
             retValue.SubCalAddress = SubCalendarEventEntry.Location.Address;
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
-            retValue.SubCalCalendarName = SubCalendarEventEntry.Name.NameValue;
+            retValue.SubCalCalendarName = SubCalendarEventEntry.Name?.NameValue;
             retValue.Notes = SubCalendarEventEntry?.Notes?.UserNote;
 
             if (CalendarEventEntry != null)
@@ -51,7 +51,7 @@ namespace DBTilerElement
 
             retValue.SubCalEventLong = SubCalendarEventEntry.Location.Longitude;
             retValue.SubCalEventLat = SubCalendarEventEntry.Location.Latitude;
-            retValue.SubCalCalendarName = SubCalendarEventEntry.getName.NameValue;
+            retValue.SubCalCalendarName = SubCalendarEventEntry.getName?.NameValue;
             TilerColor uiColor = SubCalendarEventEntry?.getUIParam?.UIColor;
             if (uiColor != null) { 
                 retValue.RColor = uiColor.R;
@@ -91,7 +91,7 @@ namespace DBTilerElement
             retValue.ThirdPartyUserID = CalendarEventEntry.getCreator.Id;
             retValue.ID = CalendarEventEntry.getId;
             retValue.ThirdPartyType = CalendarEventEntry.ThirdpartyType.ToString();
-            retValue.CalendarName = CalendarEventEntry.getName.NameValue;
+            retValue.CalendarName = CalendarEventEntry.getName?.NameValue;
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.TotalDuration = CalendarEventEntry.getActiveDuration;
@@ -157,7 +157,7 @@ namespace DBTilerElement
 
             retValue.ID = CalendarEventEntry.getId;
             retValue.ThirdPartyType = CalendarEventEntry.ThirdpartyType.ToString();
-            retValue.CalendarName = CalendarEventEntry.getName.NameValue;
+            retValue.CalendarName = CalendarEventEntry.getName?.NameValue;
             retValue.StartDate = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.TotalDuration = CalendarEventEntry.getActiveDuration;
