@@ -67,7 +67,7 @@ namespace DBTilerElement
             retValue.EventPreDeadline = (long)SubCalendarEventEntry.getPreDeadline.TotalMilliseconds;
             retValue.Priority = SubCalendarEventEntry.getEventPriority;
             retValue.Conflict = String.Join(",", SubCalendarEventEntry.Conflicts.getConflictingEventIDs());
-            retValue.isPaused = SubCalendarEventEntry.isPaused;
+            retValue.isPaused = SubCalendarEventEntry.isPauseLocked;
             retValue.isPauseAble = SubCalendarEventEntry.StartToEnd.IsDateTimeWithin(CurrentTime) && !SubCalendarEventEntry.isRigid;
             retValue.PauseStart = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.PauseEnd = (long)(SubCalendarEventEntry.End - JSStartTime).TotalMilliseconds;
