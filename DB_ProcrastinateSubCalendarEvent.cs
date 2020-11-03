@@ -27,7 +27,12 @@ namespace DBTilerElement
             this._calendarEvent = calendarEvent;
         }
 
-        public TimeSpan UseTime
+        public void setPausedTimeSlots(List<PausedTimeLine> pausedTimeSlots)
+        {
+            this._pausedTimeSlot = pausedTimeSlots.ToList();
+        }
+
+        override public TimeSpan UsedTime
         {
             set
             {
@@ -36,18 +41,6 @@ namespace DBTilerElement
             get
             {
                 return this._UsedTime;
-            }
-        }
-
-        public DateTimeOffset PauseTime
-        {
-            set
-            {
-                this._PauseTime = value;
-            }
-            get
-            {
-                return this._PauseTime;
             }
         }
 

@@ -82,7 +82,7 @@ namespace DBTilerElement
             this._calendarEvent = calendarEvent;
         }
 
-        public TimeSpan UseTime
+        override public TimeSpan UsedTime
         {
             set
             {
@@ -94,17 +94,6 @@ namespace DBTilerElement
             }
         }
 
-        public DateTimeOffset PauseTime
-        {
-            set
-            {
-                this._PauseTime = value;
-            }
-            get
-            {
-                return this._PauseTime;
-            }
-        }
 
         public ThirdPartyControl.CalendarTool CalendarType
         {
@@ -112,6 +101,11 @@ namespace DBTilerElement
             {
                 this.ThirdPartyTypeInfo = value;
             }
+        }
+
+        public void setPausedTimeSlots(List<PausedTimeLine> pausedTimeSlots)
+        {
+            this._pausedTimeSlot = pausedTimeSlots.ToList();
         }
 
         public void updateReasons(IEnumerable<Reason>Reasons)

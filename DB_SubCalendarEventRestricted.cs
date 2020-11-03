@@ -68,17 +68,11 @@ namespace DBTilerElement
             }
         }
 
-        public DateTimeOffset PauseTime
+        public void setPausedTimeSlots(List<PausedTimeLine> pausedTimeSlots)
         {
-            set
-            {
-                this._PauseTime = value;
-            }
-            get
-            {
-                return this._PauseTime;
-            }
+            this._pausedTimeSlot = pausedTimeSlots.ToList();
         }
+
         public void updateReasons(IEnumerable<Reason> Reasons)
         {
             this.HistoricalReasonsCurrentPosition = new Dictionary<TimeSpan, List<Reason>>();
