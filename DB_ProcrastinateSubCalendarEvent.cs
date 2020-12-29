@@ -32,17 +32,17 @@ namespace DBTilerElement
             this._pausedTimeSlot = pausedTimeSlots.ToList();
         }
 
-        override public TimeSpan UsedTime
-        {
-            set
-            {
-                this._UsedTime = value;
-            }
-            get
-            {
-                return this._UsedTime;
-            }
-        }
+        //override public TimeSpan UsedPauseTime
+        //{
+        //    set
+        //    {
+        //        this._UsedPauseTime = value;
+        //    }
+        //    get
+        //    {
+        //        return this._UsedPauseTime;
+        //    }
+        //}
 
         public void updateReasons(IEnumerable<Reason> Reasons)
         {

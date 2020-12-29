@@ -56,17 +56,17 @@ namespace DBTilerElement
             initializeCalendarEventRange(restrictionData, this.HardCalendarEventRange);
         }
 
-        public override TimeSpan UsedTime
-        {
-            set
-            {
-                this._UsedTime = value;
-            }
-            get
-            {
-                return this._UsedTime;
-            }
-        }
+        //public override TimeSpan UsedTime
+        //{
+        //    set
+        //    {
+        //        this._UsedTime = value;
+        //    }
+        //    get
+        //    {
+        //        return this._UsedTime;
+        //    }
+        //}
 
         public void setPausedTimeSlots(List<PausedTimeLine> pausedTimeSlots)
         {

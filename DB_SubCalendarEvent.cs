@@ -82,17 +82,17 @@ namespace DBTilerElement
             this._calendarEvent = calendarEvent;
         }
 
-        override public TimeSpan UsedTime
-        {
-            set
-            {
-                this._UsedTime = value;
-            }
-            get
-            {
-                return this._UsedTime;
-            }
-        }
+        //override public TimeSpan UsedTime
+        //{
+        //    set
+        //    {
+        //        this._UsedTime = value;
+        //    }
+        //    get
+        //    {
+        //        return this._UsedTime;
+        //    }
+        //}
 
 
         public ThirdPartyControl.CalendarTool CalendarType
