@@ -78,6 +78,12 @@ namespace DBTilerElement
             retValue.isTardy = SubCalendarEventEntry.isTardy;
             retValue.isProcrastinateAll = SubCalendarEventEntry.isProcrastinateEvent;
             retValue.isAllDay = SubCalendarEventEntry.getActiveDuration >= Utility.LeastAllDaySubeventDuration;
+            retValue.pausedTimeLines = SubCalendarEventEntry?.pausedTimeLines?.Select(timeline => 
+                new StartEnd() {
+                    Start = timeline.Start.ToUnixTimeMilliseconds(),
+                    End= timeline.End.ToUnixTimeMilliseconds()
+                } 
+            ).ToList();
 
             if (CalendarEventEntry!=null && includeCalendarEvent)
             {
