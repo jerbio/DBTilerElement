@@ -60,7 +60,7 @@ namespace DBTilerElement
             this._EventPreDeadline = mySubCalEvent.getPreDeadline;
             this._EventScore = mySubCalEvent.Score;
             this.isRestricted = mySubCalEvent.getIsEventRestricted;
-            this._LocationInfo = mySubCalEvent.Location;
+            this._LocationInfo = mySubCalEvent.LocationObj;
             this.OldPreferredIndex = mySubCalEvent.OldUniversalIndex;
             this._otherPartyID = mySubCalEvent.ThirdPartyID;
             this.preferredDayIndex = mySubCalEvent.UniversalDayIndex;

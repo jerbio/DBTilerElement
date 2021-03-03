@@ -36,7 +36,7 @@ namespace DBTilerElement
             //this.InterferringEvents = mySubCalEvent.inter
             this.isRestricted = true;
             this.Vestige = mySubCalEvent.isVestige;
-            this._LocationInfo = mySubCalEvent.Location;
+            this._LocationInfo = mySubCalEvent.LocationObj;
             this.MiscIntData = mySubCalEvent.IntData;
             //this.NonHumaneTimeLine = mySubCalEvent.NonHumaneTimeLine.CreateCopy();
             this._PrepTime = mySubCalEvent.getPreparation;
