@@ -66,5 +66,10 @@ namespace TilerFront
                 this.ThirdPartyTypeInfo = value;
             }
         }
+
+        public void setPausedTimeSlots(List<PausedTimeLine> pausedTimeSlots)
+        {
+            this._pausedTimeSlot = pausedTimeSlots.ToList();
+        }
     }
 }

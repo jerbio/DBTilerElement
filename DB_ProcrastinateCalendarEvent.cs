@@ -19,6 +19,11 @@ namespace DBTilerElement
         {
 
         }
+
+        public void setPausedTimeSlots(List<PausedTimeLine> pausedTimeSlots)
+        {
+            this._pausedTimeSlot = pausedTimeSlots.ToList();
+        }
     }
 
     

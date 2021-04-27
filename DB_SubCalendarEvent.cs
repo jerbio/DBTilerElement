@@ -103,11 +103,6 @@ namespace DBTilerElement
             }
         }
 
-        public void setPausedTimeSlots(List<PausedTimeLine> pausedTimeSlots)
-        {
-            this._pausedTimeSlot = pausedTimeSlots.ToList();
-        }
-
         public void updateReasons(IEnumerable<Reason>Reasons)
         {
             this.HistoricalReasonsCurrentPosition = new Dictionary<TimeSpan, List<Reason>>();
