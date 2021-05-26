@@ -33,7 +33,7 @@ namespace TilerFront
             this._UiParams = CalendarEventData.getUIParam;
             this._DataBlob = CalendarEventData.Notes;
             this._Enabled = CalendarEventData.isEnabled;
-            this.isRestricted = CalendarEventData.getIsEventRestricted;
+            this._isEventRestricted = CalendarEventData.getIsEventRestricted;
             this._LocationInfo= CalendarEventData.Location;//hack you might need to make copy
             this._AutoDeleted = CalendarEventData.getIsUserDeleted;
             this._CompletedCount = CalendarEventData.CompletionCount;

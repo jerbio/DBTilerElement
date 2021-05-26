@@ -33,7 +33,7 @@ namespace DBTilerElement
             this._CompletedCount = CalendarEventData.CompletionCount;
             this._DeletedCount = CalendarEventData.DeletionCount;
             this._ProfileOfRestriction = restrictionData;
-            this.isRestricted = true;
+            this._isEventRestricted = true;
             this._Now = now;
             this.updateStartTime(CalendarEventData.Start);
             this.updateEndTime(CalendarEventData.End);
