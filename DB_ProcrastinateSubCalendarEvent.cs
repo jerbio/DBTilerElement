@@ -27,23 +27,6 @@ namespace DBTilerElement
             this._calendarEvent = calendarEvent;
         }
 
-        public void setPausedTimeSlots(List<PausedTimeLine> pausedTimeSlots)
-        {
-            this._pausedTimeSlot = pausedTimeSlots.ToList();
-        }
-
-        //override public TimeSpan UsedPauseTime
-        //{
-        //    set
-        //    {
-        //        this._UsedPauseTime = value;
-        //    }
-        //    get
-        //    {
-        //        return this._UsedPauseTime;
-        //    }
-        //}
-
         public void updateReasons(IEnumerable<Reason> Reasons)
         {
             this.HistoricalReasonsCurrentPosition = new Dictionary<TimeSpan, List<Reason>>();

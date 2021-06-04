@@ -68,10 +68,10 @@ namespace DBTilerElement
         //    }
         //}
 
-        public void setPausedTimeSlots(List<PausedTimeLine> pausedTimeSlots)
-        {
-            this._pausedTimeSlot = pausedTimeSlots.ToList();
-        }
+        //public void setPausedTimeSlots(List<PausedTimeLine> pausedTimeSlots)
+        //{
+        //    this._pausedTimeSlot = pausedTimeSlots.ToList();
+        //}
 
         public void updateReasons(IEnumerable<Reason> Reasons)
         {
