@@ -20,9 +20,12 @@ namespace DBTilerElement
 
         }
 
-        public void setPausedTimeSlots(List<PausedTimeLine> pausedTimeSlots)
+        public void setPausedTimeSlots(List<PausedTimeLineEntry> pausedTimeSlots)
         {
-            this._pausedTimeSlot = pausedTimeSlots.ToList();
+            foreach (var pausedTimeSlot in pausedTimeSlots)
+            {
+                addToPausedTimeSlot(pausedTimeSlot);
+            }
         }
     }
 
