@@ -146,7 +146,7 @@ namespace DBTilerElement
             retValue.EventPreDeadline = (long)pausedSubEvent.getPreDeadline.TotalMilliseconds;
             retValue.Priority = pausedSubEvent.getEventPriority;
             retValue.Conflict = String.Join(",", pausedSubEvent.Conflicts.getConflictingEventIDs());
-            retValue.isPaused = true;
+            retValue.isPaused = false;
             retValue.isPauseAble = false;
             retValue.PauseStart = (long)(pausedTimeline.Start - JSStartTime).TotalMilliseconds;
             retValue.PauseEnd = (long)(pausedTimeline.End - JSStartTime).TotalMilliseconds;
