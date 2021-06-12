@@ -228,7 +228,7 @@ namespace DBTilerElement
 
                 if(CalendarEventEntry.PausedTimeLines.Count > 0)
                 {
-                    retValue.AllSubCalEvents = CalendarEventEntry.PausedTimeLines.Where(pausedImeline => pausedImeline.IsFinal).Select(pausedImeline => pausedImeline.ToSubCalEvent(CalendarEventEntry)).Concat(retValue.AllSubCalEvents).ToList();
+                    retValue.AllSubCalEvents = CalendarEventEntry.PausedTimeLines.Where(pausedImeline => pausedImeline.IsFinal && CalendarEventEntry.getSubEvent(pausedImeline.getSubEventId())!=null).Select(pausedImeline => pausedImeline.ToSubCalEvent(CalendarEventEntry)).Concat(retValue.AllSubCalEvents).ToList();
                 }
             }
             retValue.IsLocked = CalendarEventEntry.isLocked;
