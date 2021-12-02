@@ -38,6 +38,7 @@ namespace DBTilerElement
                 retValue.SubCalCalEventStart = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
                 retValue.SubCalCalEventEnd = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
                 retValue.SuggestedDeadline = CalendarEventEntry.DeadlineSuggestion.ToUnixTimeMilliseconds();
+                retValue.SleepSuggestedDeadline = CalendarEventEntry.SleepDeadlineSuggestion.ToUnixTimeMilliseconds();
 
                 if (string.IsNullOrEmpty(CalendarEventEntry.ThirdPartyID))
                 {
@@ -67,7 +68,7 @@ namespace DBTilerElement
             retValue.EventPreDeadline = (long)SubCalendarEventEntry.getPreDeadline.TotalMilliseconds;
             retValue.Priority = SubCalendarEventEntry.getEventPriority;
             retValue.Conflict = String.Join(",", SubCalendarEventEntry.Conflicts.getConflictingEventIDs());
-            retValue.isPaused = SubCalendarEventEntry.isPauseLocked;
+            retValue.isPaused = SubCalendarEventEntry.isPaused;
             retValue.isPauseAble = SubCalendarEventEntry.StartToEnd.IsDateTimeWithin(CurrentTime) && !SubCalendarEventEntry.isRigid;
             retValue.PauseStart = (long)(SubCalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
             retValue.PauseEnd = (long)(SubCalendarEventEntry.End - JSStartTime).TotalMilliseconds;
@@ -84,6 +85,85 @@ namespace DBTilerElement
                 retValue.CalEvent = CalendarEventEntry.ToCalEvent(includeSubevents: false);
             }
             
+            return retValue;
+        }
+
+
+
+        public static SubCalEvent ToSubCalEvent(this TilerElements.PausedTimeLineEntry pausedTimeline, TilerElements.CalendarEvent CalendarEventEntry, bool includeCalendarEvent = true)
+        {
+            SubCalendarEvent pausedSubEvent = CalendarEventEntry.getSubEvent(pausedTimeline.getSubEventId());
+            DateTimeOffset CurrentTime = DateTimeOffset.UtcNow;
+            SubCalEvent retValue = new SubCalEvent();
+            retValue.ThirdPartyUserID = CalendarEventEntry.getCreator.Id;
+            retValue.ThirdPartyType = CalendarEventEntry.ThirdpartyType.ToString();
+            retValue.ThirdPartyEventID = CalendarEventEntry.ThirdPartyID;
+            retValue.ID = pausedTimeline.Id;
+            retValue.CalendarID = CalendarEventEntry.Calendar_EventID.getRepeatCalendarEventID();
+
+            retValue.SubCalStartDate = (long)(pausedTimeline.Start - JSStartTime).TotalMilliseconds;
+            retValue.SubCalEndDate = (long)(pausedTimeline.End - JSStartTime).TotalMilliseconds;
+            retValue.SubCalTotalDuration = pausedTimeline.TimelineSpan;
+            retValue.SubCalRigid = CalendarEventEntry.isRigid;
+            retValue.SubCalAddressDescription = pausedSubEvent.Location.Description;
+            retValue.SubCalAddress = pausedSubEvent.Location.Address;
+            retValue.ThirdPartyEventID = pausedSubEvent.ThirdPartyID;
+            retValue.SubCalCalendarName = pausedSubEvent.Name?.NameValue;
+            retValue.Notes = pausedSubEvent?.Notes?.UserNote;
+
+            if (CalendarEventEntry != null)
+            {
+                retValue.CalRigid = CalendarEventEntry.isRigid;
+                retValue.SubCalCalEventStart = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
+                retValue.SubCalCalEventEnd = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
+                retValue.SuggestedDeadline = CalendarEventEntry.DeadlineSuggestion.ToUnixTimeMilliseconds();
+                retValue.SleepSuggestedDeadline = CalendarEventEntry.SleepDeadlineSuggestion.ToUnixTimeMilliseconds();
+                if (string.IsNullOrEmpty(CalendarEventEntry.ThirdPartyID))
+                {
+
+                }
+                else
+                {
+                    retValue.ID = retValue.ThirdPartyEventID;
+                }
+            }
+
+            retValue.SubCalEventLong = pausedSubEvent.Location.Longitude;
+            retValue.SubCalEventLat = pausedSubEvent.Location.Latitude;
+            retValue.SubCalCalendarName = pausedSubEvent.getName?.NameValue;
+            TilerColor uiColor = TilerColor.pausedUIColor();
+            if (uiColor != null)
+            {
+                retValue.RColor = uiColor.R;
+                retValue.GColor = uiColor.G;
+                retValue.BColor = uiColor.B;
+                retValue.OColor = uiColor.O;
+                retValue.ColorSelection = uiColor.User;
+            }
+            retValue.isComplete = false;
+            retValue.isEnabled = true;
+            retValue.Duration = (long)pausedTimeline.TimelineSpan.TotalMilliseconds;
+            retValue.ThirdPartyEventID = pausedSubEvent.ThirdPartyID;
+            retValue.EventPreDeadline = (long)pausedSubEvent.getPreDeadline.TotalMilliseconds;
+            retValue.Priority = pausedSubEvent.getEventPriority;
+            retValue.Conflict = String.Join(",", pausedSubEvent.Conflicts.getConflictingEventIDs());
+            retValue.isPaused = false;
+            retValue.isPauseAble = false;
+            retValue.PauseStart = (long)(pausedTimeline.Start - JSStartTime).TotalMilliseconds;
+            retValue.PauseEnd = (long)(pausedTimeline.End - JSStartTime).TotalMilliseconds;
+            retValue.IsLocked = true;
+            retValue.UserLocked = false;
+            retValue.isThirdParty = pausedSubEvent.isThirdParty;
+            retValue.isReadOnly = true;
+            retValue.isTardy = false;
+            retValue.isProcrastinateAll = false;
+            retValue.isAllDay = pausedSubEvent.getActiveDuration >= Utility.LeastAllDaySubeventDuration;
+
+            if (CalendarEventEntry != null && includeCalendarEvent)
+            {
+                retValue.CalEvent = CalendarEventEntry.ToCalEvent(includeSubevents: false);
+            }
+
             return retValue;
         }
 
@@ -121,6 +201,7 @@ namespace DBTilerElement
             retValue.SuggestedDeadline = CalendarEventEntry.DeadlineSuggestion.ToUnixTimeMilliseconds();
             retValue.isProcrastinateAll = CalendarEventEntry.isProcrastinateEvent;
             retValue.LastSuggestedDeadline = CalendarEventEntry.LastDeadlineSuggestion.ToUnixTimeMilliseconds();
+            retValue.SleepSuggestedDeadline = CalendarEventEntry.SleepDeadlineSuggestion.ToUnixTimeMilliseconds();
             TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.getActiveDuration;
             long TickTier1 = (long)(FreeTimeLeft.Ticks * (.667));
             long TickTier2 = (long)(FreeTimeLeft.Ticks * (.865));
@@ -145,6 +226,11 @@ namespace DBTilerElement
                 else
                 {
                     retValue.AllSubCalEvents = CalendarEventEntry.ActiveSubEvents.Select(obj => obj.ToSubCalEvent(CalendarEventEntry)).ToList();
+                }
+
+                if(CalendarEventEntry.PausedTimeLines.Count > 0)
+                {
+                    retValue.AllSubCalEvents = CalendarEventEntry.PausedTimeLines.Where(pausedImeline => pausedImeline.IsFinal && CalendarEventEntry.getSubEvent(pausedImeline.getSubEventId())!=null).Select(pausedImeline => pausedImeline.ToSubCalEvent(CalendarEventEntry)).Concat(retValue.AllSubCalEvents).ToList();
                 }
             }
             retValue.IsLocked = CalendarEventEntry.isLocked;

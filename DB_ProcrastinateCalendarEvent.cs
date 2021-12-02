@@ -19,6 +19,14 @@ namespace DBTilerElement
         {
 
         }
+
+        public void setPausedTimeSlots(List<PausedTimeLineEntry> pausedTimeSlots)
+        {
+            foreach (var pausedTimeSlot in pausedTimeSlots)
+            {
+                addToPausedTimeSlot(pausedTimeSlot);
+            }
+        }
     }
 
     
