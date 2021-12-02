@@ -166,7 +166,7 @@ namespace DBTilerElement
                     {
 
                         SubCalendarEvent pertinentSubCalEvent = enableSubCalEVents[i];
-                        pertinentSubCalEvent.ThirdPartyID = AddAppointment(pertinentSubCalEvent, MyEvent.getName.NameValue);/////////////
+                        pertinentSubCalEvent.ThirdPartyID = AddAppointment(pertinentSubCalEvent, MyEvent.getName?.NameValue);/////////////
                     }
                     allReadyAdded.Add(MyEvent);
                 }

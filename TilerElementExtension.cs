@@ -38,6 +38,7 @@ namespace DBTilerElement
                 retValue.SubCalCalEventStart = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
                 retValue.SubCalCalEventEnd = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
                 retValue.SuggestedDeadline = CalendarEventEntry.DeadlineSuggestion.ToUnixTimeMilliseconds();
+                retValue.SleepSuggestedDeadline = CalendarEventEntry.SleepDeadlineSuggestion.ToUnixTimeMilliseconds();
 
                 if (string.IsNullOrEmpty(CalendarEventEntry.ThirdPartyID))
                 {
@@ -116,7 +117,7 @@ namespace DBTilerElement
                 retValue.SubCalCalEventStart = (long)(CalendarEventEntry.Start - JSStartTime).TotalMilliseconds;
                 retValue.SubCalCalEventEnd = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
                 retValue.SuggestedDeadline = CalendarEventEntry.DeadlineSuggestion.ToUnixTimeMilliseconds();
-
+                retValue.SleepSuggestedDeadline = CalendarEventEntry.SleepDeadlineSuggestion.ToUnixTimeMilliseconds();
                 if (string.IsNullOrEmpty(CalendarEventEntry.ThirdPartyID))
                 {
 
@@ -200,6 +201,7 @@ namespace DBTilerElement
             retValue.SuggestedDeadline = CalendarEventEntry.DeadlineSuggestion.ToUnixTimeMilliseconds();
             retValue.isProcrastinateAll = CalendarEventEntry.isProcrastinateEvent;
             retValue.LastSuggestedDeadline = CalendarEventEntry.LastDeadlineSuggestion.ToUnixTimeMilliseconds();
+            retValue.SleepSuggestedDeadline = CalendarEventEntry.SleepDeadlineSuggestion.ToUnixTimeMilliseconds();
             TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.getActiveDuration;
             long TickTier1 = (long)(FreeTimeLeft.Ticks * (.667));
             long TickTier2 = (long)(FreeTimeLeft.Ticks * (.865));
