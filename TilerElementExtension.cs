@@ -79,6 +79,7 @@ namespace DBTilerElement
             retValue.isTardy = SubCalendarEventEntry.isTardy;
             retValue.isProcrastinateAll = SubCalendarEventEntry.isProcrastinateEvent;
             retValue.isAllDay = SubCalendarEventEntry.getActiveDuration >= Utility.LeastAllDaySubeventDuration;
+            retValue.isViable = SubCalendarEventEntry.isViable;
 
             if (CalendarEventEntry!=null && includeCalendarEvent)
             {
