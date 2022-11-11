@@ -16,7 +16,7 @@ namespace DBTilerElement
         {
             DateTimeOffset CurrentTime = DateTimeOffset.UtcNow;
             SubCalEvent retValue = new SubCalEvent();
-            retValue.ThirdPartyUserID = SubCalendarEventEntry.getCreator.Id;
+            retValue.ThirdPartyUserID = SubCalendarEventEntry.CreatorId;
             retValue.ThirdPartyType = SubCalendarEventEntry.ThirdpartyType.ToString();
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
             retValue.ID = SubCalendarEventEntry.getId;
@@ -96,7 +96,7 @@ namespace DBTilerElement
             SubCalendarEvent pausedSubEvent = CalendarEventEntry.getSubEvent(pausedTimeline.getSubEventId());
             DateTimeOffset CurrentTime = DateTimeOffset.UtcNow;
             SubCalEvent retValue = new SubCalEvent();
-            retValue.ThirdPartyUserID = CalendarEventEntry.getCreator.Id;
+            retValue.ThirdPartyUserID = CalendarEventEntry.CreatorId;
             retValue.ThirdPartyType = CalendarEventEntry.ThirdpartyType.ToString();
             retValue.ThirdPartyEventID = CalendarEventEntry.ThirdPartyID;
             retValue.ID = pausedTimeline.Id;
@@ -171,7 +171,7 @@ namespace DBTilerElement
         public static CalEvent ToCalEvent(this TilerElements.CalendarEvent CalendarEventEntry, TilerElements.TimeLine Range = null, bool includeSubevents = true)
         {
             CalEvent retValue = new CalEvent();
-            retValue.ThirdPartyUserID = CalendarEventEntry.getCreator.Id;
+            retValue.ThirdPartyUserID = CalendarEventEntry.CreatorId;
             retValue.ID = CalendarEventEntry.getId;
             retValue.ThirdPartyType = CalendarEventEntry.ThirdpartyType.ToString();
             retValue.CalendarName = CalendarEventEntry.getName?.NameValue;
@@ -243,7 +243,7 @@ namespace DBTilerElement
         public static CalEvent ToDeletedCalEvent(this TilerElements.CalendarEvent CalendarEventEntry, TilerElements.TimeLine Range = null)
         {
             CalEvent retValue = new CalEvent();
-            retValue.ThirdPartyUserID = CalendarEventEntry.getCreator.Id;
+            retValue.ThirdPartyUserID = CalendarEventEntry.CreatorId;
 
             retValue.ID = CalendarEventEntry.getId;
             retValue.ThirdPartyType = CalendarEventEntry.ThirdpartyType.ToString();

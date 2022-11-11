@@ -46,7 +46,7 @@ namespace DBTilerElement
             this._UiParams = mySubCalEvent.getUIParam;
             this.UniqueID = mySubCalEvent.SubEvent_ID;
             this.UnUsableIndex = 0;
-            this._AutoDeleted = mySubCalEvent.getIsUserDeleted;
+            this._AutoDeleted = mySubCalEvent.isAutoDeleted;
             this._Name = mySubCalEvent.getName;
             this._Creator = mySubCalEvent.getCreator;
             this._Users = mySubCalEvent.getAllUsers();

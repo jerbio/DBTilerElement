@@ -35,7 +35,7 @@ namespace TilerFront
             this._Enabled = CalendarEventData.isEnabled;
             this._isEventRestricted = CalendarEventData.getIsEventRestricted;
             this._LocationInfo= CalendarEventData.Location;//hack you might need to make copy
-            this._AutoDeleted = CalendarEventData.getIsUserDeleted;
+            this._AutoDeleted = CalendarEventData.isAutoDeleted;
             this._CompletedCount = CalendarEventData.CompletionCount;
             this._DeletedCount = CalendarEventData.DeletionCount;
             this._ProfileOfProcrastination = procrastinationData;

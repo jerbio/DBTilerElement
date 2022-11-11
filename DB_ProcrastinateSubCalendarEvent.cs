@@ -10,7 +10,10 @@ namespace DBTilerElement
 {
     public class DB_ProcrastinateAllSubCalendarEvent : ProcrastinateAllSubCalendarEvent
     {
-        public DB_ProcrastinateAllSubCalendarEvent(TilerUser user, TilerUserGroup group, string timeZone, TimeLine timeLine, EventID calendarEventId, TilerElements.Location location, ProcrastinateCalendarEvent calendarEvent, bool isEnabled, bool isCompleted) : base(user, group, timeZone, timeLine, calendarEventId, location, calendarEvent)
+        public DB_ProcrastinateAllSubCalendarEvent(
+            TilerUser user, TilerUserGroup group, string timeZone, 
+            TimeLine timeLine, EventID calendarEventId, TilerElements.Location location, 
+            ProcrastinateCalendarEvent calendarEvent, bool isEnabled, bool isCompleted) : base(user, group, timeZone, timeLine, calendarEventId, location, calendarEvent)
         {
             this._TimeZone = timeZone;
             updateStartTime( timeLine.Start);
