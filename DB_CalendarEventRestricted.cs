@@ -29,7 +29,7 @@ namespace DBTilerElement
             this._Enabled = CalendarEventData.isEnabled;
             this._LocationInfo= CalendarEventData.Location;//hack you might need to make copy
             this._ProfileOfProcrastination = CalendarEventData.getProcrastinationInfo;
-            this._AutoDeleted = CalendarEventData.getIsUserDeleted;
+            this._AutoDeleted = CalendarEventData.isAutoDeleted;
             this._CompletedCount = CalendarEventData.CompletionCount;
             this._DeletedCount = CalendarEventData.DeletionCount;
             this._ProfileOfRestriction = restrictionData;
