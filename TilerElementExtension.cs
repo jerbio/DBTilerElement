@@ -26,11 +26,12 @@ namespace DBTilerElement
             retValue.SubCalEndDate = (long)(SubCalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.SubCalTotalDuration = SubCalendarEventEntry.getActiveDuration;
             retValue.SubCalRigid = SubCalendarEventEntry.isRigid;
-            retValue.SubCalAddressDescription = SubCalendarEventEntry.Location.Description;
-            retValue.SubCalAddress = SubCalendarEventEntry.Location.Address;
+            retValue.SubCalAddressDescription = SubCalendarEventEntry.Location?.Description;
+            retValue.SubCalAddress = SubCalendarEventEntry.Location?.Address;
             retValue.ThirdPartyEventID = SubCalendarEventEntry.ThirdPartyID;
             retValue.SubCalCalendarName = SubCalendarEventEntry.Name?.NameValue;
             retValue.Notes = SubCalendarEventEntry?.Notes?.UserNote;
+            retValue.LocationId = SubCalendarEventEntry.LocationId;
 
             if (CalendarEventEntry != null)
             {
@@ -50,8 +51,8 @@ namespace DBTilerElement
                 }
             }
 
-            retValue.SubCalEventLong = SubCalendarEventEntry.Location.Longitude;
-            retValue.SubCalEventLat = SubCalendarEventEntry.Location.Latitude;
+            retValue.SubCalEventLong = SubCalendarEventEntry.Location?.Longitude?? TilerElements.Location.getDefaultLocation().Longitude;
+            retValue.SubCalEventLat = SubCalendarEventEntry.Location?.Latitude ?? TilerElements.Location.getDefaultLocation().Latitude;
             retValue.SubCalCalendarName = SubCalendarEventEntry.getName?.NameValue;
             TilerColor uiColor = SubCalendarEventEntry?.getUIParam?.UIColor;
             if (uiColor != null) { 
@@ -111,6 +112,7 @@ namespace DBTilerElement
             retValue.ThirdPartyEventID = pausedSubEvent.ThirdPartyID;
             retValue.SubCalCalendarName = pausedSubEvent.Name?.NameValue;
             retValue.Notes = pausedSubEvent?.Notes?.UserNote;
+            retValue.LocationId = pausedSubEvent.LocationId;
 
             if (CalendarEventEntry != null)
             {
@@ -179,12 +181,13 @@ namespace DBTilerElement
             retValue.EndDate = (long)(CalendarEventEntry.End - JSStartTime).TotalMilliseconds;
             retValue.TotalDuration = CalendarEventEntry.getActiveDuration;
             retValue.Rigid = CalendarEventEntry.isRigid;
-            retValue.AddressDescription = CalendarEventEntry.Location.Description;
-            retValue.Address = CalendarEventEntry.Location.Address;
-            retValue.Longitude = CalendarEventEntry.Location.Longitude;
-            retValue.Latitude = CalendarEventEntry.Location.Latitude;
+            retValue.AddressDescription = CalendarEventEntry.Location?.Description;
+            retValue.Address = CalendarEventEntry.Location?.Address;
+            retValue.Longitude = CalendarEventEntry.Location?.Longitude ?? TilerElements.Location.getDefaultLocation().Longitude;
+            retValue.Latitude = CalendarEventEntry.Location?.Latitude ?? TilerElements.Location.getDefaultLocation().Longitude;
             retValue.NumberOfSubEvents = CalendarEventEntry.NumberOfSplit;
-            if(CalendarEventEntry.getUIParam!=null && CalendarEventEntry.getUIParam.UIColor!=null)
+            retValue.LocationId = CalendarEventEntry.LocationId;
+            if (CalendarEventEntry.getUIParam!=null && CalendarEventEntry.getUIParam.UIColor!=null)
             {
                 retValue.RColor = CalendarEventEntry.getUIParam.UIColor.R;
                 retValue.GColor = CalendarEventEntry.getUIParam.UIColor.G;
