@@ -32,11 +32,11 @@ namespace DBTilerElement
             throw new NotImplementedException();
         }
 
-        public override CalendarEvent getThirdpartyCalendarEvent()
+        public override CalendarEvent getThirdpartyCalendarEvent(ReferenceNow referenceNow)
         {
             if (ThirdpartyCalendarEventInfo==null)
             {
-                ThirdpartyCalendarEventInfo = new GoogleCalendarEvent(IDToCalendarEvent.Values, _User);
+                ThirdpartyCalendarEventInfo = new GoogleCalendarEvent(IDToCalendarEvent.Values, _User, referenceNow);
             }
             return ThirdpartyCalendarEventInfo;
         }

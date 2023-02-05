@@ -26,7 +26,7 @@ namespace DBTilerElement
             return IDToCalendarEvent.ToDictionary(obj => obj.Key, obj => obj.Value);
         }
 
-         public abstract CalendarEvent getThirdpartyCalendarEvent();
+         public abstract CalendarEvent getThirdpartyCalendarEvent(ReferenceNow referenceNow);
 
         public abstract TilerUser getUser();
 
