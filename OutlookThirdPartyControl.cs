@@ -38,7 +38,7 @@ namespace DBTilerElement
             }
         }
 
-        public override CalendarEvent getThirdpartyCalendarEvent()
+        public override CalendarEvent getThirdpartyCalendarEvent(ReferenceNow referenceNow)
         {
             throw new NotImplementedException();
         }

@@ -14,7 +14,7 @@ namespace DBTilerElement
             EventID procrasstinaeAllId, EventName NameEntry, DateTimeOffset StartData, DateTimeOffset EndData, 
             TimeSpan EventDuration, TimeSpan eventPrepTime, TimeSpan PreDeadlineTimeSpan, Repetition EventRepetitionEntry, 
             TilerElements.Location EventLocation, EventDisplay UiData, MiscData NoteData, bool EnabledEventFlag, 
-            bool CompletionFlag, TilerUser creator, TilerUserGroup users, string timeZone, int splitCount, NowProfile nowProfile) : base(procrasstinaeAllId, NameEntry, StartData, EndData, EventDuration, eventPrepTime, PreDeadlineTimeSpan, EventRepetitionEntry, EventLocation, UiData, NoteData, EnabledEventFlag, CompletionFlag, creator, users, timeZone, splitCount, nowProfile)
+            bool CompletionFlag, TilerUser creator, TilerUserGroup users, string timeZone, int splitCount, NowProfile nowProfile, ReferenceNow referenceNow) : base(procrasstinaeAllId, NameEntry, StartData, EndData, EventDuration, eventPrepTime, PreDeadlineTimeSpan, EventRepetitionEntry, EventLocation, UiData, NoteData, EnabledEventFlag, CompletionFlag, creator, users, timeZone, splitCount, nowProfile, referenceNow)
         {
             UniqueID = procrasstinaeAllId;
         }
