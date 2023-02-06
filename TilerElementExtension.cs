@@ -270,6 +270,7 @@ namespace DBTilerElement
             retValue.OtherPartyID = CalendarEventEntry.ThirdPartyID;
             retValue.Notes = CalendarEventEntry.Notes.UserNote;
             retValue.isThirdParty = CalendarEventEntry.isThirdParty;
+            retValue.isReadOnly = true;
 
             TimeSpan FreeTimeLeft = CalendarEventEntry.RangeSpan - CalendarEventEntry.getActiveDuration;
             long TickTier1 = (long)(FreeTimeLeft.Ticks * (.667));
