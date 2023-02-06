@@ -107,8 +107,8 @@ namespace DBTilerElement
             retValue.SubCalEndDate = (long)(pausedTimeline.End - JSStartTime).TotalMilliseconds;
             retValue.SubCalTotalDuration = pausedTimeline.TimelineSpan;
             retValue.SubCalRigid = CalendarEventEntry.isRigid;
-            retValue.SubCalAddressDescription = pausedSubEvent.Location.Description;
-            retValue.SubCalAddress = pausedSubEvent.Location.Address;
+            retValue.SubCalAddressDescription = pausedSubEvent?.Location?.Description;
+            retValue.SubCalAddress = pausedSubEvent?.Location?.Address;
             retValue.ThirdPartyEventID = pausedSubEvent.ThirdPartyID;
             retValue.SubCalCalendarName = pausedSubEvent.Name?.NameValue;
             retValue.Notes = pausedSubEvent?.Notes?.UserNote;
@@ -131,8 +131,8 @@ namespace DBTilerElement
                 }
             }
 
-            retValue.SubCalEventLong = pausedSubEvent.Location.Longitude;
-            retValue.SubCalEventLat = pausedSubEvent.Location.Latitude;
+            retValue.SubCalEventLong = pausedSubEvent.Location?.Longitude??TilerElements.Location.getDefaultLocation().Longitude;
+            retValue.SubCalEventLat = pausedSubEvent.Location?.Latitude ?? TilerElements.Location.getDefaultLocation().Latitude;
             retValue.SubCalCalendarName = pausedSubEvent.getName?.NameValue;
             TilerColor uiColor = TilerColor.pausedUIColor();
             if (uiColor != null)
