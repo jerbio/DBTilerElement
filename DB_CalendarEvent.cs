@@ -29,7 +29,7 @@ namespace DBTilerElement
             this._AverageTimePerSplit = CalendarEventData.AverageTimeSpanPerSubEvent;
             this.UniqueID = CalendarEventData.Calendar_EventID;//hack
             //this.EventSequence = CalendarEventData.EventSequence;
-            this._SubEvents = new SubEventDictionary<string, SubCalendarEvent>();
+            this._SubEvents = new SubEventDictionary();
             this._UiParams = CalendarEventData.getUIParam;
             this._DataBlob = CalendarEventData.Notes;
             this._Enabled = CalendarEventData.isEnabled;

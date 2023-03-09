@@ -26,8 +26,8 @@ namespace DBTilerElement
                 _EnableRepeat = false;
                 _Location = new TilerElements.Location();
                 _initializingRange = new TimeLine();
-                _DictionaryOfIDAndCalendarEvents = new SubEventDictionary<string, CalendarEvent>(calEvents);
-                _DictionaryOfWeekDayToRepetition = new SubEventDictionary<int, Repetition>();
+                _DictionaryOfIDAndCalendarEvents = new IDKeyDictionary<string, CalendarEvent>(calEvents);
+                _DictionaryOfWeekDayToRepetition = new IDKeyDictionary<int, Repetition>();
             }
         }
 
