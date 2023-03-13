@@ -57,6 +57,7 @@ namespace DBTilerElement
             this._Users = CalendarEventData.getAllUsers();//.ToList();
             this._Creator = CalendarEventData.getCreator;
             this._TimeZone = CalendarEventData.getTimeZone;
+            this.Now = CalendarEventData.Now;
         }
 
         public ThirdPartyControl.CalendarTool CalendarType
