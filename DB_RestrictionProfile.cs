@@ -8,8 +8,9 @@ namespace DBTilerElement
 {
     public class DB_RestrictionProfile : RestrictionProfile
     {
-        public DB_RestrictionProfile(List<RestrictionDay> RestrictionTimeLineData)
+        public DB_RestrictionProfile(List<RestrictionDay> RestrictionTimeLineData, string timeZone)
         {
+            this.TimeZone_DB = timeZone;
             this._DaySelection = (new RestrictionDay[7]).ToList();
             foreach (RestrictionDay eachTuple in RestrictionTimeLineData)
             {
