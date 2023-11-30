@@ -82,6 +82,11 @@ namespace DBTilerElement
             retValue.isProcrastinateAll = SubCalendarEventEntry.isProcrastinateEvent;
             retValue.isAllDay = SubCalendarEventEntry.getActiveDuration >= Utility.LeastAllDaySubeventDuration;
             retValue.isViable = SubCalendarEventEntry.isViable;
+            if(SubCalendarEventEntry is GoogleSubCalendarEvent)
+            {
+                retValue.ConfirmationStatus = (SubCalendarEventEntry as GoogleSubCalendarEvent).TileStatus.ToString();
+                retValue.UserAcceptanceStatus = (SubCalendarEventEntry as GoogleSubCalendarEvent).UserStatus.ToString();
+            }
 
             if (CalendarEventEntry!=null && includeCalendarEvent)
             {
