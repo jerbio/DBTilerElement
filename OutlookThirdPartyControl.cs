@@ -18,7 +18,7 @@ namespace DBTilerElement
         HashSet<CalendarEvent> allReadyAdded = new HashSet<CalendarEvent>();
         public OutlookThirdPartyControl()
         {
-            SelectedCalendarTool = ThirdPartyControl.CalendarTool.outlook;
+            SelectedCalendarTool = ThirdPartyControl.CalendarTool.microsoft;
         }
 
 
