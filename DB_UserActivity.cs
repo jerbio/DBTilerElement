@@ -73,8 +73,8 @@ namespace DBTilerElement
         [XmlElement("Ids")]
         public string affectedIds
         {
-            get { return String.Join(",", updatedIds); }
-            set { updatedIds = value.Split(',').ToList(); }
+            get { return String.Join(",", UpdatedIds); }
+            set { UpdatedIds = value.Split(',').ToList(); }
         }
     }
 }
