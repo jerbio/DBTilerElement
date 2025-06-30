@@ -43,6 +43,7 @@ namespace DBTilerElement
             _RigidSchedule = Rigid;
             _LastReasonStartTimeChanged = this.Start;
             _calendarEvent = calendarEvent;
+            this.Now = calendarEvent?.Now;
         }
 
 
@@ -80,6 +81,7 @@ namespace DBTilerElement
             this._Users = mySubCalEvent.getAllUsers();
             this._TimeZone = mySubCalEvent.getTimeZone;
             this._calendarEvent = calendarEvent;
+            this.Now = calendarEvent?.Now;
         }
 
         //override public TimeSpan UsedTime

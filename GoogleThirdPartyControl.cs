@@ -44,6 +44,13 @@ namespace DBTilerElement
             {
                 ThirdpartyCalendarEventInfo = new GoogleCalendarEvent(IDToCalendarEvent.Values, _User, referenceNow);
             }
+            var thirdPartyInfo = IDToCalendarEvent.Values.FirstOrDefault(o => o.ThirdPartyCalendarAuthentication != null)?.ThirdPartyCalendarAuthentication;
+            ThirdpartyCalendarEventInfo.setThirdPartyAuthentication(thirdPartyInfo);
+            if(thirdPartyInfo.ThirdPartySchedule!=null)
+            {
+                List<TilerEvent> allImports = new List<TilerEvent>(IDToCalendarEvent.Values);
+                thirdPartyInfo.ThirdPartySchedule.AllTiles = allImports;
+            }
             return ThirdpartyCalendarEventInfo;
         }
 
